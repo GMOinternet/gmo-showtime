@@ -89,12 +89,16 @@ public function plugins_loaded()
 public function get_slider_contents()
 {
     if (get_option('gmoshowtime-maintenance', 1)) {
-        return sprintf(
-            '<img src="%s" height="%s" width="%s" alt="" />',
-            get_header_image(),
-            get_custom_header()->height,
-            get_custom_header()->width
-        );
+        if (get_header_image()) {
+            return sprintf(
+                '<img src="%s" height="%s" width="%s" alt="" />',
+                get_header_image(),
+                get_custom_header()->height,
+                get_custom_header()->width
+            );
+        } else {
+            return;
+        }
     }
 
     $args = array(
@@ -505,7 +509,6 @@ showtime.owlCarousel({
     itemsTablet: [600, 2],
     itemsMobile : false,
 <?php endif; ?>
-    itemsScaleUp: true,
     autoPlay: 3000,
     navigation : false
 });
