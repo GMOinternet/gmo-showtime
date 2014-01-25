@@ -8,7 +8,6 @@ module.exports = function( grunt ) {
     jshint: {
       all: [
         'Gruntfile.js',
-        'js/gmo-showtime.js',
         'js/test/**/*.js'
       ],
       options: {
@@ -35,9 +34,10 @@ module.exports = function( grunt ) {
       all: {
         files: {
           'js/gmo-showtime.min.js': [
-            'js/gmo-showtime.js'
+            'owl-carousel/owl.carousel.js'
           ],
           'js/admin-gmo-showtime.min.js': [
+            'owl-carousel/owl.carousel.js',
             'js/admin-gmo-showtime.js'
           ]
         },
@@ -47,6 +47,8 @@ module.exports = function( grunt ) {
             ' *\n' +
             ' * <%= pkg.homepage %>\n' +
             ' * <%= pkg.repository.url %>\n' +
+            ' *\n' +
+            ' * Special Thanks! http://owlgraphic.com/owlcarousel/\n' +
             ' *\n' +
             ' * Copyright <%= grunt.template.today("yyyy") %>, <%= pkg.author.name %> (<%= pkg.author.url %>)\n' +
             ' * Released under the <%= pkg.license %>\n' +
@@ -86,11 +88,20 @@ module.exports = function( grunt ) {
         expand: true,
         cwd: 'css/',
         src: [
-          'gmo-showtime.css',
           'admin-gmo-showtime.css'
         ],
         dest: 'css/',
         ext: '.min.css'
+      },
+      combine: {
+        files: {
+          'css/gmo-showtime.min.css' : [
+            'owl-carousel/owl.carousel.css',
+            'owl-carousel/owl.theme.css',
+            'owl-carousel/owl.transitions.css',
+            'css/gmo-showtime.css'
+          ]
+        }
       }
     },
     watch:  {

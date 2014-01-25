@@ -1,0 +1,35 @@
+.gmo-showtime
+{
+    max-width: 100%;
+    .slide
+    {
+        margin: 0 5px;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        .slide-wrap
+        {
+            position: relative;
+            h2
+            {
+                position: absolute;
+                bottom: 0px;
+                left: 0px;
+                width: 100%;
+                padding: 10px;
+                background-color: rgba(0,0,0,0.5);
+                box-sizing: border-box;
+                font-size: 20px;
+                color: #ffffff;
+                margin: 0;
+            }
+            img
+            {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,91 @@
+#gmoshowtime {
+  /* wp-admin 782px */ }
+  #gmoshowtime .helplink {
+    display: none; }
+    @media screen and (max-width: 960px) {
+      #gmoshowtime .helplink {
+        display: block; } }
+  #gmoshowtime #alpha {
+    float: left;
+    width: 65%;
+    padding: 10px 0;
+    border: 0; }
+    @media screen and (max-width: 960px) {
+      #gmoshowtime #alpha {
+        float: none;
+        width: 100%; } }
+  #gmoshowtime #beta {
+    float: right;
+    width: 33%;
+    padding: 10px 20px;
+    border: 0;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #dedede;
+    border-radius: 5px; }
+    #gmoshowtime #beta img {
+      max-width: 100%; }
+    @media screen and (max-width: 960px) {
+      #gmoshowtime #beta {
+        float: none;
+        width: 100%; } }
+  #gmoshowtime #sample-code {
+    font-size: 10px;
+    width: 100%;
+    background-color: #f3f3f3;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    padding: 5px;
+    color: #555555;
+    overflow: hidden; }
+  #gmoshowtime .slide-types {
+    overflow: auto; }
+    #gmoshowtime .slide-types .type {
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: #f3f3f3;
+      float: left;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #dedede;
+      border-radius: 5px; }
+      #gmoshowtime .slide-types .type h4 {
+        text-align: center;
+        margin-bottom: 0; }
+      #gmoshowtime .slide-types .type img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto; }
+  #gmoshowtime #mainpreview .gmo-showtime h2 {
+    font-size: 8px;
+    line-height: 1em; }
+  #gmoshowtime #transitions-settings {
+    margin-top: 2em; }
+  #gmoshowtime #transitions {
+    overflow: auto; }
+    #gmoshowtime #transitions .transitions {
+      float: left;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+      background-color: #f3f3f3;
+      border: 1px solid #dedede;
+      border-radius: 5px; }
+      #gmoshowtime #transitions .transitions .gmo-showtime {
+        width: 150px; }
+        #gmoshowtime #transitions .transitions .gmo-showtime .slide {
+          height: auto;
+          width: 150px;
+          margin: 0; }
+        #gmoshowtime #transitions .transitions .gmo-showtime h2 {
+          font-size: 8px;
+          line-height: 1em; }
+      #gmoshowtime #transitions .transitions h4 {
+        text-align: center;
+        margin-bottom: 0; }
+  #gmoshowtime h3 {
+    padding: 8px 0;
+    margin-top: 3em;
+    border-bottom: 3px double #cccccc; }
