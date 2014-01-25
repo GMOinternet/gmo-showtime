@@ -88,6 +88,15 @@ public function plugins_loaded()
 
 public function get_slider_contents()
 {
+    if (get_option('gmoshowtime-maintenance', 1)) {
+        return sprintf(
+            '<img src="%s" height="%s" width="%s" alt="" />',
+            get_header_image(),
+            get_custom_header()->height,
+            get_custom_header()->width
+        );
+    }
+
     $args = array(
         "post_type"             => "any",
         "nopaging"              => 0,
@@ -113,7 +122,8 @@ public function get_slider_contents()
         $title  = get_the_title($p->ID);
         $html .= '<h2>'.$title.'</h2>';
         $html .= sprintf(
-            '<img src="%s" alt="%s">',
+            '<a href="%s"><img src="%s" alt="%s"></a>',
+            $url,
             $image,
             $title
         );
@@ -241,7 +251,7 @@ public function options_page()
             <?php else: ?>
             <input type="radio" name="slide-type" value="3" />
             <?php endif; ?>
-            Many Slides
+            Five Slides
         </label></h4>
     </div>
 </div>
@@ -444,16 +454,6 @@ $('.transitions .gmo-showtime').each(function(){
         transitionStyle : $(this).attr('data-transition')
     });
 });
-/*
-var owl2 = $(".transitions .gmo-showtime");
-owl2.owlCarousel({
-    pagination: false,
-    itemsScaleUp: true,
-    autoPlay: 3000,
-    navigation : false,
-    singleItem : true,
-    transitionStyle : "fade"
-});*/
 })(jQuery);
 </script>
 <?php
@@ -500,7 +500,7 @@ showtime.owlCarousel({
     itemsTablet: [600, 2],
     itemsMobile : false,
 <?php elseif (intval(get_option('gmoshowtime-slide-type', 1)) === 3): ?>
-    items : 10,
+    items : 5,
     itemsDesktopSmall : [900, 5],
     itemsTablet: [600, 2],
     itemsMobile : false,
