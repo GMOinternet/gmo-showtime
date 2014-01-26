@@ -4,8 +4,8 @@ $('.showtime').each(function(){
     var showtime = $(this);
 
     var pages = 1
-    if (parseInt($(this).attr('data-pages')) > 0) {
-        pages = parseInt($(this).attr('data-pages'));
+    if (parseInt($(this).attr('data-columns')) > 0) {
+        pages = parseInt($(this).attr('data-columns'));
     }
 
     var transition = 'fade';

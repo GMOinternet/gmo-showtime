@@ -115,20 +115,15 @@ private function gallery($atts)
     extract(shortcode_atts(array(
         'transition' => get_option('gmoshowtime-transition', 'fade'),
         'show_title' => get_option('gmoshowtime-show-title', 0),
-        'size' => get_option('gmoshowtime-image-size', 'full'),
+        'size'       => get_option('gmoshowtime-image-size', 'full'),
         'order'      => 'ASC',
         'orderby'    => 'menu_order ID',
         'id'         => $post ? $post->ID : 0,
-        'columns'    => 1,
-        'slides'     => 0,
+        'columns'    => get_option('gmoshowtime-columns', 1),
         'include'    => '',
         'exclude'    => '',
         'link'       => ''
     ), $atts, 'gallery'));
-
-    if (!$slides && $columns) {
-        $slides = $columns;
-    }
 
     $id = intval($id);
     if ('RAND' == $order) {
@@ -191,7 +186,7 @@ private function gallery($atts)
     }
 
     return $this->get_slider_contents(array(
-        'slides'     => $slides,
+        'columns'     => $columns,
         'images'     => $images,
         'transition' => $transition,
         'show_title' => $show_title,
@@ -220,7 +215,7 @@ public function showtime($atts)
 public function get_slider_contents($atts = array())
 {
     extract( shortcode_atts( array(
-        'slides'     => get_option('gmoshowtime-slides', 1),
+        'columns'     => get_option('gmoshowtime-columns', 1),
         'transition' => get_option('gmoshowtime-transition', 'fade'),
         'show_title' => get_option('gmoshowtime-show-title', 0),
         'image_size' => get_option('gmoshowtime-image-size', 'full'),
@@ -254,8 +249,8 @@ public function get_slider_contents($atts = array())
     $html = '';
     $html .= "\n<!-- Start GMO Showtime-->\n";
     $html .= sprintf(
-        '<div class="showtime" data-pages="%d" data-transition="%s" data-show_title="%d">',
-        $slides,
+        '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        $columns,
         $transition,
         $show_title
     );
@@ -287,10 +282,10 @@ public function admin_init()
 {
     if (isset($_POST['gmoshowtime']) && $_POST['gmoshowtime']){
         if (check_admin_referer('gmoshowtime', 'gmoshowtime')){
-            if (isset($_POST['slides']) && intval($_POST['slides'])) {
-                update_option('gmoshowtime-slides', $_POST['slides']);
+            if (isset($_POST['columns']) && intval($_POST['columns'])) {
+                update_option('gmoshowtime-columns', $_POST['columns']);
             } else {
-                update_option('gmoshowtime-slides', 1);
+                update_option('gmoshowtime-columns', 1);
             }
             if (isset($_POST['transition']) && in_array($_POST['transition'], $this->get_transitions())) {
                 update_option('gmoshowtime-transition', $_POST['transition']);
@@ -364,10 +359,10 @@ public function options_page()
             <img src="<?php echo plugins_url('', __FILE__); ?>/img/single.png" alt="" />
         </div>
         <h4><label>
-            <?php if (intval(get_option('gmoshowtime-slides', 1)) === 1): ?>
-            <input type="radio" name="slides" value="1" checked />
+            <?php if (intval(get_option('gmoshowtime-columns', 1)) === 1): ?>
+            <input type="radio" name="columns" value="1" checked />
             <?php else: ?>
-            <input type="radio" name="slides" value="1" />
+            <input type="radio" name="columns" value="1" />
             <?php endif; ?>
             One Column
         </label></h4>
@@ -377,10 +372,10 @@ public function options_page()
             <img src="<?php echo plugins_url('', __FILE__); ?>/img/images.png" alt="" />
         </div>
         <h4><label>
-            <?php if (intval(get_option('gmoshowtime-slides', 1)) === 3): ?>
-            <input type="radio" name="slides" value="3" checked />
+            <?php if (intval(get_option('gmoshowtime-columns', 1)) === 3): ?>
+            <input type="radio" name="columns" value="3" checked />
             <?php else: ?>
-            <input type="radio" name="slides" value="3" />
+            <input type="radio" name="columns" value="3" />
             <?php endif; ?>
             Three Columns
         </label></h4>
@@ -390,10 +385,10 @@ public function options_page()
             <img src="<?php echo plugins_url('', __FILE__); ?>/img/many.png" alt="" />
         </div>
         <h4><label>
-            <?php if (intval(get_option('gmoshowtime-slides', 1)) === 5): ?>
-            <input type="radio" name="slides" value="5" checked />
+            <?php if (intval(get_option('gmoshowtime-columns', 1)) === 5): ?>
+            <input type="radio" name="columns" value="5" checked />
             <?php else: ?>
-            <input type="radio" name="slides" value="5" />
+            <input type="radio" name="columns" value="5" />
             <?php endif; ?>
             Five Columns
         </label></h4>
@@ -574,14 +569,14 @@ function transition_disabled() {
     $('#transitions-settings input').prop('disabled', true);
 }
 
-if (parseInt($('input[name="slides"]:checked').val()) == 1) {
+if (parseInt($('input[name="columns"]:checked').val()) == 1) {
     transition_enabled();
 } else {
     transition_disabled();
 }
 
-$('input[name="slides"]').click(function(){
-    if (parseInt($('input[name="slides"]:checked').val()) == 1) {
+$('input[name="columns"]').click(function(){
+    if (parseInt($('input[name="columns"]:checked').val()) == 1) {
         transition_enabled();
     } else {
         transition_disabled();
@@ -620,8 +615,8 @@ private function get_preview_contents()
 {
 
     printf(
-        '<div class="showtime" data-pages="%d" data-transition="%s" data-show_title="%d">',
-        get_option('gmoshowtime-slides', 1),
+        '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        get_option('gmoshowtime-columns', 1),
         get_option('gmoshowtime-transition', 'fade'),
         get_option('gmoshowtime-show-title', 0)
     );
