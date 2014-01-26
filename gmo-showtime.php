@@ -620,10 +620,10 @@ private function get_preview_contents()
 {
 
     printf(
-        '<div class="showtime" data-pages="%d" data-transition="%s" data-show-title="%d">',
+        '<div class="showtime" data-pages="%d" data-transition="%s" data-show_title="%d">',
         get_option('gmoshowtime-slides', 1),
         get_option('gmoshowtime-transition', 'fade'),
-        get_option('gmoshowtime-show-title', 1)
+        get_option('gmoshowtime-show-title', 0)
     );
 
     for ($i=0; $i<20; $i++) {
