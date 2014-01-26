@@ -13,7 +13,7 @@ $('.showtime').each(function(){
         var transition = $(this).attr('data-transition');
     }
 
-    if (!parseInt($(this).attr('data-show-title'))) {
+    if (!parseInt($(this).attr('data-show_title'))) {
         $('h2', this).hide();
     }
 

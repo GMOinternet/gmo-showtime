@@ -85,7 +85,7 @@ public function plugins_loaded()
     add_shortcode('showtime', array($this, 'get_slider_contents'));
 }
 
-public function get_slider_contents()
+public function get_slider_contents($atts = array())
 {
     if (get_option('gmoshowtime-maintenance', 1)) {
         if (get_header_image()) {
@@ -99,6 +99,12 @@ public function get_slider_contents()
             return;
         }
     }
+
+    extract( shortcode_atts( array(
+        'slides'     => get_option('gmoshowtime-slides', 1),
+        'transition' => get_option('gmoshowtime-transition', 'fade'),
+        'show_title' => get_option('gmoshowtime-show-title', 1),
+    ), $atts ) );
 
     $args = array(
         "post_type"             => "any",
@@ -115,10 +121,10 @@ public function get_slider_contents()
     $html = '';
     $html .= "\n<!-- Start GMO Showtime-->\n";
     $html .= sprintf(
-        '<div class="showtime" data-pages="%d" data-transition="%s" data-show-title="%d">',
-        get_option('gmoshowtime-slides', 1),
-        get_option('gmoshowtime-transition', 'fade'),
-        get_option('gmoshowtime-show-title', 1)
+        '<div class="showtime" data-pages="%d" data-transition="%s" data-show_title="%d">',
+        $slides,
+        $transition,
+        $show_title
     );
 
     foreach ($posts as $p) {
