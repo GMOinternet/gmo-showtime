@@ -369,7 +369,7 @@ public function options_page()
             <?php else: ?>
             <input type="radio" name="slides" value="1" />
             <?php endif; ?>
-            One Slide
+            One Column
         </label></h4>
     </div>
     <div class="type">
@@ -382,7 +382,7 @@ public function options_page()
             <?php else: ?>
             <input type="radio" name="slides" value="3" />
             <?php endif; ?>
-            Three Slides
+            Three Columns
         </label></h4>
     </div>
     <div class="type">
@@ -395,7 +395,7 @@ public function options_page()
             <?php else: ?>
             <input type="radio" name="slides" value="5" />
             <?php endif; ?>
-            Five Slides
+            Five Columns
         </label></h4>
     </div>
 </div>
