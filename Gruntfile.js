@@ -34,10 +34,12 @@ module.exports = function( grunt ) {
       all: {
         files: {
           'js/gmo-showtime.min.js': [
-            'owl-carousel/owl.carousel.js'
+            'owl-carousel/owl.carousel.js',
+            'js/gmo-showtime.js'
           ],
           'js/admin-gmo-showtime.min.js': [
             'owl-carousel/owl.carousel.js',
+            'js/gmo-showtime.js',
             'js/admin-gmo-showtime.js'
           ]
         },

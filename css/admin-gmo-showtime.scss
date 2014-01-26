@@ -55,7 +55,7 @@
         color: #555555;
         overflow: hidden;
     }
-    .slide-types
+    .slide-pages
     {
         overflow: auto;
         .type
@@ -84,11 +84,8 @@
     }
     #mainpreview
     {
-        .gmo-showtime
+        .showtime
         {
-            .slide
-            {
-            }
             h2
             {
                 font-size: 8px;
@@ -113,19 +110,26 @@
             background-color: $background;
             border: 1px solid #dedede;
             border-radius: 5px;
-            .gmo-showtime
+            .showtime-transition-preview
             {
                 width: 150px;
                 .slide
                 {
                     height: auto;
                     width: 150px;
+                    height: auto;
                     margin: 0;
+                    img
+                    {
+                        width: 150px;
+                        height: auto;
+                    }
                 }
                 h2
                 {
                     font-size: 8px;
                     line-height: 1em;
+                    display: none;
                 }
             }
             h4

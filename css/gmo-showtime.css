@@ -1,13 +1,13 @@
-.gmo-showtime {
+.showtime {
   max-width: 100%; }
-  .gmo-showtime .slide {
+  .showtime .slide {
     margin: 0 5px;
     max-width: 100%;
     width: auto;
     height: auto; }
-    .gmo-showtime .slide .slide-wrap {
+    .showtime .slide .slide-wrap {
       position: relative; }
-      .gmo-showtime .slide .slide-wrap h2 {
+      .showtime .slide .slide-wrap h2 {
         position: absolute;
         bottom: 0px;
         left: 0px;
@@ -18,7 +18,7 @@
         font-size: 20px;
         color: #ffffff;
         margin: 0; }
-      .gmo-showtime .slide .slide-wrap img {
+      .showtime .slide .slide-wrap img {
         display: block;
         width: 100%;
         height: auto; }

@@ -81,7 +81,6 @@ public function plugins_loaded()
     add_action('admin_menu', array($this, 'admin_menu'));
     add_action('admin_init', array($this, 'admin_init'));
     add_action('admin_print_footer_scripts', array($this, 'admin_print_footer_scripts'), 9999);
-    add_action('wp_footer', array($this, 'wp_footer'), 9999);
 
     add_shortcode('showtime', array($this, 'get_slider_contents'));
 }
@@ -115,7 +114,12 @@ public function get_slider_contents()
 
     $html = '';
     $html .= "\n<!-- Start GMO Showtime-->\n";
-    $html .= '<div class="gmo-showtime">'."\n";
+    $html .= sprintf(
+        '<div class="showtime" data-pages="%d" data-transition="%s" data-show-title="%d">',
+        get_option('gmoshowtime-slides', 1),
+        get_option('gmoshowtime-transition', 'fade'),
+        get_option('gmoshowtime-show-title', 1)
+    );
 
     foreach ($posts as $p) {
         $html .= '<div class="slide slide-'.esc_attr($p->ID).'">';
@@ -141,21 +145,14 @@ public function get_slider_contents()
     return $html;
 }
 
-public function wp_footer()
-{
-    if (!get_option('gmoshowtime-maintenance', 1)) {
-        $this->load_scripts();
-    }
-}
-
 public function admin_init()
 {
     if (isset($_POST['gmoshowtime']) && $_POST['gmoshowtime']){
         if (check_admin_referer('gmoshowtime', 'gmoshowtime')){
-            if (isset($_POST['slide-type']) && intval($_POST['slide-type'])) {
-                update_option('gmoshowtime-slide-type', $_POST['slide-type']);
+            if (isset($_POST['slides']) && intval($_POST['slides'])) {
+                update_option('gmoshowtime-slides', $_POST['slides']);
             } else {
-                update_option('gmoshowtime-slide-type', 1);
+                update_option('gmoshowtime-slides', 1);
             }
             if (isset($_POST['transition']) && in_array($_POST['transition'], $this->get_transitions())) {
                 update_option('gmoshowtime-transition', $_POST['transition']);
@@ -218,16 +215,16 @@ public function options_page()
 
 <h3 style="margin-top: 2em;"><?php _e('Slider Settings', 'gmoshowtime'); ?></h3>
 
-<div class="slide-types">
+<div class="slide-pages">
     <div class="type">
         <div class="boxes">
             <img src="<?php echo plugins_url('', __FILE__); ?>/img/single.png" alt="" />
         </div>
         <h4><label>
-            <?php if (intval(get_option('gmoshowtime-slide-type', 1)) === 1): ?>
-            <input type="radio" name="slide-type" value="1" checked />
+            <?php if (intval(get_option('gmoshowtime-slides', 1)) === 1): ?>
+            <input type="radio" name="slides" value="1" checked />
             <?php else: ?>
-            <input type="radio" name="slide-type" value="1" />
+            <input type="radio" name="slides" value="1" />
             <?php endif; ?>
             One Slide
         </label></h4>
@@ -237,10 +234,10 @@ public function options_page()
             <img src="<?php echo plugins_url('', __FILE__); ?>/img/images.png" alt="" />
         </div>
         <h4><label>
-            <?php if (intval(get_option('gmoshowtime-slide-type', 1)) === 2): ?>
-            <input type="radio" name="slide-type" value="2" checked />
+            <?php if (intval(get_option('gmoshowtime-slides', 1)) === 3): ?>
+            <input type="radio" name="slides" value="3" checked />
             <?php else: ?>
-            <input type="radio" name="slide-type" value="2" />
+            <input type="radio" name="slides" value="3" />
             <?php endif; ?>
             Three Slides
         </label></h4>
@@ -250,10 +247,10 @@ public function options_page()
             <img src="<?php echo plugins_url('', __FILE__); ?>/img/many.png" alt="" />
         </div>
         <h4><label>
-            <?php if (intval(get_option('gmoshowtime-slide-type', 1)) === 3): ?>
-            <input type="radio" name="slide-type" value="3" checked />
+            <?php if (intval(get_option('gmoshowtime-slides', 1)) === 5): ?>
+            <input type="radio" name="slides" value="5" checked />
             <?php else: ?>
-            <input type="radio" name="slide-type" value="3" />
+            <input type="radio" name="slides" value="5" />
             <?php endif; ?>
             Five Slides
         </label></h4>
@@ -270,7 +267,7 @@ public function options_page()
 foreach ($this->get_transitions() as $tran) {
 ?>
 <div class="transitions">
-    <div class="gmo-showtime" data-transition="<?php echo $tran; ?>">
+    <div class="showtime-transition-preview" data-transition="<?php echo $tran; ?>">
     </div>
     <h4><label>
         <?php if (get_option('gmoshowtime-transition', 'fade') === $tran): ?>
@@ -405,8 +402,6 @@ public function admin_enqueue_scripts()
 
 public function admin_print_footer_scripts()
 {
-    $this->load_scripts('#mainpreview .gmo-showtime');
-
     if (is_admin()):
 ?>
 <script type="text/javascript">
@@ -422,14 +417,14 @@ function transition_disabled() {
     $('#transitions-settings input').prop('disabled', true);
 }
 
-if (parseInt($('input[name="slide-type"]:checked').val()) == 1) {
+if (parseInt($('input[name="slides"]:checked').val()) == 1) {
     transition_enabled();
 } else {
     transition_disabled();
 }
 
-$('input[name="slide-type"]').click(function(){
-    if (parseInt($('input[name="slide-type"]:checked').val()) == 1) {
+$('input[name="slides"]').click(function(){
+    if (parseInt($('input[name="slides"]:checked').val()) == 1) {
         transition_enabled();
     } else {
         transition_disabled();
@@ -437,14 +432,14 @@ $('input[name="slide-type"]').click(function(){
 });
 
 var base_url = '<?php echo plugins_url("", __FILE__); ?>';
-$('.transitions .gmo-showtime').each(function(){
+$('.transitions .showtime-transition-preview').each(function(){
     for (var i=0; i<10; i++) {
         var img = 'orange.png';
         if (i % 2) {
             img = 'blue.png';
         }
         var n = i + 1;
-        var html = '<div class="slide"><div class="slide-wrap"><h2>Page '+n+'</h2><img src="'+base_url+'/img/'+img+'" alt=""></div></div>';
+        var html = '<div class="slide"><div class="slide-wrap"><img src="'+base_url+'/img/'+img+'" alt=""></div></div>';
         $(this).append(html);
     }
 
@@ -467,7 +462,12 @@ $('.transitions .gmo-showtime').each(function(){
 private function get_preview_contents()
 {
 
-    echo '<div class="gmo-showtime">';
+    printf(
+        '<div class="showtime" data-pages="%d" data-transition="%s" data-show-title="%d">',
+        get_option('gmoshowtime-slides', 1),
+        get_option('gmoshowtime-transition', 'fade'),
+        get_option('gmoshowtime-show-title', 1)
+    );
 
     for ($i=0; $i<20; $i++) {
         if ($i % 2) {
@@ -484,41 +484,6 @@ private function get_preview_contents()
     }
 
     echo '</div>';
-}
-
-private function load_scripts($class = '.gmo-showtime')
-{
-    if (!$class) {
-        $class = '.gmo-showtime';
-    }
-?>
-<script type="text/javascript">
-(function($){
-var showtime = $("<?php echo $class; ?>");
-showtime.owlCarousel({
-<?php if (intval(get_option('gmoshowtime-slide-type', 1)) === 1): ?>
-    transitionStyle : '<?php echo get_option('gmoshowtime-transition', 'fade'); ?>',
-    singleItem : true,
-<?php elseif (intval(get_option('gmoshowtime-slide-type', 1)) === 2): ?>
-    items : 3,
-    itemsTablet: [600, 2],
-    itemsMobile : false,
-<?php elseif (intval(get_option('gmoshowtime-slide-type', 1)) === 3): ?>
-    items : 5,
-    itemsDesktopSmall : [900, 5],
-    itemsTablet: [600, 2],
-    itemsMobile : false,
-<?php endif; ?>
-    autoPlay: 3000,
-    navigation : false
-});
-
-<?php if (intval(get_option('gmoshowtime-show-title', 1)) === 0): ?>
-$('.gmo-showtime h2').hide();
-<?php endif; ?>
-})(jQuery);
-</script>
-<?php
 }
 
 private function get_transitions()
