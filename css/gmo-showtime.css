@@ -1,13 +1,14 @@
 .showtime {
-  max-width: 100%; }
+  max-width: 100%;
+  position: relative; }
   .showtime .slide {
     margin: 0 5px;
     max-width: 100%;
-    width: auto;
-    height: auto; }
+    width: auto; }
     .showtime .slide .slide-wrap {
-      position: relative; }
-      .showtime .slide .slide-wrap h2 {
+      position: relative;
+      max-height: 600px; }
+      .showtime .slide .slide-wrap .slide-text {
         position: absolute;
         bottom: 0px;
         left: 0px;
@@ -15,12 +16,17 @@
         padding: 10px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
-        font-size: 0.8em;
         color: #ffffff;
         margin: 0;
-        font-weight: normal;
-        line-height: 1.2em; }
+        line-height: 1.4em; }
+      .showtime .slide .slide-wrap h2 {
+        font-size: 0.8em;
+        font-weight: normal; }
       .showtime .slide .slide-wrap img {
         display: block;
         width: 100%;
         height: auto; }
+
+@media screen and (max-width: 600px) {
+  .showtime .slide .slide-wrap {
+    max-height: 160px; } }

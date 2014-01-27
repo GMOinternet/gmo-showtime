@@ -1,17 +1,18 @@
 .showtime
 {
     max-width: 100%;
+    position: relative;
+
     .slide
     {
         margin: 0 5px;
         max-width: 100%;
         width: auto;
-        height: auto;
         .slide-wrap
         {
             position: relative;
-            h2
-            {
+            max-height: 600px;
+            .slide-text {
                 position: absolute;
                 bottom: 0px;
                 left: 0px;
@@ -19,11 +20,14 @@
                 padding: 10px;
                 background-color: rgba(0,0,0,0.5);
                 box-sizing: border-box;
-                font-size: 0.8em;
                 color: #ffffff;
                 margin: 0;
+                line-height: 1.4em;
+            }
+            h2
+            {
+                font-size: 0.8em;
                 font-weight: normal;
-                line-height: 1.2em;
             }
             img
             {
@@ -35,3 +39,14 @@
     }
 }
 
+$brake-point: 600px !default;
+
+@media screen and (max-width: $brake-point) {
+	.showtime {
+		.slide {
+			.slide-wrap {
+				max-height: 160px;
+			}
+		}
+	}
+}

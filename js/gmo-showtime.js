@@ -23,7 +23,8 @@ $('.showtime').each(function(){
             transitionStyle : transition,
             singleItem : true,
             autoPlay: 3000,
-            navigation : false
+            navigation : true,
+            navigationText : ['<span class="genericon genericon-leftarrow"></span>','<span class="genericon genericon-rightarrow"></span>']
         };
     } else {
         args = {
@@ -31,7 +32,8 @@ $('.showtime').each(function(){
             itemsTablet: [768, 2],
             itemsMobile : [479, 1],
             autoPlay: 3000,
-            navigation : false
+            navigation : true,
+            navigationText : ['<span class="genericon genericon-leftarrow"></span>','<span class="genericon genericon-rightarrow"></span>']
         };
     }
 

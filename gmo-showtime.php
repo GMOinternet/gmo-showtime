@@ -88,6 +88,7 @@ public function plugins_loaded()
         false,
         dirname(plugin_basename(__FILE__)).$this->langs
     );
+	add_image_size( 'gmoshowtime-image', 1200, 600, true);
 
     add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
     add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
@@ -115,7 +116,7 @@ private function gallery($atts)
     extract(shortcode_atts(array(
         'transition' => get_option('gmoshowtime-transition', 'fade'),
         'show_title' => get_option('gmoshowtime-show-title', 0),
-        'size'       => get_option('gmoshowtime-image-size', 'full'),
+        'size'       => get_option('gmoshowtime-image-size', 'gmoshowtime-image'),
         'order'      => 'ASC',
         'orderby'    => 'menu_order ID',
         'id'         => $post ? $post->ID : 0,
@@ -218,7 +219,7 @@ public function get_slider_contents($atts = array())
         'columns'     => get_option('gmoshowtime-columns', 1),
         'transition' => get_option('gmoshowtime-transition', 'fade'),
         'show_title' => get_option('gmoshowtime-show-title', 0),
-        'image_size' => get_option('gmoshowtime-image-size', 'full'),
+        'image_size' => get_option('gmoshowtime-image-size', 'gmoshowtime-image'),
         'images'      => array(),
     ), $atts ) );
 
@@ -235,22 +236,25 @@ public function get_slider_contents($atts = array())
         );
         $posts = get_posts($args);
 
-        foreach ($posts as $p) {
+        foreach ($posts as $p) { setup_postdata( $p );
             $thumb = get_the_post_thumbnail($p->ID, $image_size);
             $image = preg_replace("/.*src=[\"\'](.+?)[\"\'].*/", "$1", $thumb);;
             $images[] = array(
-                'link'  => get_permalink($p->ID),
+                'link'  => get_permalink(),
                 'image' => $image,
-                'title' => get_the_title($p->ID)
+                'title' => get_the_title(),
+                'content' => get_the_excerpt()
             );
         }
+        wp_reset_postdata();
     }
 
     $html = '';
     $html .= "\n<!-- Start GMO Showtime-->\n";
     $html .= sprintf(
         '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
-        $columns,
+        //$columns,
+        1,
         $transition,
         $show_title
     );
@@ -261,7 +265,10 @@ public function get_slider_contents($atts = array())
         }
         $html .= '<div class="slide">';
         $html .= '<div class="slide-wrap">';
-        $html .= '<h2>'.$img['title'].'</h2>';
+        $html .= '<div class="slide-text">';
+        $html .= '<h2 class="slide-title">'.$img['title'].'</h2>';
+        $html .= '<div class="slide-content">'.$img['content'].'</div>';
+        $html .= '</div>';
         $html .= sprintf(
             '<a href="%s"><img src="%s" alt="%s"></a>',
             $img['link'],
@@ -301,7 +308,7 @@ public function admin_init()
                     && in_array($_POST['image-size'], array_keys($this->list_image_sizes()))) {
                 update_option('gmoshowtime-image-size', $_POST['image-size']);
             } else {
-                update_option('gmoshowtime-image-size', 'full');
+                update_option('gmoshowtime-image-size', 'gmoshowtime-image');
             }
             if (isset($_POST['apply-gallery']) && $_POST['apply-gallery']) {
                 update_option('gmoshowtime-apply-gallery', 1);
@@ -352,7 +359,7 @@ public function options_page()
 <br clear="all">
 
 <h3 style="margin-top: 2em;"><?php _e('Slider Settings', 'gmoshowtime'); ?></h3>
-
+<?php /* ?>
 <div class="slide-pages">
     <div class="type">
         <div class="boxes">
@@ -394,7 +401,7 @@ public function options_page()
         </label></h4>
     </div>
 </div>
-
+<?php */ ?>
 
 
 <div id="transitions-settings">
@@ -448,7 +455,7 @@ foreach ($this->get_transitions() as $tran) {
     $sizes = $this->list_image_sizes();
     $options = array();
     foreach ($sizes as $size => $atts) {
-        if (get_option('gmoshowtime-image-size', 'full') === $size) {
+        if (get_option('gmoshowtime-image-size', 'gmoshowtime-image') === $size) {
             $selected = 'selected';
         } else {
             $selected = '';
@@ -495,7 +502,6 @@ foreach ($this->get_transitions() as $tran) {
     </tr>
 </table>
 
-
 <p style="margin-top: 3em;"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e("Save Changes", "gmoshowtime"); ?>"></p>
 </form>
 
@@ -526,10 +532,17 @@ foreach ($this->get_transitions() as $tran) {
 public function admin_enqueue_scripts()
 {
     if (isset($_GET['page']) && $_GET['page'] === 'gmoshowtime') {
+	    wp_enqueue_style(
+	        'genericons',
+	        plugins_url('genericons/genericons.min.css', __FILE__),
+	        array(),
+	        $this->version,
+	        'all'
+	    );
         wp_enqueue_style(
             'admin-gmoshowtime-style',
             plugins_url('css/admin-gmo-showtime.min.css', __FILE__),
-            array(),
+            array( 'genericons' ),
             $this->version,
             'all'
         );
@@ -537,7 +550,7 @@ public function admin_enqueue_scripts()
         wp_enqueue_style(
             'gmoshowtime-style',
             plugins_url('css/gmo-showtime.min.css', __FILE__),
-            array(),
+            array( 'genericons' ),
             $this->version,
             'all'
         );
@@ -569,11 +582,14 @@ function transition_disabled() {
     $('#transitions-settings input').prop('disabled', true);
 }
 
+/*
 if (parseInt($('input[name="columns"]:checked').val()) == 1) {
     transition_enabled();
 } else {
     transition_disabled();
 }
+*/
+    transition_enabled();
 
 $('input[name="columns"]').click(function(){
     if (parseInt($('input[name="columns"]:checked').val()) == 1) {
@@ -616,7 +632,8 @@ private function get_preview_contents()
 
     printf(
         '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
-        get_option('gmoshowtime-columns', 1),
+        // get_option('gmoshowtime-columns', 1),
+        1,
         get_option('gmoshowtime-transition', 'fade'),
         get_option('gmoshowtime-show-title', 0)
     );
@@ -671,9 +688,16 @@ private function list_image_sizes()
 public function wp_enqueue_scripts()
 {
     wp_enqueue_style(
+        'genericons',
+        plugins_url('genericons/genericons.min.css', __FILE__),
+        array(),
+        $this->version,
+        'all'
+    );
+    wp_enqueue_style(
         'gmo-showtime-style',
         plugins_url('css/gmo-showtime.min.css', __FILE__),
-        array(),
+        array('genericons'),
         $this->version,
         'all'
     );
