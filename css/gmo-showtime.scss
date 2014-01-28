@@ -1,3 +1,43 @@
+@mixin slide()
+{
+    position: relative;
+    max-height: 600px;
+    .slide-text {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        padding: 10px;
+        background-color: rgba(0,0,0,0.5);
+        box-sizing: border-box;
+        color: #ffffff;
+        margin: 0;
+        line-height: 1.4em;
+        h2
+        {
+            font-size: 0.8em;
+            font-weight: normal;
+        }
+        .slide-content
+        {
+            font-size: 0.8em;
+            font-weight: normal;
+        }
+    }
+    .slide-image
+    {
+        a
+        {
+            img
+            {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+}
+
 .showtime
 {
     max-width: 100%;
@@ -8,33 +48,29 @@
         margin: 0 5px;
         max-width: 100%;
         width: auto;
-        .slide-wrap
+        .top-left
         {
-            position: relative;
-            max-height: 600px;
-            .slide-text {
-                position: absolute;
-                bottom: 0px;
-                left: 0px;
-                width: 100%;
-                padding: 10px;
-                background-color: rgba(0,0,0,0.5);
-                box-sizing: border-box;
-                color: #ffffff;
-                margin: 0;
-                line-height: 1.4em;
-            }
-            h2
-            {
-                font-size: 0.8em;
-                font-weight: normal;
-            }
-            img
-            {
-                display: block;
-                width: 100%;
-                height: auto;
-            }
+            @include slide();
+        }
+        .top-right
+        {
+            @include slide();
+        }
+        .bottom-left
+        {
+            @include slide();
+        }
+        .bottom-right
+        {
+            @include slide();
+        }
+        .left-photo-right
+        {
+            @include slide();
+        }
+        .right-photo-left
+        {
+            @include slide();
         }
     }
 }

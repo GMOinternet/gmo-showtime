@@ -38,10 +38,12 @@ $gmoshowtime = new GMOShowtime();
 $gmoshowtime->init();
 
 function showtime($atts = array()) {
+    global $gmoshowtime;
+
     if (get_option('gmoshowtime-maintenance', 1)) {
         if (get_header_image()) {
             return sprintf(
-                '<img src="%s" height="%s" width="%s" alt="" />',
+                '<img src="%s" height="%d" width="%d" alt="" />',
                 get_header_image(),
                 get_custom_header()->height,
                 get_custom_header()->width
@@ -51,14 +53,25 @@ function showtime($atts = array()) {
         }
     }
 
-    global $gmoshowtime;
-    echo $gmoshowtime->get_slider_contents($atts);
+    $page_types = $gmoshowtime->get_page_types();
+    foreach (get_option('gmoshowtime-page-types', array_keys($page_types)) as $page_type) {
+        if (isset($page_types[$page_type]) && is_array($page_types[$page_type]['callback'])) {
+            foreach ($page_types[$page_type]['callback'] as $callback) {
+                if (call_user_func($callback)) {
+                    echo $gmoshowtime->get_slider_contents($atts);
+                    break;
+                }
+            }
+        }
+    }
 }
 
 class GMOShowtime {
 
 private $version = '';
+
 private $langs   = '';
+
 private $transitions = array(
     'fade',
     'backSlide',
@@ -115,12 +128,12 @@ private function gallery($atts)
 
     extract(shortcode_atts(array(
         'transition' => get_option('gmoshowtime-transition', 'fade'),
-        'show_title' => get_option('gmoshowtime-show-title', 0),
+        'show_title' => $this->get_default_show_title(),
         'size'       => get_option('gmoshowtime-image-size', 'gmoshowtime-image'),
         'order'      => 'ASC',
         'orderby'    => 'menu_order ID',
         'id'         => $post ? $post->ID : 0,
-        'columns'    => get_option('gmoshowtime-columns', 1),
+        'columns'    => $this->get_default_columns(),
         'include'    => '',
         'exclude'    => '',
         'link'       => ''
@@ -180,9 +193,10 @@ private function gallery($atts)
             $image_link = get_attachment_link($id, $size, true, false);
         }
         $images[] = array(
-            'link'  => $image_link,
-            'image' => $image_url[0],
-            'title' => wptexturize($attachment->post_excerpt),
+            'link'    => $image_link,
+            'image'   => $image_url[0],
+            'title'   => wptexturize($attachment->post_excerpt),
+            'content' => '',
         );
     }
 
@@ -215,10 +229,12 @@ public function showtime($atts)
 
 public function get_slider_contents($atts = array())
 {
+    global $post;
+
     extract( shortcode_atts( array(
-        'columns'     => get_option('gmoshowtime-columns', 1),
+        'columns'     => $this->get_default_columns(),
         'transition' => get_option('gmoshowtime-transition', 'fade'),
-        'show_title' => get_option('gmoshowtime-show-title', 0),
+        'show_title' => $this->get_default_show_title(),
         'image_size' => get_option('gmoshowtime-image-size', 'gmoshowtime-image'),
         'images'      => array(),
     ), $atts ) );
@@ -236,8 +252,9 @@ public function get_slider_contents($atts = array())
         );
         $posts = get_posts($args);
 
-        foreach ($posts as $p) { setup_postdata( $p );
-            $thumb = get_the_post_thumbnail($p->ID, $image_size);
+        foreach ($posts as $post) {
+            setup_postdata( $post );
+            $thumb = get_the_post_thumbnail($post->ID, $image_size);
             $image = preg_replace("/.*src=[\"\'](.+?)[\"\'].*/", "$1", $thumb);;
             $images[] = array(
                 'link'  => get_permalink(),
@@ -253,30 +270,28 @@ public function get_slider_contents($atts = array())
     $html .= "\n<!-- Start GMO Showtime-->\n";
     $html .= sprintf(
         '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
-        //$columns,
-        1,
+        $columns,
         $transition,
         $show_title
     );
 
+    $template = $this->get_slide_template();
     foreach ($images as $img) {
         if (!$img['image']) {
             continue;
         }
-        $html .= '<div class="slide">';
-        $html .= '<div class="slide-wrap">';
-        $html .= '<div class="slide-text">';
-        $html .= '<h2 class="slide-title">'.$img['title'].'</h2>';
-        $html .= '<div class="slide-content">'.$img['content'].'</div>';
-        $html .= '</div>';
-        $html .= sprintf(
-            '<a href="%s"><img src="%s" alt="%s"></a>',
-            $img['link'],
-            $img['image'],
-            $img['title']
+
+        $slide = $template;
+        $slide = str_replace(
+            "%css_class%",
+            esc_attr(get_option('gmoshowtime-css-class', $this->get_default_css_class())),
+            $slide
         );
-        $html .= '</div>'."\n";
-        $html .= '</div>'."\n";
+        $slide = str_replace("%title%", $img['title'], $slide);
+        $slide = str_replace("%content%", esc_html($img['content']), $slide);
+        $slide = str_replace("%link%", esc_url($img['link']), $slide);
+        $slide = str_replace("%image%", esc_url($img['image']), $slide);
+        $html .= $slide;
     }
 
     $html .= '</div>';
@@ -289,20 +304,20 @@ public function admin_init()
 {
     if (isset($_POST['gmoshowtime']) && $_POST['gmoshowtime']){
         if (check_admin_referer('gmoshowtime', 'gmoshowtime')){
-            if (isset($_POST['columns']) && intval($_POST['columns'])) {
-                update_option('gmoshowtime-columns', $_POST['columns']);
-            } else {
-                update_option('gmoshowtime-columns', 1);
-            }
             if (isset($_POST['transition']) && in_array($_POST['transition'], $this->get_transitions())) {
                 update_option('gmoshowtime-transition', $_POST['transition']);
             } else {
                 update_option('gmoshowtime-transition', 'fade');
             }
-            if (isset($_POST['show-title']) && $_POST['show-title']) {
-                update_option('gmoshowtime-show-title', 1);
+            if (isset($_POST['page-types']) && is_array($_POST['page-types'])) {
+                update_option('gmoshowtime-page-types', $_POST['page-types']);
             } else {
-                update_option('gmoshowtime-show-title', 0);
+                update_option('gmoshowtime-page-types', array());
+            }
+            if (isset($_POST['css-class']) && in_array($_POST['css-class'], array_keys($this->get_css_classes()))) {
+                update_option('gmoshowtime-css-class', $_POST['css-class']);
+            } else {
+                update_option('gmoshowtime-css-class', $this->get_default_css_class());
             }
             if (isset($_POST['image-size'])
                     && in_array($_POST['image-size'], array_keys($this->list_image_sizes()))) {
@@ -338,195 +353,7 @@ public function admin_menu()
 
 public function options_page()
 {
-?>
-<div id="gmoshowtime" class="wrap">
-
-<h2>GMO Showtime</h2>
-
-<p class="helplink"><a href="#setup-help"><?php _e('How to Setup', 'gmoshowtime'); ?></a></p>
-
-<div id="alpha">
-
-<form id="save-social" method="post" action="<?php echo esc_attr($_SERVER['REQUEST_URI']); ?>" style="margin-bottom:3em;">
-<?php wp_nonce_field('gmoshowtime', 'gmoshowtime'); ?>
-
-<h3 style="margin-top: 0;"><?php _e('Preview', 'gmoshowtime'); ?></h3>
-
-<div id="mainpreview">
-<?php $this->get_preview_contents(); ?>
-</div>
-
-<br clear="all">
-
-<h3 style="margin-top: 2em;"><?php _e('Slider Settings', 'gmoshowtime'); ?></h3>
-<?php /* ?>
-<div class="slide-pages">
-    <div class="type">
-        <div class="boxes">
-            <img src="<?php echo plugins_url('', __FILE__); ?>/img/single.png" alt="" />
-        </div>
-        <h4><label>
-            <?php if (intval(get_option('gmoshowtime-columns', 1)) === 1): ?>
-            <input type="radio" name="columns" value="1" checked />
-            <?php else: ?>
-            <input type="radio" name="columns" value="1" />
-            <?php endif; ?>
-            One Column
-        </label></h4>
-    </div>
-    <div class="type">
-        <div class="boxes">
-            <img src="<?php echo plugins_url('', __FILE__); ?>/img/images.png" alt="" />
-        </div>
-        <h4><label>
-            <?php if (intval(get_option('gmoshowtime-columns', 1)) === 3): ?>
-            <input type="radio" name="columns" value="3" checked />
-            <?php else: ?>
-            <input type="radio" name="columns" value="3" />
-            <?php endif; ?>
-            Three Columns
-        </label></h4>
-    </div>
-    <div class="type">
-        <div class="boxes">
-            <img src="<?php echo plugins_url('', __FILE__); ?>/img/many.png" alt="" />
-        </div>
-        <h4><label>
-            <?php if (intval(get_option('gmoshowtime-columns', 1)) === 5): ?>
-            <input type="radio" name="columns" value="5" checked />
-            <?php else: ?>
-            <input type="radio" name="columns" value="5" />
-            <?php endif; ?>
-            Five Columns
-        </label></h4>
-    </div>
-</div>
-<?php */ ?>
-
-
-<div id="transitions-settings">
-
-<div id="transitions">
-<?php
-
-foreach ($this->get_transitions() as $tran) {
-?>
-<div class="transitions">
-    <div class="showtime-transition-preview" data-transition="<?php echo $tran; ?>">
-    </div>
-    <h4><label>
-        <?php if (get_option('gmoshowtime-transition', 'fade') === $tran): ?>
-        <input type="radio" name="transition" value="<?php echo $tran; ?>" checked />
-        <?php else: ?>
-        <input type="radio" name="transition" value="<?php echo $tran; ?>" />
-        <?php endif; ?>
-        <?php echo $tran; ?>
-    </label></h4>
-</div>
-<?php
-}
-?>
-</div>
-
-</div><!-- #transitions-settings -->
-
-<h3><?php _e('Gneral Settings', 'gmoshowtime'); ?></h3>
-
-<table class="form-table">
-    <tr>
-        <th scope="row">Title</th>
-        <td>
-            <label>
-                <?php if (intval(get_option('gmoshowtime-show-title', 0)) === 1): ?>
-                    <input type="checkbox" name="show-title" value="1" checked />
-                <?php else: ?>
-                    <input type="checkbox" name="show-title" value="1" />
-                <?php endif; ?>
-                <?php _e('Show Title with image.', 'gmoshowtime'); ?>
-            </label>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">Image Size</th>
-        <td>
-            <select name="image-size">
-                <option value="full">Full-Size</option>
-<?php
-    $sizes = $this->list_image_sizes();
-    $options = array();
-    foreach ($sizes as $size => $atts) {
-        if (get_option('gmoshowtime-image-size', 'gmoshowtime-image') === $size) {
-            $selected = 'selected';
-        } else {
-            $selected = '';
-        }
-        $options[] = sprintf(
-            '<option value="%1$s" %4$s>%1$s (%2$dpx &times; %3$dpx)</option>',
-            $size,
-            $atts[0],
-            $atts[1],
-            $selected
-        );
-    }
-
-    echo join("\n", $options);
-?>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">Gallery</th>
-        <td>
-            <label>
-                <?php if (intval(get_option('gmoshowtime-apply-gallery', 0)) === 1): ?>
-                    <input type="checkbox" name="apply-gallery" value="1" checked />
-                <?php else: ?>
-                    <input type="checkbox" name="apply-gallery" value="1" />
-                <?php endif; ?>
-                <?php _e('Apply <a href="http://owlgraphic.com/owlcarousel/">Owl Carousel</a> to the WordPress Gallery.', 'gmoshowtime'); ?>
-            </label>
-        </td>
-    </tr>
-    <tr>
-        <th scope="row">Maintenance Mode</th>
-        <td>
-            <label>
-                <?php if (intval(get_option('gmoshowtime-maintenance', 1)) === 1): ?>
-                    <input type="checkbox" name="maintenance" value="1" checked />
-                <?php else: ?>
-                    <input type="checkbox" name="maintenance" value="1" />
-                <?php endif; ?>
-                <a href="<?php echo admin_url('themes.php?page=custom-header'); ?>"><?php _e('Show custom header image instead.', 'gmoshowtime'); ?></a>
-            </label>
-        </td>
-    </tr>
-</table>
-
-<p style="margin-top: 3em;"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e("Save Changes", "gmoshowtime"); ?>"></p>
-</form>
-
-</div><!-- #alpha -->
-<div id="beta">
-
-<h3 id="setup-help" style="margin-top: 0;"><?php _e('How to Setup', 'gmoshowtime'); ?></h3>
-
-<h4>1. <?php _e('Place the code in your theme like below.', 'gmoshowtime'); ?></h4>
-
-<pre id="sample-code" readonly>&lt;?php if ( function_exists( &#039;showtime&#039; ) ): ?&gt;
-&lt;?php showtime(); ?&gt;
-&lt;?php endif; ?&gt;</pre>
-
-<h4>2. <?php _e('Select `Featured Image` and check `Showtime` in your posts or pages admin.', 'gmoshowtime'); ?></h4>
-
-<p><img src="<?php echo plugins_url('', __FILE__); ?>/img/help1.png" alt=""></p>
-
-</div><!-- #beta -->
-
-<br clear="all" />
-<p style="text-align: right;">Carousel Powered by <a href="http://owlgraphic.com/owlcarousel/">Owl Carousel</a></p>
-
-</div><!-- #gmoshowtime -->
-<?php
+    require_once(dirname(__FILE__).'/includes/admin.php');
 }
 
 public function admin_enqueue_scripts()
@@ -582,13 +409,6 @@ function transition_disabled() {
     $('#transitions-settings input').prop('disabled', true);
 }
 
-/*
-if (parseInt($('input[name="columns"]:checked').val()) == 1) {
-    transition_enabled();
-} else {
-    transition_disabled();
-}
-*/
     transition_enabled();
 
 $('input[name="columns"]').click(function(){
@@ -627,17 +447,110 @@ $('.transitions .showtime-transition-preview').each(function(){
     endif;
 }
 
+public function wp_enqueue_scripts()
+{
+    wp_enqueue_style(
+        'genericons',
+        plugins_url('genericons/genericons.min.css', __FILE__),
+        array(),
+        $this->version,
+        'all'
+    );
+    wp_enqueue_style(
+        'gmo-showtime-style',
+        plugins_url('css/gmo-showtime.min.css', __FILE__),
+        array('genericons'),
+        $this->version,
+        'all'
+    );
+
+    wp_enqueue_script(
+        'gmo-showtime-script',
+        plugins_url('js/gmo-showtime.min.js', __FILE__),
+        array('jquery'),
+        $this->version,
+        true
+    );
+}
+
+public function get_page_types()
+{
+    return apply_filters("gmoshowtime_page_types", array(
+        'home' => array(
+            'caption'  => 'Home',
+            'callback' => array('is_home', 'is_front_page'),
+        ),
+        'singular' => array(
+            'caption'  => 'Posts and Pages',
+            'callback' => array('is_singular'),
+        ),
+        'archive' => array(
+            'caption'  => 'Archive',
+            'callback' => array('is_archive'),
+        ),
+    ));
+}
+private function get_slide_template()
+{
+    $template = <<<EOL
+<!-- slide loop -->
+<div class="slide">
+    <div class="%css_class%">
+        <div class="slide-text">
+            <h2 class="slide-title">%title%</h2>
+            <div class="slide-content">%content%</div>
+        </div>
+        <div class="slide-image">
+            <a href="%link%"><img src="%image%" alt="%title%"></a>
+        </div>
+    </div>
+</div>
+EOL;
+
+    return apply_filters("gmoshowtime_slide_template", $template);
+}
+
+private function get_css_classes()
+{
+    $css_classes = array(
+        'top-left'         => __('Top-Left', 'gmoshowtime'),
+        'top-right'        => __('Top-Right', 'gmoshowtime'),
+        'bottom-left'      => __('Bottom-Left', 'gmoshowtime'),
+        'bottom-right'     => __('Bottom-Right', 'gmoshowtime'),
+        'left-photo-right' => __('Left', 'gmoshowtime'),
+        'right-photo-left' => __('Right', 'gmoshowtime'),
+    );
+
+    return apply_filters('gmoshowtime-css-classes', $css_classes);
+}
+
+private function get_default_css_class()
+{
+    // see get_css_classes()
+    return apply_filters("gmoshowtime_default_css_class", "top-left");
+}
+
+private function get_default_show_title()
+{
+    return apply_filters('gmoshowtime_default_show_title', 1);
+}
+
+private function get_default_columns()
+{
+    return apply_filters('get_default_columns', 1);
+}
+
 private function get_preview_contents()
 {
 
     printf(
         '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
-        // get_option('gmoshowtime-columns', 1),
-        1,
+        $this->get_default_columns(),
         get_option('gmoshowtime-transition', 'fade'),
-        get_option('gmoshowtime-show-title', 0)
+        $this->get_default_show_title()
     );
 
+    $template = $this->get_slide_template();
     for ($i=0; $i<20; $i++) {
         if ($i % 2) {
             $img = plugins_url('img/blue.png', __FILE__);
@@ -645,11 +558,17 @@ private function get_preview_contents()
             $img = plugins_url('img/orange.png', __FILE__);
         }
         $n = $i + 1;
-        printf(
-            '<div class="slide"><div class="slide-wrap"><h2>%s</h2><img src="%s" alt=""></div></div>',
-            'Page '.$n,
-            $img
+        $html = $template;
+        $html = str_replace(
+            "%css_class%",
+            esc_attr(get_option('gmoshowtime-css-class', $this->get_default_css_class())),
+            $html
         );
+        $html = str_replace("%title%", 'Page '.$n, $html);
+        $html = str_replace("%content%", 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', $html);
+        $html = str_replace("%link%", '#', $html);
+        $html = str_replace("%image%", $img, $html);
+        echo $html;
     }
 
     echo '</div>';
@@ -685,31 +604,6 @@ private function list_image_sizes()
     return $sizes;
 }
 
-public function wp_enqueue_scripts()
-{
-    wp_enqueue_style(
-        'genericons',
-        plugins_url('genericons/genericons.min.css', __FILE__),
-        array(),
-        $this->version,
-        'all'
-    );
-    wp_enqueue_style(
-        'gmo-showtime-style',
-        plugins_url('css/gmo-showtime.min.css', __FILE__),
-        array('genericons'),
-        $this->version,
-        'all'
-    );
-
-    wp_enqueue_script(
-        'gmo-showtime-script',
-        plugins_url('js/gmo-showtime.min.js', __FILE__),
-        array('jquery'),
-        $this->version,
-        true
-    );
-}
 
 } // end TestPlugin
 
