@@ -80,9 +80,30 @@ $brake-point: 600px !default;
 @media screen and (max-width: $brake-point) {
 	.showtime {
 		.slide {
-			.slide-wrap {
+            .top-left
+            {
 				max-height: 160px;
-			}
+            }
+            .top-right
+            {
+				max-height: 160px;
+            }
+            .bottom-left
+            {
+				max-height: 160px;
+            }
+            .bottom-right
+            {
+				max-height: 160px;
+            }
+            .left-photo-right
+            {
+				max-height: 160px;
+            }
+            .right-photo-left
+            {
+				max-height: 160px;
+            }
 		}
 	}
 }

@@ -151,5 +151,15 @@
         height: auto; }
 
 @media screen and (max-width: 600px) {
-  .showtime .slide .slide-wrap {
+  .showtime .slide .top-left {
+    max-height: 160px; }
+  .showtime .slide .top-right {
+    max-height: 160px; }
+  .showtime .slide .bottom-left {
+    max-height: 160px; }
+  .showtime .slide .bottom-right {
+    max-height: 160px; }
+  .showtime .slide .left-photo-right {
+    max-height: 160px; }
+  .showtime .slide .right-photo-left {
     max-height: 160px; } }
