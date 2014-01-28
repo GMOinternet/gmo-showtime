@@ -69,15 +69,15 @@ function showtime($atts = array()) {
 class GMOShowtime {
 
 private $version = '';
-
 private $langs   = '';
-
 private $transitions = array(
     'fade',
     'backSlide',
     'goDown',
     'fadeUp'
 );
+private $default_image_size = 'gmoshowtime-image';
+private $default_transition = 'fade';
 
 function __construct()
 {
@@ -127,9 +127,9 @@ private function gallery($atts)
     $post = get_post();
 
     extract(shortcode_atts(array(
-        'transition' => get_option('gmoshowtime-transition', 'fade'),
+        'transition' => get_option('gmoshowtime-transition', $this->get_default_transition()),
         'show_title' => $this->get_default_show_title(),
-        'size'       => get_option('gmoshowtime-image-size', 'gmoshowtime-image'),
+        'size'       => get_option('gmoshowtime-image-size', $this->get_default_image_size()),
         'order'      => 'ASC',
         'orderby'    => 'menu_order ID',
         'id'         => $post ? $post->ID : 0,
@@ -233,9 +233,9 @@ public function get_slider_contents($atts = array())
 
     extract( shortcode_atts( array(
         'columns'     => $this->get_default_columns(),
-        'transition' => get_option('gmoshowtime-transition', 'fade'),
+        'transition' => get_option('gmoshowtime-transition', $this->get_default_transition()),
         'show_title' => $this->get_default_show_title(),
-        'image_size' => get_option('gmoshowtime-image-size', 'gmoshowtime-image'),
+        'image_size' => get_option('gmoshowtime-image-size', $this->get_default_image_size()),
         'images'      => array(),
     ), $atts ) );
 
@@ -307,7 +307,7 @@ public function admin_init()
             if (isset($_POST['transition']) && in_array($_POST['transition'], $this->get_transitions())) {
                 update_option('gmoshowtime-transition', $_POST['transition']);
             } else {
-                update_option('gmoshowtime-transition', 'fade');
+                update_option('gmoshowtime-transition', $this->get_default_transition());
             }
             if (isset($_POST['page-types']) && is_array($_POST['page-types'])) {
                 update_option('gmoshowtime-page-types', $_POST['page-types']);
@@ -323,7 +323,7 @@ public function admin_init()
                     && in_array($_POST['image-size'], array_keys($this->list_image_sizes()))) {
                 update_option('gmoshowtime-image-size', $_POST['image-size']);
             } else {
-                update_option('gmoshowtime-image-size', 'gmoshowtime-image');
+                update_option('gmoshowtime-image-size', $this->get_default_image_size());
             }
             if (isset($_POST['apply-gallery']) && $_POST['apply-gallery']) {
                 update_option('gmoshowtime-apply-gallery', 1);
@@ -490,6 +490,17 @@ public function get_page_types()
         ),
     ));
 }
+
+private function get_default_transition()
+{
+    return apply_filters('gmoshowtime_default_transition', $this->default_transition);
+}
+
+private function get_default_image_size()
+{
+    return apply_filters('gmoshowtime_default_image_size', $this->default_image_size);
+}
+
 private function get_slide_template()
 {
     $template = <<<EOL
@@ -546,7 +557,7 @@ private function get_preview_contents()
     printf(
         '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
         $this->get_default_columns(),
-        get_option('gmoshowtime-transition', 'fade'),
+        get_option('gmoshowtime-transition', $this->get_default_transition()),
         $this->get_default_show_title()
     );
 

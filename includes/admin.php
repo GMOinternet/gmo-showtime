@@ -30,7 +30,7 @@ foreach ($this->get_transitions() as $tran) {
     <div class="showtime-transition-preview" data-transition="<?php echo $tran; ?>">
     </div>
     <h4><label>
-        <?php if (get_option('gmoshowtime-transition', 'fade') === $tran): ?>
+        <?php if (get_option('gmoshowtime-transition', $this->get_default_transition()) === $tran): ?>
         <input type="radio" name="transition" value="<?php echo $tran; ?>" checked />
         <?php else: ?>
         <input type="radio" name="transition" value="<?php echo $tran; ?>" />
@@ -88,7 +88,7 @@ foreach ($this->get_transitions() as $tran) {
     $sizes = $this->list_image_sizes();
     $options = array();
     foreach ($sizes as $size => $atts) {
-        if (get_option('gmoshowtime-image-size', 'gmoshowtime-image') === $size) {
+        if (get_option('gmoshowtime-image-size', $this->get_default_image_size()) === $size) {
             $selected = 'selected';
         } else {
             $selected = '';
