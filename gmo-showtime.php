@@ -510,7 +510,7 @@ private function get_slide_template()
             <a href="%link%"><img src="%image%" alt="%title%"></a>
         </div>
         <div class="slide-text">
-            <h2 class="slide-title">%title%</h2>
+            <h2 class="slide-title"><a href="%link%">%title%</a></h2>
             <div class="slide-content">%content%</div>
         </div>
     </div>

@@ -25,6 +25,8 @@
           white-space: nowrap;
           font-size: 40px;
           margin-bottom: 10px; }
+          .showtime .slide .top-left .slide-text h2 a {
+            color: #ffffff; }
         .showtime .slide .top-left .slide-text .slide-content {
           color: #ffffff;
           font-size: 18px;
@@ -62,6 +64,8 @@
           white-space: nowrap;
           font-size: 40px;
           margin-bottom: 10px; }
+          .showtime .slide .top-right .slide-text h2 a {
+            color: #ffffff; }
         .showtime .slide .top-right .slide-text .slide-content {
           color: #ffffff;
           font-size: 18px;
@@ -99,6 +103,8 @@
           white-space: nowrap;
           font-size: 40px;
           margin-bottom: 10px; }
+          .showtime .slide .bottom-left .slide-text h2 a {
+            color: #ffffff; }
         .showtime .slide .bottom-left .slide-text .slide-content {
           color: #ffffff;
           font-size: 18px;
@@ -136,6 +142,8 @@
           white-space: nowrap;
           font-size: 40px;
           margin-bottom: 10px; }
+          .showtime .slide .bottom-right .slide-text h2 a {
+            color: #ffffff; }
         .showtime .slide .bottom-right .slide-text .slide-content {
           color: #ffffff;
           font-size: 18px;
@@ -172,6 +180,8 @@
           white-space: nowrap;
           font-size: 40px;
           margin-bottom: 10px; }
+          .showtime .slide .left-photo-right .slide-text h2 a {
+            color: #ffffff; }
         .showtime .slide .left-photo-right .slide-text .slide-content {
           color: #ffffff;
           font-size: 18px;
@@ -227,6 +237,8 @@
           white-space: nowrap;
           font-size: 40px;
           margin-bottom: 10px; }
+          .showtime .slide .right-photo-left .slide-text h2 a {
+            color: #ffffff; }
         .showtime .slide .right-photo-left .slide-text .slide-content {
           color: #ffffff;
           font-size: 18px;
