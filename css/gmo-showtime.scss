@@ -1,109 +1,220 @@
-@mixin slide()
-{
-    position: relative;
-    max-height: 600px;
-    .slide-text {
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        width: 100%;
-        padding: 10px;
-        background-color: rgba(0,0,0,0.5);
-        box-sizing: border-box;
-        color: #ffffff;
-        margin: 0;
-        line-height: 1.4em;
-        h2
-        {
-            font-size: 0.8em;
-            font-weight: normal;
-        }
-        .slide-content
-        {
-            font-size: 0.8em;
-            font-weight: normal;
-        }
-    }
-    .slide-image
-    {
-        a
-        {
-            img
-            {
-                display: block;
-                width: 100%;
-                height: auto;
-            }
-        }
-    }
+@mixin slide( $w:100%, $h:auto, $t:0, $b:0, $l:0, $r:0, $m:0) {
+	position: relative;
+	.slide-text {
+		position: absolute;
+		@if $t > 0 { top: $t; }
+		@if $b > 0 { bottom: $b; }
+		@if $l > 0 { left: $l; }
+		@if $r > 0 { right: $r; }
+		width: $w;
+		height: $h;
+		padding: 20px 30px 30px 30px;
+		background-color: rgba(0,0,0,0.5);
+		box-sizing: border-box;
+		margin: 0;
+		overflow: hidden;
+		h2 {
+			color: #ffffff;
+			line-height: 1.4;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			font-size: 40px;
+			margin-bottom: 10px;
+		}
+		.slide-content {
+			color: #ffffff;
+			font-size: 18px;
+			font-weight: normal;
+			line-height: 1.4;
+		}
+	}
+	.slide-image {
+		@if $m > 0 { margin-top: -$m; }
+		a {
+		display: block;
+		@if $m > 0 { height: 400px; } @else { height: 600px;}
+		overflow: hidden;
+		position: relative;
+			img {
+				display: block;
+				width: 100%;
+				height: auto;
+				float: left;
+				position: absolute;
+			 }
+		}
+	}
 }
 
-.showtime
-{
-    max-width: 100%;
-    position: relative;
+@mixin phototext( $m:30px, $p:left ) {
+		padding: $m 0;
+		.slide-image {
+			width: 50%;
+			float: $p;
+			position: relative;
+			z-index: 10;
+			@if $p == 'left' { margin-left: 70px; } @else { margin-right: 70px; }
+		}
+		.slide-text {
+			background-color: #0058AE;
+			height: 400px-($m*2);
+			padding: 0;
+			h2 {
+				margin-top: 30px;
+				@if $p == 'left' {
+					margin-left: 60%;
+					padding-right: 50px;
+				} @else {
+					margin-right: 60%;
+					padding-left: 50px;
+				}
+			}
+			.slide-content {
+				@if $p == 'left' {
+					margin-left: 60%;
+					padding-right: 50px;
+				} @else {
+					margin-right: 60%;
+					padding-left: 50px;
+				}
+			}
+		}
+}
 
-    .slide
-    {
-        margin: 0 5px;
-        max-width: 100%;
-        width: auto;
-        .top-left
-        {
-            @include slide();
-        }
-        .top-right
-        {
-            @include slide();
-        }
-        .bottom-left
-        {
-            @include slide();
-        }
-        .bottom-right
-        {
-            @include slide();
-        }
-        .left-photo-right
-        {
-            @include slide();
-        }
-        .right-photo-left
-        {
-            @include slide();
-        }
-    }
+
+.showtime {
+	max-width: 100%;
+	position: relative;
+
+	.slide {
+		max-width: 100%;
+		width: auto;
+		.top-left
+		{
+			@include slide( $w:60%, $h:40%, $t:40px, $l:50px);
+		}
+		.top-right
+		{
+			@include slide( $w:60%, $h:40%, $t:40px, $r:50px);
+		}
+		.bottom-left
+		{
+			@include slide( $w:60%, $h:40%, $b:40px, $l:50px);
+		}
+		.bottom-right
+		{
+			@include slide( $w:60%, $h:40%, $b:40px, $r:50px);
+		}
+		.left-photo-right
+		{
+			@include slide( $m:30px );
+			@include phototext( $m:30px, $p:left );
+		}
+		.right-photo-left
+		{
+			@include slide( $m:30px );
+			@include phototext( $m:30px, $p:right );
+		}
+	}
+	
+	// nav
+	.owl-buttons {
+		width: 100%;
+		text-align: left;
+		 position: absolute;
+		 top: 50%;
+		 line-height: 1;
+		 
+		 div {
+			position: absolute;
+			top: -36px;
+		}
+		.genericon {
+			font-size: 36px;
+			height: 36px;
+			width: 36px;
+		}
+	}
+}
+.owl-theme .owl-controls .owl-buttons div {
+	opacity: 0.6;
+	background-color: transparent;
+	padding: 0;
+	margin: 0;
+}
+.owl-theme .owl-controls .owl-buttons .owl-next {
+	right: 0;
 }
 
 $brake-point: 600px !default;
 
 @media screen and (max-width: $brake-point) {
+	.owl-wrapper-outer {
+		background-color: #0058AE;
+	}
 	.showtime {
 		.slide {
-            .top-left
-            {
-				max-height: 160px;
-            }
-            .top-right
-            {
-				max-height: 160px;
-            }
-            .bottom-left
-            {
-				max-height: 160px;
-            }
-            .bottom-right
-            {
-				max-height: 160px;
-            }
-            .left-photo-right
-            {
-				max-height: 160px;
-            }
-            .right-photo-left
-            {
-				max-height: 160px;
-            }
+			padding: 30px 25px;
+			.top-left,
+			.top-right,
+			.bottom-left,
+			.bottom-right,
+			.left-photo-right,
+			.right-photo-left {
+				padding: 0;
+				.slide-image {
+					float: none;
+					width: 100%;
+					margin: 0;
+					a {
+						height: 160px !important;
+						width: 100%;
+						img {
+							float: none;
+							position: relative;
+						}
+					}
+				}
+				.slide-text {
+					margin-top: 20px;
+					padding: 0;
+					position: relative;
+					width: 100%;
+					height: auto;
+					left: 0;
+					top: 0;
+					background-color: transparent;
+					h2 {
+						margin: 0;
+						padding: 0;
+						font-size: 16px;
+					}
+					.slide-content {
+						margin: 1em 0 0 0;
+						padding: 0;
+						font-size: 12px;
+						overflow: hidden;
+						text-overflow: ellipsis;
+						white-space: nowrap;
+					}
+				}
+			}
+		}
+
+		// nav
+		.owl-buttons {
+			div {
+				width: 25px;
+			}
+			.genericon {
+				font-size: 14px;
+				height: 14px;
+				width: 14px;
+			}
+			.owl-next span {
+				margin-left: 9px;
+			}
 		}
 	}
 }

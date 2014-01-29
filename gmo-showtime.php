@@ -39,7 +39,6 @@ $gmoshowtime->init();
 
 function showtime($atts = array()) {
     global $gmoshowtime;
-
     if (get_option('gmoshowtime-maintenance', 1)) {
         if (get_header_image()) {
             return sprintf(
@@ -507,12 +506,12 @@ private function get_slide_template()
 <!-- slide loop -->
 <div class="slide">
     <div class="%css_class%">
+        <div class="slide-image">
+            <a href="%link%"><img src="%image%" alt="%title%"></a>
+        </div>
         <div class="slide-text">
             <h2 class="slide-title">%title%</h2>
             <div class="slide-content">%content%</div>
-        </div>
-        <div class="slide-image">
-            <a href="%link%"><img src="%image%" alt="%title%"></a>
         </div>
     </div>
 </div>

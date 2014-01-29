@@ -22,7 +22,7 @@ $('.showtime').each(function(){
         args = {
             transitionStyle : transition,
             singleItem : true,
-            autoPlay: 3000,
+            autoPlay: 10000,
             navigation : true,
             navigationText : ['<span class="genericon genericon-leftarrow"></span>','<span class="genericon genericon-rightarrow"></span>']
         };
@@ -31,7 +31,7 @@ $('.showtime').each(function(){
             items : pages,
             itemsTablet: [768, 2],
             itemsMobile : [479, 1],
-            autoPlay: 3000,
+            autoPlay: 10000,
             navigation : true,
             navigationText : ['<span class="genericon genericon-leftarrow"></span>','<span class="genericon genericon-rightarrow"></span>']
         };
@@ -39,6 +39,19 @@ $('.showtime').each(function(){
 
     showtime.owlCarousel(args);
 
+});
+
+// load
+$(".slide a img").on("load",function(){
+	var t;
+	var th = $(this).height();
+	var ph = $(this).parent().height();
+	if (th > ph) {
+		t = -((th - ph) / 2);
+	} else {
+		t = (ph - th) / 2;
+	}
+	$(this).css("top", t+"px");
 });
 
 })(jQuery);
