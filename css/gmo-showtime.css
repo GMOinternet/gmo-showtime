@@ -11,12 +11,12 @@
         top: 40px;
         left: 50px;
         width: 60%;
-        height: 40%;
+        /* 		height: $h; */
         padding: 20px 30px 30px 30px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0;
-        overflow: hidden; }
+        /* 		overflow: hidden; */ }
         .showtime .slide .top-left .slide-text h2 {
           color: #ffffff;
           line-height: 1.4;
@@ -31,7 +31,9 @@
           color: #ffffff;
           font-size: 18px;
           font-weight: normal;
-          line-height: 1.4; }
+          line-height: 1.4;
+          height: 4.2em;
+          overflow: hidden; }
       .showtime .slide .top-left .slide-image a {
         display: block;
         height: 600px;
@@ -50,12 +52,12 @@
         top: 40px;
         right: 50px;
         width: 60%;
-        height: 40%;
+        /* 		height: $h; */
         padding: 20px 30px 30px 30px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0;
-        overflow: hidden; }
+        /* 		overflow: hidden; */ }
         .showtime .slide .top-right .slide-text h2 {
           color: #ffffff;
           line-height: 1.4;
@@ -70,7 +72,9 @@
           color: #ffffff;
           font-size: 18px;
           font-weight: normal;
-          line-height: 1.4; }
+          line-height: 1.4;
+          height: 4.2em;
+          overflow: hidden; }
       .showtime .slide .top-right .slide-image a {
         display: block;
         height: 600px;
@@ -89,12 +93,12 @@
         bottom: 40px;
         left: 50px;
         width: 60%;
-        height: 40%;
+        /* 		height: $h; */
         padding: 20px 30px 30px 30px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0;
-        overflow: hidden; }
+        /* 		overflow: hidden; */ }
         .showtime .slide .bottom-left .slide-text h2 {
           color: #ffffff;
           line-height: 1.4;
@@ -109,7 +113,9 @@
           color: #ffffff;
           font-size: 18px;
           font-weight: normal;
-          line-height: 1.4; }
+          line-height: 1.4;
+          height: 4.2em;
+          overflow: hidden; }
       .showtime .slide .bottom-left .slide-image a {
         display: block;
         height: 600px;
@@ -128,12 +134,12 @@
         bottom: 40px;
         right: 50px;
         width: 60%;
-        height: 40%;
+        /* 		height: $h; */
         padding: 20px 30px 30px 30px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0;
-        overflow: hidden; }
+        /* 		overflow: hidden; */ }
         .showtime .slide .bottom-right .slide-text h2 {
           color: #ffffff;
           line-height: 1.4;
@@ -148,7 +154,9 @@
           color: #ffffff;
           font-size: 18px;
           font-weight: normal;
-          line-height: 1.4; }
+          line-height: 1.4;
+          height: 4.2em;
+          overflow: hidden; }
       .showtime .slide .bottom-right .slide-image a {
         display: block;
         height: 600px;
@@ -166,12 +174,12 @@
       .showtime .slide .left-photo-right .slide-text {
         position: absolute;
         width: 100%;
-        height: auto;
+        /* 		height: $h; */
         padding: 20px 30px 30px 30px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0;
-        overflow: hidden; }
+        /* 		overflow: hidden; */ }
         .showtime .slide .left-photo-right .slide-text h2 {
           color: #ffffff;
           line-height: 1.4;
@@ -186,7 +194,9 @@
           color: #ffffff;
           font-size: 18px;
           font-weight: normal;
-          line-height: 1.4; }
+          line-height: 1.4;
+          height: 4.2em;
+          overflow: hidden; }
       .showtime .slide .left-photo-right .slide-image {
         margin-top: -30px; }
         .showtime .slide .left-photo-right .slide-image a {
@@ -223,12 +233,12 @@
       .showtime .slide .right-photo-left .slide-text {
         position: absolute;
         width: 100%;
-        height: auto;
+        /* 		height: $h; */
         padding: 20px 30px 30px 30px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0;
-        overflow: hidden; }
+        /* 		overflow: hidden; */ }
         .showtime .slide .right-photo-left .slide-text h2 {
           color: #ffffff;
           line-height: 1.4;
@@ -243,7 +253,9 @@
           color: #ffffff;
           font-size: 18px;
           font-weight: normal;
-          line-height: 1.4; }
+          line-height: 1.4;
+          height: 4.2em;
+          overflow: hidden; }
       .showtime .slide .right-photo-left .slide-image {
         margin-top: -30px; }
         .showtime .slide .right-photo-left .slide-image a {
@@ -367,7 +379,7 @@
           margin: 1em 0 0 0;
           padding: 0;
           font-size: 12px;
-          overflow: hidden;
+          height: 1.4em;
           text-overflow: ellipsis;
           white-space: nowrap; }
   .showtime .owl-buttons div {
