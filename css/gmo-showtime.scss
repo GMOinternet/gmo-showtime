@@ -8,18 +8,16 @@
 		@if $r > 0 { right: $r; }
 		width: $w;
 /* 		height: $h; */
-		padding: 20px 30px 30px 30px;
+		padding: 10px;
 		background-color: rgba(0,0,0,0.5);
 		box-sizing: border-box;
 		margin: 0;
-/* 		overflow: hidden; */
 		h2 {
-			color: #ffffff;
 			line-height: 1.4;
 			overflow: hidden;
 			text-overflow: ellipsis;
 			white-space: nowrap;
-			font-size: 40px;
+			font-size: 20px;
 			margin-bottom: 10px;
 			a {
 				color: #ffffff;
@@ -27,7 +25,7 @@
 		}
 		.slide-content {
 			color: #ffffff;
-			font-size: 18px;
+			font-size: 14px;
 			font-weight: normal;
 			line-height: 1.4;
 			height: 3em*1.4;
@@ -38,7 +36,7 @@
 		@if $m > 0 { margin-top: -$m; }
 		a {
 		display: block;
-		@if $m > 0 { height: 487px; } @else { height: 600px;}
+		@if $m > 0 { height: 200px; } @else { height: 600px; }
 		overflow: hidden;
 		position: relative;
 			img {
@@ -53,40 +51,40 @@
 }
 
 @mixin phototext( $m:30px, $p:left ) {
-		padding: $m 0;
-		.slide-image {
-			width: 780px;
-			float: $p;
-			position: relative;
-			z-index: 10;
-			@if $p == 'left' { margin-left: 70px; } @else { margin-right: 70px; }
-		}
-		.slide-text {
-			background-color: #0058AE;
-			height: 487px-($m*2);
-			padding: 0;
-			h2 {
-				margin-top: 30px;
-				white-space: normal;
-				height: (40px * 2) * 1.4;
-				@if $p == 'left' {
-					margin-left: 820px + 70px;
-					padding-right: 50px;
-				} @else {
-					margin-right: 820px + 70px;
-					padding-left: 50px;
-				}
-			}
-			.slide-content {
-				@if $p == 'left' {
-					margin-left: 820px + 70px;
-					padding-right: 50px;
-				} @else {
-					margin-right: 820px + 70px;
-					padding-left: 50px;
-				}
+	padding: $m 0;
+	.slide-image {
+		width: 50%;
+		float: $p;
+		position: relative;
+		z-index: 10;
+		@if $p == 'left' { margin-left: 70px; } @else { margin-right: 70px; }
+	}
+	.slide-text {
+		background-color: #0058AE;
+		height: 200px-($m*2);
+		padding: 0;
+		h2 {
+			margin-top: 10px;
+			white-space: normal;
+			height: auto;
+			@if $p == 'left' {
+				margin-left: 70%;
+				padding-right: 50px;
+			} @else {
+				margin-right: 70%;
+				padding-left: 50px;
 			}
 		}
+		.slide-content {
+			@if $p == 'left' {
+				margin-left: 70%;
+				padding-right: 50px;
+			} @else {
+				margin-right: 70%;
+				padding-left: 50px;
+			}
+		}
+	}
 }
 
 
@@ -99,19 +97,19 @@
 		width: auto;
 		.top-left
 		{
-			@include slide( $w:60%, $h:40%, $t:40px, $l:50px);
+			@include slide( $w:60%, $h:40%, $t:60px, $l:50px);
 		}
 		.top-right
 		{
-			@include slide( $w:60%, $h:40%, $t:40px, $r:50px);
+			@include slide( $w:60%, $h:40%, $t:60px, $r:50px);
 		}
 		.bottom-left
 		{
-			@include slide( $w:60%, $h:40%, $b:40px, $l:50px);
+			@include slide( $w:60%, $h:40%, $b:60px, $l:50px);
 		}
 		.bottom-right
 		{
-			@include slide( $w:60%, $h:40%, $b:40px, $r:50px);
+			@include slide( $w:60%, $h:40%, $b:60px, $r:50px);
 		}
 		.left-photo-right
 		{

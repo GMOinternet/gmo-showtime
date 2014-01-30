@@ -8,28 +8,26 @@
       position: relative; }
       .showtime .slide .top-left .slide-text {
         position: absolute;
-        top: 40px;
+        top: 60px;
         left: 50px;
         width: 60%;
         /* 		height: $h; */
-        padding: 20px 30px 30px 30px;
+        padding: 10px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
-        margin: 0;
-        /* 		overflow: hidden; */ }
+        margin: 0; }
         .showtime .slide .top-left .slide-text h2 {
-          color: #ffffff;
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 40px;
+          font-size: 20px;
           margin-bottom: 10px; }
           .showtime .slide .top-left .slide-text h2 a {
             color: #ffffff; }
         .showtime .slide .top-left .slide-text .slide-content {
           color: #ffffff;
-          font-size: 18px;
+          font-size: 14px;
           font-weight: normal;
           line-height: 1.4;
           height: 4.2em;
@@ -49,28 +47,26 @@
       position: relative; }
       .showtime .slide .top-right .slide-text {
         position: absolute;
-        top: 40px;
+        top: 60px;
         right: 50px;
         width: 60%;
         /* 		height: $h; */
-        padding: 20px 30px 30px 30px;
+        padding: 10px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
-        margin: 0;
-        /* 		overflow: hidden; */ }
+        margin: 0; }
         .showtime .slide .top-right .slide-text h2 {
-          color: #ffffff;
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 40px;
+          font-size: 20px;
           margin-bottom: 10px; }
           .showtime .slide .top-right .slide-text h2 a {
             color: #ffffff; }
         .showtime .slide .top-right .slide-text .slide-content {
           color: #ffffff;
-          font-size: 18px;
+          font-size: 14px;
           font-weight: normal;
           line-height: 1.4;
           height: 4.2em;
@@ -90,28 +86,26 @@
       position: relative; }
       .showtime .slide .bottom-left .slide-text {
         position: absolute;
-        bottom: 40px;
+        bottom: 60px;
         left: 50px;
         width: 60%;
         /* 		height: $h; */
-        padding: 20px 30px 30px 30px;
+        padding: 10px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
-        margin: 0;
-        /* 		overflow: hidden; */ }
+        margin: 0; }
         .showtime .slide .bottom-left .slide-text h2 {
-          color: #ffffff;
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 40px;
+          font-size: 20px;
           margin-bottom: 10px; }
           .showtime .slide .bottom-left .slide-text h2 a {
             color: #ffffff; }
         .showtime .slide .bottom-left .slide-text .slide-content {
           color: #ffffff;
-          font-size: 18px;
+          font-size: 14px;
           font-weight: normal;
           line-height: 1.4;
           height: 4.2em;
@@ -131,28 +125,26 @@
       position: relative; }
       .showtime .slide .bottom-right .slide-text {
         position: absolute;
-        bottom: 40px;
+        bottom: 60px;
         right: 50px;
         width: 60%;
         /* 		height: $h; */
-        padding: 20px 30px 30px 30px;
+        padding: 10px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
-        margin: 0;
-        /* 		overflow: hidden; */ }
+        margin: 0; }
         .showtime .slide .bottom-right .slide-text h2 {
-          color: #ffffff;
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 40px;
+          font-size: 20px;
           margin-bottom: 10px; }
           .showtime .slide .bottom-right .slide-text h2 a {
             color: #ffffff; }
         .showtime .slide .bottom-right .slide-text .slide-content {
           color: #ffffff;
-          font-size: 18px;
+          font-size: 14px;
           font-weight: normal;
           line-height: 1.4;
           height: 4.2em;
@@ -175,24 +167,22 @@
         position: absolute;
         width: 100%;
         /* 		height: $h; */
-        padding: 20px 30px 30px 30px;
+        padding: 10px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
-        margin: 0;
-        /* 		overflow: hidden; */ }
+        margin: 0; }
         .showtime .slide .left-photo-right .slide-text h2 {
-          color: #ffffff;
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 40px;
+          font-size: 20px;
           margin-bottom: 10px; }
           .showtime .slide .left-photo-right .slide-text h2 a {
             color: #ffffff; }
         .showtime .slide .left-photo-right .slide-text .slide-content {
           color: #ffffff;
-          font-size: 18px;
+          font-size: 14px;
           font-weight: normal;
           line-height: 1.4;
           height: 4.2em;
@@ -201,7 +191,7 @@
         margin-top: -30px; }
         .showtime .slide .left-photo-right .slide-image a {
           display: block;
-          height: 487px;
+          height: 200px;
           overflow: hidden;
           position: relative; }
           .showtime .slide .left-photo-right .slide-image a img {
@@ -211,23 +201,23 @@
             float: left;
             position: absolute; }
       .showtime .slide .left-photo-right .slide-image {
-        width: 780px;
+        width: 50%;
         float: left;
         position: relative;
         z-index: 10;
         margin-left: 70px; }
       .showtime .slide .left-photo-right .slide-text {
         background-color: #0058AE;
-        height: 427px;
+        height: 140px;
         padding: 0; }
         .showtime .slide .left-photo-right .slide-text h2 {
-          margin-top: 30px;
+          margin-top: 10px;
           white-space: normal;
-          height: 112px;
-          margin-left: 890px;
+          height: auto;
+          margin-left: 70%;
           padding-right: 50px; }
         .showtime .slide .left-photo-right .slide-text .slide-content {
-          margin-left: 890px;
+          margin-left: 70%;
           padding-right: 50px; }
     .showtime .slide .right-photo-left {
       position: relative;
@@ -236,24 +226,22 @@
         position: absolute;
         width: 100%;
         /* 		height: $h; */
-        padding: 20px 30px 30px 30px;
+        padding: 10px;
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
-        margin: 0;
-        /* 		overflow: hidden; */ }
+        margin: 0; }
         .showtime .slide .right-photo-left .slide-text h2 {
-          color: #ffffff;
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 40px;
+          font-size: 20px;
           margin-bottom: 10px; }
           .showtime .slide .right-photo-left .slide-text h2 a {
             color: #ffffff; }
         .showtime .slide .right-photo-left .slide-text .slide-content {
           color: #ffffff;
-          font-size: 18px;
+          font-size: 14px;
           font-weight: normal;
           line-height: 1.4;
           height: 4.2em;
@@ -262,7 +250,7 @@
         margin-top: -30px; }
         .showtime .slide .right-photo-left .slide-image a {
           display: block;
-          height: 487px;
+          height: 200px;
           overflow: hidden;
           position: relative; }
           .showtime .slide .right-photo-left .slide-image a img {
@@ -272,23 +260,23 @@
             float: left;
             position: absolute; }
       .showtime .slide .right-photo-left .slide-image {
-        width: 780px;
+        width: 50%;
         float: right;
         position: relative;
         z-index: 10;
         margin-right: 70px; }
       .showtime .slide .right-photo-left .slide-text {
         background-color: #0058AE;
-        height: 427px;
+        height: 140px;
         padding: 0; }
         .showtime .slide .right-photo-left .slide-text h2 {
-          margin-top: 30px;
+          margin-top: 10px;
           white-space: normal;
-          height: 112px;
-          margin-right: 890px;
+          height: auto;
+          margin-right: 70%;
           padding-left: 50px; }
         .showtime .slide .right-photo-left .slide-text .slide-content {
-          margin-right: 890px;
+          margin-right: 70%;
           padding-left: 50px; }
   .showtime .owl-buttons {
     width: 100%;
