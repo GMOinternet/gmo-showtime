@@ -201,7 +201,7 @@
         margin-top: -30px; }
         .showtime .slide .left-photo-right .slide-image a {
           display: block;
-          height: 400px;
+          height: 487px;
           overflow: hidden;
           position: relative; }
           .showtime .slide .left-photo-right .slide-image a img {
@@ -211,21 +211,23 @@
             float: left;
             position: absolute; }
       .showtime .slide .left-photo-right .slide-image {
-        width: 50%;
+        width: 780px;
         float: left;
         position: relative;
         z-index: 10;
         margin-left: 70px; }
       .showtime .slide .left-photo-right .slide-text {
         background-color: #0058AE;
-        height: 340px;
+        height: 427px;
         padding: 0; }
         .showtime .slide .left-photo-right .slide-text h2 {
           margin-top: 30px;
-          margin-left: 60%;
+          white-space: normal;
+          height: 112px;
+          margin-left: 890px;
           padding-right: 50px; }
         .showtime .slide .left-photo-right .slide-text .slide-content {
-          margin-left: 60%;
+          margin-left: 890px;
           padding-right: 50px; }
     .showtime .slide .right-photo-left {
       position: relative;
@@ -260,7 +262,7 @@
         margin-top: -30px; }
         .showtime .slide .right-photo-left .slide-image a {
           display: block;
-          height: 400px;
+          height: 487px;
           overflow: hidden;
           position: relative; }
           .showtime .slide .right-photo-left .slide-image a img {
@@ -270,21 +272,23 @@
             float: left;
             position: absolute; }
       .showtime .slide .right-photo-left .slide-image {
-        width: 50%;
+        width: 780px;
         float: right;
         position: relative;
         z-index: 10;
         margin-right: 70px; }
       .showtime .slide .right-photo-left .slide-text {
         background-color: #0058AE;
-        height: 340px;
+        height: 427px;
         padding: 0; }
         .showtime .slide .right-photo-left .slide-text h2 {
           margin-top: 30px;
-          margin-right: 60%;
+          white-space: normal;
+          height: 112px;
+          margin-right: 890px;
           padding-left: 50px; }
         .showtime .slide .right-photo-left .slide-text .slide-content {
-          margin-right: 60%;
+          margin-right: 890px;
           padding-left: 50px; }
   .showtime .owl-buttons {
     width: 100%;
@@ -369,7 +373,11 @@
         .showtime .slide .right-photo-left .slide-text h2 {
           margin: 0;
           padding: 0;
-          font-size: 16px; }
+          font-size: 16px;
+          height: 1.4em;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
         .showtime .slide .top-left .slide-text .slide-content,
         .showtime .slide .top-right .slide-text .slide-content,
         .showtime .slide .bottom-left .slide-text .slide-content,
