@@ -135,7 +135,9 @@
         border-bottom: 3px double #cccccc;
     }
 }
-
+.owl-carousel .owl-wrapper-outer{
+	overflow: hidden;
+}
 #mainpreview .showtime .slide .slide-image a {
 	height: auto;
 	min-height: 450px;
