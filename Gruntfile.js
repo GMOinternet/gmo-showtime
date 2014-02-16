@@ -34,11 +34,11 @@ module.exports = function( grunt ) {
       all: {
         files: {
           'js/gmo-showtime.min.js': [
-            'owl-carousel/owl.carousel.js',
+            'Nivo-Slider/jquery.nivo.slider.pack.js',
             'js/gmo-showtime.js'
           ],
           'js/admin-gmo-showtime.min.js': [
-            'owl-carousel/owl.carousel.js',
+            'Nivo-Slider/jquery.nivo.slider.pack.js',
             'js/gmo-showtime.js',
             'js/admin-gmo-showtime.js'
           ]
@@ -50,7 +50,7 @@ module.exports = function( grunt ) {
             ' * <%= pkg.homepage %>\n' +
             ' * <%= pkg.repository.url %>\n' +
             ' *\n' +
-            ' * Special Thanks! http://owlgraphic.com/owlcarousel/\n' +
+            ' * Special Thanks! http://dev7studios.com/plugins/nivo-slider/\n' +
             ' *\n' +
             ' * Copyright <%= grunt.template.today("yyyy") %>, <%= pkg.author.name %> (<%= pkg.author.url %>)\n' +
             ' * Released under the <%= pkg.license %>\n' +
@@ -64,7 +64,7 @@ module.exports = function( grunt ) {
     test:   {
       files: ['js/test/**/*.js']
     },
-    
+
     sass:   {
       all: {
         files: {
@@ -73,7 +73,7 @@ module.exports = function( grunt ) {
         }
       }
     },
-    
+
     cssmin: {
       options: {
         banner: '/**\n' +
@@ -98,16 +98,15 @@ module.exports = function( grunt ) {
       combine: {
         files: {
           'css/gmo-showtime.min.css' : [
-            'owl-carousel/owl.carousel.css',
-            'owl-carousel/owl.theme.css',
-            'owl-carousel/owl.transitions.css',
+            'Nivo-Slider/nivo-slider.css',
+            'Nivo-Slider/themes/default/default.css',
             'css/gmo-showtime.css'
           ]
         }
       }
     },
     watch:  {
-      
+
       sass: {
         files: ['css/*.scss'],
         tasks: ['sass', 'cssmin'],
@@ -115,7 +114,7 @@ module.exports = function( grunt ) {
           debounceDelay: 500
         }
       },
-      
+
       scripts: {
         files: ['js/*.js', '!js/*.min.js'],
         tasks: ['jshint', 'uglify'],
@@ -130,15 +129,15 @@ module.exports = function( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  
+
   grunt.loadNpmTasks('grunt-contrib-sass');
-  
+
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  
+
   grunt.registerTask('default', ['jshint', 'uglify', 'sass', 'cssmin']);
-  
+
 
   grunt.util.linefeed = '\n';
 };

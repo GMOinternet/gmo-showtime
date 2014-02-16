@@ -22,10 +22,17 @@
 <div id="transitions-settings">
 
 <div id="transitions">
+<select name="transition">
 <?php
 
 foreach ($this->get_transitions() as $tran) {
 ?>
+<?php if (get_option('gmoshowtime-transition', $this->get_default_transition()) === $tran): ?>
+<option value="<?php echo $tran; ?>" selected><?php echo $tran; ?></option>
+<?php else: ?>
+<option value="<?php echo $tran; ?>"><?php echo $tran; ?></option>
+<?php endif; ?>
+<!--
 <div class="transitions">
     <div class="showtime-transition-preview" data-transition="<?php echo $tran; ?>">
     </div>
@@ -38,9 +45,11 @@ foreach ($this->get_transitions() as $tran) {
         <?php echo $tran; ?>
     </label></h4>
 </div>
+-->
 <?php
 }
 ?>
+</select>
 </div>
 
 </div><!-- #transitions-settings -->
@@ -107,6 +116,7 @@ foreach ($this->get_transitions() as $tran) {
             </select>
         </td>
     </tr>
+<!--
     <tr>
         <th scope="row">Gallery</th>
         <td>
@@ -120,6 +130,7 @@ foreach ($this->get_transitions() as $tran) {
             </label>
         </td>
     </tr>
+-->
     <tr>
         <th scope="row">Maintenance Mode</th>
         <td>

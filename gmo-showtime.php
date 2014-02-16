@@ -70,10 +70,22 @@ class GMOShowtime {
 private $version = '';
 private $langs   = '';
 private $transitions = array(
+    'sliceDown',
+    'sliceDownLeft',
+    'sliceUp',
+    'sliceUpLeft',
+    'sliceUpDown',
+    'sliceUpDownLeft',
+    'fold',
     'fade',
-    'backSlide',
-    'goDown',
-    'fadeUp'
+    'random',
+    'slideInRight',
+    'slideInLeft',
+    'boxRandom',
+    'boxRain',
+    'boxRainReverse',
+    'boxRainGrow',
+    'boxRainGrowReverse',
 );
 private $default_image_size = 'gmoshowtime-image';
 private $default_transition = 'fade';
@@ -107,105 +119,8 @@ public function plugins_loaded()
     add_action('admin_menu', array($this, 'admin_menu'));
     add_action('admin_init', array($this, 'admin_init'));
     add_action('admin_print_footer_scripts', array($this, 'admin_print_footer_scripts'), 9999);
-    add_filter('post_gallery', array($this, 'post_gallery'), 10, 2);
 
     add_shortcode('showtime', array($this, 'showtime'));
-}
-
-public function post_gallery($null, $atts)
-{
-    if (get_option('gmoshowtime-apply-gallery', 0)) {
-        return $this->gallery($atts);
-    } else {
-        return;
-    }
-}
-
-private function gallery($atts)
-{
-    $post = get_post();
-
-    extract(shortcode_atts(array(
-        'transition' => get_option('gmoshowtime-transition', $this->get_default_transition()),
-        'show_title' => $this->get_default_show_title(),
-        'size'       => get_option('gmoshowtime-image-size', $this->get_default_image_size()),
-        'order'      => 'ASC',
-        'orderby'    => 'menu_order ID',
-        'id'         => $post ? $post->ID : 0,
-        'columns'    => $this->get_default_columns(),
-        'include'    => '',
-        'exclude'    => '',
-        'link'       => ''
-    ), $atts, 'gallery'));
-
-    $id = intval($id);
-    if ('RAND' == $order) {
-        $orderby = 'none';
-    }
-
-    if (!empty($include)) {
-        $_attachments = get_posts(array(
-            'include' => $include,
-            'post_status' => 'inherit',
-            'post_type' => 'attachment',
-            'post_mime_type' => 'image',
-            'order' => $order,
-            'orderby' => $orderby,
-        ));
-
-        $attachments = array();
-        foreach ($_attachments as $key => $val) {
-            $attachments[$val->ID] = $_attachments[$key];
-        }
-    } elseif (!empty($exclude)) {
-        $attachments = get_children(array(
-            'post_parent' => $id,
-            'exclude' => $exclude,
-            'post_status' => 'inherit',
-            'post_type' => 'attachment',
-            'post_mime_type' => 'image',
-            'order' => $order,
-            'orderby' => $orderby
-        ));
-    } else {
-        $attachments = get_children(array(
-            'post_parent' => $id,
-            'post_status' => 'inherit',
-            'post_type' => 'attachment',
-            'post_mime_type' => 'image',
-            'order' => $order,
-            'orderby' => $orderby
-        ));
-    }
-
-    if ( empty($attachments) )
-        return '';
-
-    $images = array();
-    foreach ($attachments as $id => $attachment) {
-        $image_url = wp_get_attachment_image_src($id, $size, false);
-        if (!empty($link) && 'file' === $link) {
-            $image_link = get_attachment_link($id, $size, false, false);
-        } elseif (!empty($link) && 'none' === $link) {
-            $image_link = wp_get_attachment_image_src($id, $size, false);
-        } else {
-            $image_link = get_attachment_link($id, $size, true, false);
-        }
-        $images[] = array(
-            'link'    => $image_link,
-            'image'   => $image_url[0],
-            'title'   => wptexturize($attachment->post_excerpt),
-            'content' => '',
-        );
-    }
-
-    return $this->get_slider_contents(array(
-        'columns'     => $columns,
-        'images'     => $images,
-        'transition' => $transition,
-        'show_title' => $show_title,
-        'image_size' => $size,
-    ));
 }
 
 public function showtime($atts)
@@ -267,8 +182,10 @@ public function get_slider_contents($atts = array())
 
     $html = '';
     $html .= "\n<!-- Start GMO Showtime-->\n";
+    $html .= "<div class=\"slider-wrapper theme-default\">\n";
+    $html .= "<div class=\"ribbon\"></div>";
     $html .= sprintf(
-        '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        '<div class="showtime nivoSlider" data-columns="%d" data-transition="%s" data-show_title="%d">',
         $columns,
         $transition,
         $show_title
@@ -293,6 +210,7 @@ public function get_slider_contents($atts = array())
         $html .= $slide;
     }
 
+    $html .= '</div>';
     $html .= '</div>';
     $html .= "\n<!-- End GMO Showtime-->\n";
 
@@ -502,20 +420,7 @@ private function get_default_image_size()
 
 private function get_slide_template()
 {
-    $template = <<<EOL
-<!-- slide loop -->
-<div class="slide">
-    <div class="%css_class%">
-        <div class="slide-image">
-            <a href="%link%"><img src="%image%" alt="%title%"></a>
-        </div>
-        <div class="slide-text">
-            <h2 class="slide-title"><a href="%link%">%title%</a></h2>
-            <div class="slide-content">%content%</div>
-        </div>
-    </div>
-</div>
-EOL;
+    $template = "<a href=\"%link%\"><img src=\"%image%\" alt=\"%title%\"></a>";
 
     return apply_filters("gmoshowtime_slide_template", $template);
 }
@@ -552,7 +457,8 @@ private function get_default_columns()
 
 private function get_preview_contents()
 {
-
+    echo "<div class=\"slider-wrapper theme-default\">\n";
+    echo "<div class=\"ribbon\"></div>";
     printf(
         '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
         $this->get_default_columns(),
@@ -581,6 +487,7 @@ private function get_preview_contents()
         echo $html;
     }
 
+    echo '</div>';
     echo '</div>';
 }
 
