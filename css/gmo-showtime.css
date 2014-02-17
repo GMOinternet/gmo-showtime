@@ -6,7 +6,7 @@
     width: auto; }
     .showtime .slide .top-left {
       position: relative; }
-      .showtime .slide .top-left .slide-text {
+      .showtime .slide .top-left .nivo-caption {
         position: absolute;
         top: 60px;
         left: 50px;
@@ -16,16 +16,16 @@
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0; }
-        .showtime .slide .top-left .slide-text h2 {
+        .showtime .slide .top-left .nivo-caption h2 {
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           font-size: 20px;
           margin-bottom: 10px; }
-          .showtime .slide .top-left .slide-text h2 a {
+          .showtime .slide .top-left .nivo-caption h2 a {
             color: #ffffff; }
-        .showtime .slide .top-left .slide-text .slide-content {
+        .showtime .slide .top-left .nivo-caption .slide-content {
           color: #ffffff;
           font-size: 14px;
           font-weight: normal;
@@ -45,7 +45,7 @@
           position: absolute; }
     .showtime .slide .top-right {
       position: relative; }
-      .showtime .slide .top-right .slide-text {
+      .showtime .slide .top-right .nivo-caption {
         position: absolute;
         top: 60px;
         right: 50px;
@@ -55,16 +55,16 @@
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0; }
-        .showtime .slide .top-right .slide-text h2 {
+        .showtime .slide .top-right .nivo-caption h2 {
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           font-size: 20px;
           margin-bottom: 10px; }
-          .showtime .slide .top-right .slide-text h2 a {
+          .showtime .slide .top-right .nivo-caption h2 a {
             color: #ffffff; }
-        .showtime .slide .top-right .slide-text .slide-content {
+        .showtime .slide .top-right .nivo-caption .slide-content {
           color: #ffffff;
           font-size: 14px;
           font-weight: normal;
@@ -84,7 +84,7 @@
           position: absolute; }
     .showtime .slide .bottom-left {
       position: relative; }
-      .showtime .slide .bottom-left .slide-text {
+      .showtime .slide .bottom-left .nivo-caption {
         position: absolute;
         bottom: 60px;
         left: 50px;
@@ -94,16 +94,16 @@
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0; }
-        .showtime .slide .bottom-left .slide-text h2 {
+        .showtime .slide .bottom-left .nivo-caption h2 {
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           font-size: 20px;
           margin-bottom: 10px; }
-          .showtime .slide .bottom-left .slide-text h2 a {
+          .showtime .slide .bottom-left .nivo-caption h2 a {
             color: #ffffff; }
-        .showtime .slide .bottom-left .slide-text .slide-content {
+        .showtime .slide .bottom-left .nivo-caption .slide-content {
           color: #ffffff;
           font-size: 14px;
           font-weight: normal;
@@ -123,7 +123,7 @@
           position: absolute; }
     .showtime .slide .bottom-right {
       position: relative; }
-      .showtime .slide .bottom-right .slide-text {
+      .showtime .slide .bottom-right .nivo-caption {
         position: absolute;
         bottom: 60px;
         right: 50px;
@@ -133,16 +133,16 @@
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0; }
-        .showtime .slide .bottom-right .slide-text h2 {
+        .showtime .slide .bottom-right .nivo-caption h2 {
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           font-size: 20px;
           margin-bottom: 10px; }
-          .showtime .slide .bottom-right .slide-text h2 a {
+          .showtime .slide .bottom-right .nivo-caption h2 a {
             color: #ffffff; }
-        .showtime .slide .bottom-right .slide-text .slide-content {
+        .showtime .slide .bottom-right .nivo-caption .slide-content {
           color: #ffffff;
           font-size: 14px;
           font-weight: normal;
@@ -163,7 +163,7 @@
     .showtime .slide .left-photo-right {
       position: relative;
       padding: 30px 0; }
-      .showtime .slide .left-photo-right .slide-text {
+      .showtime .slide .left-photo-right .nivo-caption {
         position: absolute;
         width: 100%;
         /* 		height: $h; */
@@ -171,16 +171,16 @@
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0; }
-        .showtime .slide .left-photo-right .slide-text h2 {
+        .showtime .slide .left-photo-right .nivo-caption h2 {
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           font-size: 20px;
           margin-bottom: 10px; }
-          .showtime .slide .left-photo-right .slide-text h2 a {
+          .showtime .slide .left-photo-right .nivo-caption h2 a {
             color: #ffffff; }
-        .showtime .slide .left-photo-right .slide-text .slide-content {
+        .showtime .slide .left-photo-right .nivo-caption .slide-content {
           color: #ffffff;
           font-size: 14px;
           font-weight: normal;
@@ -222,7 +222,7 @@
     .showtime .slide .right-photo-left {
       position: relative;
       padding: 30px 0; }
-      .showtime .slide .right-photo-left .slide-text {
+      .showtime .slide .right-photo-left .nivo-caption {
         position: absolute;
         width: 100%;
         /* 		height: $h; */
@@ -230,16 +230,16 @@
         background-color: rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
         margin: 0; }
-        .showtime .slide .right-photo-left .slide-text h2 {
+        .showtime .slide .right-photo-left .nivo-caption h2 {
           line-height: 1.4;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
           font-size: 20px;
           margin-bottom: 10px; }
-          .showtime .slide .right-photo-left .slide-text h2 a {
+          .showtime .slide .right-photo-left .nivo-caption h2 a {
             color: #ffffff; }
-        .showtime .slide .right-photo-left .slide-text .slide-content {
+        .showtime .slide .right-photo-left .nivo-caption .slide-content {
           color: #ffffff;
           font-size: 14px;
           font-weight: normal;

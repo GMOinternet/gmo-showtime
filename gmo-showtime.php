@@ -29,7 +29,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-require_once(dirname(__FILE__).'/includes/add_meta_box.php');
+require_once(dirname(__FILE__).'/includes/pan-pan-pan.php');
 
 define('GMOSHOWTIME_URL',  plugins_url('', __FILE__));
 define('GMOSHOWTIME_PATH', dirname(__FILE__));
@@ -156,13 +156,12 @@ public function get_slider_contents($atts = array())
 
     if (!count($images)) {
         $args = array(
-            "post_type"             => "any",
+            "post_type"             => "pan-pan-pan",
             "nopaging"              => 0,
             "posts_per_page"        => $this->slide_pages,
             "post_status"           => 'publish',
-            "meta_key"              => '_featured',
-            "orderby"               => 'meta_value_num',
-            "order"                 => 'DESC',
+            "orderby"               => 'menu_order',
+            "order"                 => 'ASC',
             "ignore_sticky_posts"    => 1,
         );
         $posts = get_posts($args);
@@ -170,9 +169,9 @@ public function get_slider_contents($atts = array())
         foreach ($posts as $post) {
             setup_postdata( $post );
             $thumb = get_the_post_thumbnail($post->ID, $image_size);
-            $image = preg_replace("/.*src=[\"\'](.+?)[\"\'].*/", "$1", $thumb);;
+            $image = preg_replace("/.*src=[\"\'](.+?)[\"\'].*/", "$1", $thumb);
             $images[] = array(
-                'link'  => get_permalink(),
+                'link'  => get_post_meta($post->ID, '_slide_link', true),
                 'image' => $image,
                 'title' => get_the_title(),
                 'content' => get_the_excerpt()

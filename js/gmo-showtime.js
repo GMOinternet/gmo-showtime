@@ -8,8 +8,8 @@ $('.showtime').each(function(){
         slices: 15,                                 // For slice animations
         boxCols: 8,                                 // For box animations
         boxRows: 4,                                 // For box animations
-        animSpeed: 500,                             // Slide transition speed
-        pauseTime: 3000,                            // How long each slide will show
+        animSpeed: 300,                             // Slide transition speed
+        pauseTime: 5000,                            // How long each slide will show
         startSlide: 0,                              // Set starting Slide (0 index)
         directionNav: true,                         // Next & Prev navigation
         controlNav: false,                           // 1,2,3... navigation
@@ -19,21 +19,31 @@ $('.showtime').each(function(){
         prevText: 'Prev',                           // Prev directionNav text
         nextText: 'Next',                           // Next directionNav text
         randomStart: false,                         // Start on a random slide
-        beforeChange: function(){},                 // Triggers before a slide transition
-        afterChange: function() {},
+        beforeChange: function(){
+            $('.nivo-caption').fadeOut(500);
+        },                 // Triggers before a slide transition
+        afterChange: function() {
+            $('.nivo-caption').fadeIn(500);
+            showCaption(slider);
+        },
         slideshowEnd: function(){},                 // Triggers after all slides have been shown
         lastSlide: function(){},                    // Triggers when last slide is shown
         afterLoad: function() {
-            showCaption(sliderSelector, index);
+            showCaption(slider);
         }
     });
 
-    function showCaption(sliderSelector, index) {
-        var title = $($(sliderSelector + ' img').get(index)).prop('data-title');
-        if (title.length > 0) { // Determines if it has to show a caption
-            var caption = $(sliderSelector + ' .nivo-caption').html(); // Gets the current caption
-            console.log(caption);
-        }
+    function showCaption(slide) {
+        var current = $('.nivo-imageLink', slide).filter(function(){
+            if ($(this)[0].style.display == 'block') {
+                return true;
+            }
+        });
+
+        var title = $('img:first', current).attr('title');
+        var content = $('img:first', current).attr('data-content');
+
+        $('.nivo-caption:first', slide).html('<h2>'+title+'</h2><div class="content">'+content+'</div>');
     }
 
 /*

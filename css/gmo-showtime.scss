@@ -1,6 +1,6 @@
 @mixin slide( $w:100%, $h:auto, $t:0, $b:0, $l:0, $r:0, $m:0) {
 	position: relative;
-	.slide-text {
+	.nivo-caption {
 		position: absolute;
 		@if $t > 0 { top: $t; }
 		@if $b > 0 { bottom: $b; }
@@ -122,7 +122,7 @@
 			@include phototext( $m:30px, $p:right );
 		}
 	}
-	
+
 	// nav
 	.owl-buttons {
 		width: 100%;
@@ -130,7 +130,7 @@
 		 position: absolute;
 		 top: 50%;
 		 line-height: 1;
-		 
+
 		 div {
 			position: absolute;
 			top: -36px;
