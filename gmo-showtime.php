@@ -89,6 +89,7 @@ private $transitions = array(
 );
 private $default_image_size = 'gmoshowtime-image';
 private $default_transition = 'fade';
+private $slide_pages = 4;
 
 function __construct()
 {
@@ -157,7 +158,7 @@ public function get_slider_contents($atts = array())
         $args = array(
             "post_type"             => "any",
             "nopaging"              => 0,
-            "posts_per_page"        => 10,
+            "posts_per_page"        => $this->slide_pages,
             "post_status"           => 'publish',
             "meta_key"              => '_featured',
             "orderby"               => 'meta_value_num',
@@ -185,7 +186,8 @@ public function get_slider_contents($atts = array())
     $html .= "<div class=\"slider-wrapper theme-default\">\n";
     $html .= "<div class=\"ribbon\"></div>";
     $html .= sprintf(
-        '<div class="showtime nivoSlider" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        '<div class="showtime nivoSlider %s" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        esc_attr(get_option('gmoshowtime-css-class', $this->get_default_css_class())),
         $columns,
         $transition,
         $show_title
@@ -198,11 +200,6 @@ public function get_slider_contents($atts = array())
         }
 
         $slide = $template;
-        $slide = str_replace(
-            "%css_class%",
-            esc_attr(get_option('gmoshowtime-css-class', $this->get_default_css_class())),
-            $slide
-        );
         $slide = str_replace("%title%", $img['title'], $slide);
         $slide = str_replace("%content%", esc_html($img['content']), $slide);
         $slide = str_replace("%link%", esc_url($img['link']), $slide);
@@ -311,57 +308,7 @@ public function admin_enqueue_scripts()
 
 public function admin_print_footer_scripts()
 {
-    if (is_admin()):
-?>
-<script type="text/javascript">
-(function($){
 
-function transition_enabled() {
-    $('#transitions-settings').animate({'opacity': 1});
-    $('#transitions-settings input').prop('disabled', false);
-}
-
-function transition_disabled() {
-    $('#transitions-settings').animate({'opacity': 0.2});
-    $('#transitions-settings input').prop('disabled', true);
-}
-
-    transition_enabled();
-
-$('input[name="columns"]').click(function(){
-    if (parseInt($('input[name="columns"]:checked').val()) == 1) {
-        transition_enabled();
-    } else {
-        transition_disabled();
-    }
-});
-
-var base_url = '<?php echo plugins_url("", __FILE__); ?>';
-$('.transitions .showtime-transition-preview').each(function(){
-    for (var i=0; i<10; i++) {
-        var img = 'orange.png';
-        if (i % 2) {
-            img = 'blue.png';
-        }
-        var n = i + 1;
-        var html = '<div class="slide"><div class="slide-wrap"><img src="'+base_url+'/img/'+img+'" alt=""></div></div>';
-        $(this).append(html);
-    }
-
-    var owl2 = $(this);
-    owl2.owlCarousel({
-        pagination: false,
-        itemsScaleUp: true,
-        autoPlay: 2000,
-        navigation : false,
-        singleItem : true,
-        transitionStyle : $(this).attr('data-transition')
-    });
-});
-})(jQuery);
-</script>
-<?php
-    endif;
 }
 
 public function wp_enqueue_scripts()
@@ -420,8 +367,7 @@ private function get_default_image_size()
 
 private function get_slide_template()
 {
-    $template = "<a href=\"%link%\"><img src=\"%image%\" alt=\"%title%\"></a>";
-
+    $template = "<a href=\"%link%\"><img src=\"%image%\" title=\"%title%\" data-content=\"%content%\"></a>";
     return apply_filters("gmoshowtime_slide_template", $template);
 }
 
@@ -460,7 +406,8 @@ private function get_preview_contents()
     echo "<div class=\"slider-wrapper theme-default\">\n";
     echo "<div class=\"ribbon\"></div>";
     printf(
-        '<div class="showtime" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        '<div class="showtime %s" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        esc_attr(get_option('gmoshowtime-css-class', $this->get_default_css_class())),
         $this->get_default_columns(),
         get_option('gmoshowtime-transition', $this->get_default_transition()),
         $this->get_default_show_title()

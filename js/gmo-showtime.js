@@ -1,6 +1,7 @@
 (function($){
 
 $('.showtime').each(function(){
+    var slider = this;
     var transition = $(this).attr('data-transition');
     $(this).nivoSlider({
         effect: transition,    // Specify sets like: 'fold,fade,sliceDown'
@@ -11,7 +12,7 @@ $('.showtime').each(function(){
         pauseTime: 3000,                            // How long each slide will show
         startSlide: 0,                              // Set starting Slide (0 index)
         directionNav: true,                         // Next & Prev navigation
-        controlNav: true,                           // 1,2,3... navigation
+        controlNav: false,                           // 1,2,3... navigation
         controlNavThumbs: false,                    // Use thumbnails for Control Nav
         pauseOnHover: true,                         // Stop animation while hovering
         manualAdvance: false,                       // Force manual transitions
@@ -19,11 +20,21 @@ $('.showtime').each(function(){
         nextText: 'Next',                           // Next directionNav text
         randomStart: false,                         // Start on a random slide
         beforeChange: function(){},                 // Triggers before a slide transition
-        afterChange: function(){},                  // Triggers after a slide transition
+        afterChange: function() {},
         slideshowEnd: function(){},                 // Triggers after all slides have been shown
         lastSlide: function(){},                    // Triggers when last slide is shown
-        afterLoad: function(){}                     // Triggers when slider has loaded
+        afterLoad: function() {
+            showCaption(sliderSelector, index);
+        }
     });
+
+    function showCaption(sliderSelector, index) {
+        var title = $($(sliderSelector + ' img').get(index)).prop('data-title');
+        if (title.length > 0) { // Determines if it has to show a caption
+            var caption = $(sliderSelector + ' .nivo-caption').html(); // Gets the current caption
+            console.log(caption);
+        }
+    }
 
 /*
     var showtime = $(this);
