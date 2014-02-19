@@ -1,25 +1,5 @@
 <?php
 
-/*
-  Plugin Name: Carousel（Original by Pan Pan Pan）
-  Version: 0.1
-  Plugin URI: https://github.com/gatespace/pan-pan-pan/
-  Description: スライドショー用のプラグイン (Original by Webnist, horike37)
-  Author: gatespace (Original by Webnist, horike37)
-  Author URI: http://gatespace.wordpress.com/
-  License: GPLv2 or later
- */
-
-/*
-if ( ! defined( 'PANPANPAN_PLUGIN_URL' ) )
-	define( 'PANPANPAN_PLUGIN_URL', plugins_url() . '/' . dirname( plugin_basename( __FILE__ ) ));
-
-if ( ! defined( 'PANPANPAN_PLUGIN_DIR' ) )
-	define( 'PANPANPAN_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ));
-
-*/
-
-//カスタム投稿タイプの作成
 add_action( 'init', 'gmoshowtime_create_initial_post_types' );
 function gmoshowtime_create_initial_post_types() {
 	$labels = array(
@@ -45,29 +25,6 @@ function gmoshowtime_create_initial_post_types() {
 	register_post_type( 'pan-pan-pan', $args );
 }
 
-//stylesheetの登録
-/*
-add_action( 'wp_print_styles', 'gmoshowtime_add_slide_style' );
-function gmoshowtime_add_slide_style() {
-	if ( !is_admin() && (is_home() || is_front_page() ) ) {
-		wp_enqueue_style( 'pan-pan-pan-style', PANPANPAN_PLUGIN_URL . '/css/style.css' );
-	}
-}
-*/
-
-//JavaScriptの登録
-/*
-add_action( 'wp_print_scripts', 'gmoshowtime_add_slide_js' );
-function gmoshowtime_add_slide_js() {
-	if ( !is_admin() && (is_home() || is_front_page() ) ) {
-		wp_enqueue_script( 'pan-pan-pan-flexslider', PANPANPAN_PLUGIN_URL . '/js/jquery.flexslider-min.js', array( 'jquery' ), '0.7.1.0', true );
-		wp_enqueue_script( 'pan-pan-pan-common', PANPANPAN_PLUGIN_URL . '/js/common.min.js', array( 'jquery' ), '0.7.1.0', true );
-	}
-}
-*/
-
-
-// add metabox
 add_action( 'admin_menu', 'gmoshowtime_add_meta_boxes' );
 function gmoshowtime_add_meta_boxes() {
 	add_meta_box( 'add-pan-pan-pan-link', __( 'Slide Links', 'pan-pan-pan' ), 'gmoshowtime_add_link_box', 'pan-pan-pan', 'normal', 'high' );
@@ -84,7 +41,6 @@ function gmoshowtime_add_link_box() {
 	echo '<p><label for="slide_blank"><input type="checkbox" name="slide_blank" id="slide_blank" value="1"' . checked( 1, $blank, false ) . '> ' . __( 'Open link in a new window/tab' ) . '</label></p>';
 }
 
-//データ登録
 add_action( 'save_post', 'gmoshowtime_link_save' );
 function gmoshowtime_link_save( $post_id ) {
 	$get_noncename = 'slide_link_noncename';
@@ -117,59 +73,6 @@ function gmoshowtime_link_save( $post_id ) {
 }
 
 
-//テーマで呼び出す関数
-/*
-function gmoshowtime_get_slide_post( $limit = -1 ) {
-	if ( is_home() || is_front_page() ) {
-		$output = '';
-		$posts_array = array( );
-		$args = array(
-			'post_type' => 'pan-pan-pan',
-			'posts_per_page' => $limit,
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
-		);
-		$posts_array = get_posts( $args );
-		if ( $posts_array ) {
-			$count = 0;
-			$output .= '<div class="flexslider">' . "\n";
-			$output .= '<ul  class="slides">' . "\n";
-			foreach ( $posts_array as $post ) {
-				setup_postdata( $post );
-				$count++;
-				$image = get_the_post_thumbnail( $post->ID, 'pan-pan-pan-slide' );
-				$slide_link = esc_url( get_post_meta( $post->ID, '_slide_link', true ) );
-				if ( (int) get_post_meta( $post->ID, '_slide_blank', true ) ) {
-					$blank = ' target="_blank"';
-				} else {
-					$blank = '';
-				}
-				$output .= '<li id="fragment-' . $count . '" class="ui-tabs-panel">';
-				$output .= '<a  style="line-height: 1.714285714; font-size: 1rem;" href="' . $slide_link . '"' . $blank . '>' . $image . '</a>';
-				$output .= '</li>' . "\n";
-			}
-			$count = 0;
-
-			$output .= '</ul>' . "\n";
-			$output .= '</div>' . "\n";
-			return $output;
-		}
-	}
-}
-
-function gmoshowtime_show_slide() {
-	return gmoshowtime_get_slide_post();
-}
-add_shortcode( 'mlp_show_slide', 'gmoshowtime_show_slide' );
-*/
-
-/*
- * 管理画面の一覧にサムネイルと順番を表示
- * 参照　http://www.warna.info/archives/1661/
- * 参照　http://www.webopixel.net/wordpress/167.html
- */
-
-// カラムを追加
 function gmoshowtime_manage_posts_columns( $posts_columns ) {
 	$new_columns = array();
 	foreach ( $posts_columns as $column_name => $column_display_name ) {
@@ -184,24 +87,20 @@ function gmoshowtime_manage_posts_columns( $posts_columns ) {
 
 }
 
-// 追加したカラムの中身
 function gmoshowtime_add_column($column_name, $post_id) {
 	$post_id = (int)$post_id;
 
-	// アイキャッチ
 	if ( $column_name == 'thumbnail') {
 		$thum = ( get_the_post_thumbnail( $post_id, array(50,50), 'thumbnail' ) ) ? get_the_post_thumbnail( $post_id, array(50,50), 'thumbnail' ) : __('None') ;
 		echo $thum;
 	}
 
-	// 順序
 	if ( $column_name == 'order' ) {
 		$post = get_post( $post_id );
 		echo $post->menu_order;
 	}
 }
 
-// 追加したカラムのスタイルシート
 function gmoshowtime_add_menu_order_column_styles() {
 	if ('pan-pan-pan' == get_post_type()) {
 		
@@ -214,12 +113,18 @@ function gmoshowtime_add_menu_order_column_styles() {
 	width: 7%;
 	text-align: center;
 }
+	        .post-php #message a {
+	            display: none;
+	        }
+	        .wp-list-table .post-title span.more-link {
+	            display: none;
+	        }
 </style>
 <?php
 	}
 }
 
-// 順序でソートできるように
+// sort by order
 function add_menu_order_sortable_column( $sortable_column ) {
 	$sortable_column['order'] = 'menu_order';
 	return $sortable_column;
@@ -229,88 +134,20 @@ add_filter( 'manage_pan-pan-pan_posts_columns', 'gmoshowtime_manage_posts_column
 add_action( 'admin_print_styles-edit.php', 'gmoshowtime_add_menu_order_column_styles' );
 add_filter( 'manage_edit-pan-pan-pan_sortable_columns', 'add_menu_order_sortable_column' );
 
-/*
-add_action( 'admin_menu', 'gmoshowtime_admin_menu' );
 
-function gmoshowtime_admin_menu() {
-	add_options_page( __( 'Carousel 設定' ), __( 'Carousel 設定' ), 'manage_options', 'pan_pan_pan', 'pan_pan_pan_options_page');
-}
-
-function pan_pan_pan_options_page() {
-?>
-<div class="wrap">
-<?php screen_icon(); ?>
-
-<h2><?php _e( 'Carousel 設定' ); ?></h2>
-
-<form action="options.php" method="post">
-<?php settings_fields( 'pan_pan_pan_options' ); ?>
-<?php do_settings_sections( 'pan_pan_pan' ); ?>
-
-<p class="submit"><input name="Submit" type="submit" value="<?php _e( 'save' ) ?>" class="button-primary" /></p>
-</form>
-
-</div>
-<?php
-}
-*/
-
-/*
-add_action( 'admin_init', 'pan_pan_pan_admin_init' );
-
-function pan_pan_pan_admin_init() {
-	register_setting( 'pan_pan_pan_options', 'pan_pan_pan_options', 'pan_pan_pan_options_validate' );
-
-	add_settings_section( 'pan_pan_pan_main', __( '設定' ), 'pan_pan_pan_section_text', 'pan_pan_pan' );
-
-	add_settings_field( 'pan_pan_pan_slideshowSpeed', __( 'slideshowSpeed' ), 'pan_pan_pan_setting_slideshowSpeed',
-		'pan_pan_pan', 'pan_pan_pan_main' );
-
-	add_settings_field( 'pan_pan_pan_animationSpeed', __( 'animationSpeed' ), 'pan_pan_pan_setting_animationSpeed',
-		'pan_pan_pan', 'pan_pan_pan_main' );
-
-}
-
-function pan_pan_pan_section_text() {
-}
-
-function pan_pan_pan_setting_slideshowSpeed() {
-	$options = get_option( 'pan_pan_pan_options' );
-	$options['slideshowSpeed'] = $options['slideshowSpeed'] != '' ? $options['slideshowSpeed'] : 7000;
-
-	echo '<input id="pan_pan_pan_slideshowSpeed" name="pan_pan_pan_options[slideshowSpeed]" size="40" type="text" value="' . esc_attr( $options['slideshowSpeed'] ) . '" /> second';
-}
-
-function pan_pan_pan_setting_animationSpeed() {
-	$options = get_option( 'pan_pan_pan_options' );
-	$options['animationSpeed'] = $options['animationSpeed'] != '' ? $options['animationSpeed'] : 600;
-
-	echo '<input id="pan_pan_pan_animationSpeed" name="pan_pan_pan_options[animationSpeed]" size="40" type="text" value="' . esc_attr( $options['animationSpeed'] ) . '" /> second';
-}
-
-function pan_pan_pan_options_validate( $input ) {
-	$newinput['slideshowSpeed'] = absint( $input['slideshowSpeed'] );
-	$newinput['animationSpeed'] = absint( $input['animationSpeed'] );
-
-	return $newinput;
-}
-
-add_action( 'wp_footer', 'gmoshowtime_wp_footer' );
-function gmoshowtime_wp_footer(){
-	if ( is_home() || is_front_page() ) {
-		$options = get_option( 'pan_pan_pan_options' );
-		$slideshowSpeed = $options['slideshowSpeed'] != '' ? $options['slideshowSpeed'] : 7000;
-		$animationSpeed = $options['animationSpeed'] != '' ? $options['animationSpeed'] : 600;
-?>
-	<script type="text/javascript">
-		var slide_conf = {
-			slideshowSpeed : <?php echo $slideshowSpeed; ?>,
-			animationSpeed : <?php echo $animationSpeed; ?>
+function cpt_public_false() {
+	if ( get_post_type() == 'pan-pan-pan' ) {
+		?>
+		<style type="text/css">
+		.post-php #message a {
+			display: none;
 		}
-	</script>
-<?php
+		.wp-list-table .post-title span.more-link {
+			display: none;
+		}
+		</style>
+		<?php
 	}
 }
+add_action( 'admin_head', 'cpt_public_false' );
 
-*/
-?>
