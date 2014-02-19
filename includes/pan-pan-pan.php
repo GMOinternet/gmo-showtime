@@ -10,11 +10,14 @@
   License: GPLv2 or later
  */
 
+/*
 if ( ! defined( 'PANPANPAN_PLUGIN_URL' ) )
 	define( 'PANPANPAN_PLUGIN_URL', plugins_url() . '/' . dirname( plugin_basename( __FILE__ ) ));
 
 if ( ! defined( 'PANPANPAN_PLUGIN_DIR' ) )
 	define( 'PANPANPAN_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ));
+
+*/
 
 //カスタム投稿タイプの作成
 add_action( 'init', 'gmoshowtime_create_initial_post_types' );
@@ -43,14 +46,17 @@ function gmoshowtime_create_initial_post_types() {
 }
 
 //stylesheetの登録
+/*
 add_action( 'wp_print_styles', 'gmoshowtime_add_slide_style' );
 function gmoshowtime_add_slide_style() {
 	if ( !is_admin() && (is_home() || is_front_page() ) ) {
 		wp_enqueue_style( 'pan-pan-pan-style', PANPANPAN_PLUGIN_URL . '/css/style.css' );
 	}
 }
+*/
 
 //JavaScriptの登録
+/*
 add_action( 'wp_print_scripts', 'gmoshowtime_add_slide_js' );
 function gmoshowtime_add_slide_js() {
 	if ( !is_admin() && (is_home() || is_front_page() ) ) {
@@ -58,13 +64,10 @@ function gmoshowtime_add_slide_js() {
 		wp_enqueue_script( 'pan-pan-pan-common', PANPANPAN_PLUGIN_URL . '/js/common.min.js', array( 'jquery' ), '0.7.1.0', true );
 	}
 }
+*/
 
 
-//画像のサイズ指定
-add_image_size( 'pan-pan-pan-slide', 768, 384, true );
-
-
-//メタボックスの追加
+// add metabox
 add_action( 'admin_menu', 'gmoshowtime_add_meta_boxes' );
 function gmoshowtime_add_meta_boxes() {
 	add_meta_box( 'add-pan-pan-pan-link', __( 'Slide Links', 'pan-pan-pan' ), 'gmoshowtime_add_link_box', 'pan-pan-pan', 'normal', 'high' );
@@ -82,8 +85,8 @@ function gmoshowtime_add_link_box() {
 }
 
 //データ登録
-add_action( 'save_post', 'pan_pan_pan_link_save' );
-function pan_pan_pan_link_save( $post_id ) {
+add_action( 'save_post', 'gmoshowtime_link_save' );
+function gmoshowtime_link_save( $post_id ) {
 	$get_noncename = 'slide_link_noncename';
 	$key1 = '_slide_link';
 	$post1 = 'slide_link';
@@ -115,6 +118,7 @@ function pan_pan_pan_link_save( $post_id ) {
 
 
 //テーマで呼び出す関数
+/*
 function gmoshowtime_get_slide_post( $limit = -1 ) {
 	if ( is_home() || is_front_page() ) {
 		$output = '';
@@ -157,6 +161,7 @@ function gmoshowtime_show_slide() {
 	return gmoshowtime_get_slide_post();
 }
 add_shortcode( 'mlp_show_slide', 'gmoshowtime_show_slide' );
+*/
 
 /*
  * 管理画面の一覧にサムネイルと順番を表示
@@ -224,6 +229,7 @@ add_filter( 'manage_pan-pan-pan_posts_columns', 'gmoshowtime_manage_posts_column
 add_action( 'admin_print_styles-edit.php', 'gmoshowtime_add_menu_order_column_styles' );
 add_filter( 'manage_edit-pan-pan-pan_sortable_columns', 'add_menu_order_sortable_column' );
 
+/*
 add_action( 'admin_menu', 'gmoshowtime_admin_menu' );
 
 function gmoshowtime_admin_menu() {
@@ -247,7 +253,9 @@ function pan_pan_pan_options_page() {
 </div>
 <?php
 }
+*/
 
+/*
 add_action( 'admin_init', 'pan_pan_pan_admin_init' );
 
 function pan_pan_pan_admin_init() {
@@ -304,4 +312,5 @@ function gmoshowtime_wp_footer(){
 	}
 }
 
+*/
 ?>

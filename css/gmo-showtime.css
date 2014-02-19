@@ -1,388 +1,306 @@
-.showtime {
-  max-width: 100%;
-  position: relative; }
-  .showtime .slide {
-    max-width: 100%;
-    width: auto; }
-    .showtime .slide .top-left {
-      position: relative; }
-      .showtime .slide .top-left .nivo-caption {
-        position: absolute;
-        top: 60px;
-        left: 50px;
-        width: 60%;
-        /* 		height: $h; */
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        margin: 0; }
-        .showtime .slide .top-left .nivo-caption h2 {
-          line-height: 1.4;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          font-size: 20px;
-          margin-bottom: 10px; }
-          .showtime .slide .top-left .nivo-caption h2 a {
-            color: #ffffff; }
-        .showtime .slide .top-left .nivo-caption .slide-content {
-          color: #ffffff;
-          font-size: 14px;
-          font-weight: normal;
-          line-height: 1.4;
-          height: 4.2em;
-          overflow: hidden; }
-      .showtime .slide .top-left .slide-image a {
-        display: block;
-        height: 600px;
-        overflow: hidden;
-        position: relative; }
-        .showtime .slide .top-left .slide-image a img {
-          display: block;
-          width: 100%;
-          height: auto;
-          float: left;
-          position: absolute; }
-    .showtime .slide .top-right {
-      position: relative; }
-      .showtime .slide .top-right .nivo-caption {
-        position: absolute;
-        top: 60px;
-        right: 50px;
-        width: 60%;
-        /* 		height: $h; */
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        margin: 0; }
-        .showtime .slide .top-right .nivo-caption h2 {
-          line-height: 1.4;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          font-size: 20px;
-          margin-bottom: 10px; }
-          .showtime .slide .top-right .nivo-caption h2 a {
-            color: #ffffff; }
-        .showtime .slide .top-right .nivo-caption .slide-content {
-          color: #ffffff;
-          font-size: 14px;
-          font-weight: normal;
-          line-height: 1.4;
-          height: 4.2em;
-          overflow: hidden; }
-      .showtime .slide .top-right .slide-image a {
-        display: block;
-        height: 600px;
-        overflow: hidden;
-        position: relative; }
-        .showtime .slide .top-right .slide-image a img {
-          display: block;
-          width: 100%;
-          height: auto;
-          float: left;
-          position: absolute; }
-    .showtime .slide .bottom-left {
-      position: relative; }
-      .showtime .slide .bottom-left .nivo-caption {
-        position: absolute;
-        bottom: 60px;
-        left: 50px;
-        width: 60%;
-        /* 		height: $h; */
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        margin: 0; }
-        .showtime .slide .bottom-left .nivo-caption h2 {
-          line-height: 1.4;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          font-size: 20px;
-          margin-bottom: 10px; }
-          .showtime .slide .bottom-left .nivo-caption h2 a {
-            color: #ffffff; }
-        .showtime .slide .bottom-left .nivo-caption .slide-content {
-          color: #ffffff;
-          font-size: 14px;
-          font-weight: normal;
-          line-height: 1.4;
-          height: 4.2em;
-          overflow: hidden; }
-      .showtime .slide .bottom-left .slide-image a {
-        display: block;
-        height: 600px;
-        overflow: hidden;
-        position: relative; }
-        .showtime .slide .bottom-left .slide-image a img {
-          display: block;
-          width: 100%;
-          height: auto;
-          float: left;
-          position: absolute; }
-    .showtime .slide .bottom-right {
-      position: relative; }
-      .showtime .slide .bottom-right .nivo-caption {
-        position: absolute;
-        bottom: 60px;
-        right: 50px;
-        width: 60%;
-        /* 		height: $h; */
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        margin: 0; }
-        .showtime .slide .bottom-right .nivo-caption h2 {
-          line-height: 1.4;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          font-size: 20px;
-          margin-bottom: 10px; }
-          .showtime .slide .bottom-right .nivo-caption h2 a {
-            color: #ffffff; }
-        .showtime .slide .bottom-right .nivo-caption .slide-content {
-          color: #ffffff;
-          font-size: 14px;
-          font-weight: normal;
-          line-height: 1.4;
-          height: 4.2em;
-          overflow: hidden; }
-      .showtime .slide .bottom-right .slide-image a {
-        display: block;
-        height: 600px;
-        overflow: hidden;
-        position: relative; }
-        .showtime .slide .bottom-right .slide-image a img {
-          display: block;
-          width: 100%;
-          height: auto;
-          float: left;
-          position: absolute; }
-    .showtime .slide .left-photo-right {
-      position: relative;
-      padding: 30px 0; }
-      .showtime .slide .left-photo-right .nivo-caption {
-        position: absolute;
-        width: 100%;
-        /* 		height: $h; */
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        margin: 0; }
-        .showtime .slide .left-photo-right .nivo-caption h2 {
-          line-height: 1.4;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          font-size: 20px;
-          margin-bottom: 10px; }
-          .showtime .slide .left-photo-right .nivo-caption h2 a {
-            color: #ffffff; }
-        .showtime .slide .left-photo-right .nivo-caption .slide-content {
-          color: #ffffff;
-          font-size: 14px;
-          font-weight: normal;
-          line-height: 1.4;
-          height: 4.2em;
-          overflow: hidden; }
-      .showtime .slide .left-photo-right .slide-image {
-        margin-top: -30px; }
-        .showtime .slide .left-photo-right .slide-image a {
-          display: block;
-          height: 200px;
-          overflow: hidden;
-          position: relative; }
-          .showtime .slide .left-photo-right .slide-image a img {
-            display: block;
-            width: 100%;
-            height: auto;
-            float: left;
-            position: absolute; }
-      .showtime .slide .left-photo-right .slide-image {
-        width: 50%;
-        float: left;
-        position: relative;
-        z-index: 10;
-        margin-left: 70px; }
-      .showtime .slide .left-photo-right .slide-text {
-        background-color: #0058AE;
-        height: 140px;
-        padding: 0; }
-        .showtime .slide .left-photo-right .slide-text h2 {
-          margin-top: 10px;
-          white-space: normal;
-          height: auto;
-          margin-left: 70%;
-          padding-right: 50px; }
-        .showtime .slide .left-photo-right .slide-text .slide-content {
-          margin-left: 70%;
-          padding-right: 50px; }
-    .showtime .slide .right-photo-left {
-      position: relative;
-      padding: 30px 0; }
-      .showtime .slide .right-photo-left .nivo-caption {
-        position: absolute;
-        width: 100%;
-        /* 		height: $h; */
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        margin: 0; }
-        .showtime .slide .right-photo-left .nivo-caption h2 {
-          line-height: 1.4;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          font-size: 20px;
-          margin-bottom: 10px; }
-          .showtime .slide .right-photo-left .nivo-caption h2 a {
-            color: #ffffff; }
-        .showtime .slide .right-photo-left .nivo-caption .slide-content {
-          color: #ffffff;
-          font-size: 14px;
-          font-weight: normal;
-          line-height: 1.4;
-          height: 4.2em;
-          overflow: hidden; }
-      .showtime .slide .right-photo-left .slide-image {
-        margin-top: -30px; }
-        .showtime .slide .right-photo-left .slide-image a {
-          display: block;
-          height: 200px;
-          overflow: hidden;
-          position: relative; }
-          .showtime .slide .right-photo-left .slide-image a img {
-            display: block;
-            width: 100%;
-            height: auto;
-            float: left;
-            position: absolute; }
-      .showtime .slide .right-photo-left .slide-image {
-        width: 50%;
-        float: right;
-        position: relative;
-        z-index: 10;
-        margin-right: 70px; }
-      .showtime .slide .right-photo-left .slide-text {
-        background-color: #0058AE;
-        height: 140px;
-        padding: 0; }
-        .showtime .slide .right-photo-left .slide-text h2 {
-          margin-top: 10px;
-          white-space: normal;
-          height: auto;
-          margin-right: 70%;
-          padding-left: 50px; }
-        .showtime .slide .right-photo-left .slide-text .slide-content {
-          margin-right: 70%;
-          padding-left: 50px; }
-  .showtime .owl-buttons {
-    width: 100%;
-    text-align: left;
-    position: absolute;
-    top: 50%;
-    line-height: 1; }
-    .showtime .owl-buttons div {
-      position: absolute;
-      top: -36px; }
-    .showtime .owl-buttons .genericon {
-      font-size: 36px;
-      height: 36px;
-      width: 36px; }
-
-.owl-theme .owl-controls .owl-buttons div {
-  opacity: 0.6;
+@charset "UTF-8";
+.theme-default .nivoSlider {
+  overflow: visible;
+  margin-bottom: 0;
   background-color: transparent;
-  padding: 0;
-  margin: 0; }
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none; }
 
-.owl-theme .owl-controls .owl-buttons .owl-next {
-  right: 0; }
+.theme-default .nivo-directionNav a {
+  width: 17px;
+  height: 34px;
+  opacity: 1; }
+
+.theme-default a.nivo-nextNav {
+  background-position: -17px 0;
+  right: 40px; }
+
+.theme-default a.nivo-prevNav {
+  left: 40px; }
+
+.slider-wrapper {
+  background-color: #0058AE; }
+
+.slider-wrapper:after {
+  clear: both;
+  content: "";
+  display: table; }
+
+.slider-box {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative; }
+
+.theme-default {
+  position: relative; }
+  .theme-default .top-left .nivo-caption {
+    position: absolute;
+    top: 25px;
+    left: 97px;
+    width: 63%;
+    height: 40%;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Open Sans', ​sans-serif; }
+    .theme-default .top-left .nivo-caption h2 {
+      color: #ffffff;
+      font-size: 40px;
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 2.8em;
+      margin-bottom: 10px; }
+      .theme-default .top-left .nivo-caption h2 a {
+        color: #ffffff; }
+    .theme-default .top-left .nivo-caption .content {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.4;
+      height: 4.2em;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+  .theme-default .top-right .nivo-caption {
+    position: absolute;
+    top: 25px;
+    right: 97px;
+    width: 63%;
+    height: 40%;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Open Sans', ​sans-serif; }
+    .theme-default .top-right .nivo-caption h2 {
+      color: #ffffff;
+      font-size: 40px;
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 2.8em;
+      margin-bottom: 10px; }
+      .theme-default .top-right .nivo-caption h2 a {
+        color: #ffffff; }
+    .theme-default .top-right .nivo-caption .content {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.4;
+      height: 4.2em;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+  .theme-default .bottom-left .nivo-caption {
+    position: absolute;
+    bottom: 25px;
+    left: 97px;
+    width: 63%;
+    height: 40%;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Open Sans', ​sans-serif; }
+    .theme-default .bottom-left .nivo-caption h2 {
+      color: #ffffff;
+      font-size: 40px;
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 2.8em;
+      margin-bottom: 10px; }
+      .theme-default .bottom-left .nivo-caption h2 a {
+        color: #ffffff; }
+    .theme-default .bottom-left .nivo-caption .content {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.4;
+      height: 4.2em;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+  .theme-default .bottom-right .nivo-caption {
+    position: absolute;
+    bottom: 25px;
+    right: 97px;
+    width: 63%;
+    height: 40%;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Open Sans', ​sans-serif; }
+    .theme-default .bottom-right .nivo-caption h2 {
+      color: #ffffff;
+      font-size: 40px;
+      line-height: 1.4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 2.8em;
+      margin-bottom: 10px; }
+      .theme-default .bottom-right .nivo-caption h2 a {
+        color: #ffffff; }
+    .theme-default .bottom-right .nivo-caption .content {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.4;
+      height: 4.2em;
+      text-overflow: ellipsis;
+      overflow: hidden; }
+  .theme-default .left-photo-right {
+    width: 768px !important;
+    height: 384px;
+    margin-top: -30px;
+    margin-bottom: -30px;
+    float: right;
+    margin-right: 57px; }
+    .theme-default .left-photo-right .nivo-caption {
+      position: absolute;
+      width: 63%;
+      height: auto;
+      padding: 25px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-sizing: border-box;
+      margin: 0;
+      font-family: 'Open Sans', ​sans-serif; }
+      .theme-default .left-photo-right .nivo-caption h2 {
+        color: #ffffff;
+        font-size: 40px;
+        line-height: 1.4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 2.8em;
+        margin-bottom: 10px; }
+        .theme-default .left-photo-right .nivo-caption h2 a {
+          color: #ffffff; }
+      .theme-default .left-photo-right .nivo-caption .content {
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.4;
+        height: 4.2em;
+        text-overflow: ellipsis;
+        overflow: hidden; }
+    .theme-default .left-photo-right a.nivo-prevNav {
+      left: -375px; }
+    .theme-default .left-photo-right a.nivo-nextNav {
+      right: -57px; }
+    .theme-default .left-photo-right .nivo-caption {
+      background-color: transparent;
+      padding: 0;
+      position: absolute;
+      top: 40px;
+      width: 278px;
+      left: -318px; }
+      .theme-default .left-photo-right .nivo-caption h2 {
+        max-height: 5.6em; }
+  .theme-default .right-photo-left {
+    width: 768px !important;
+    height: 384px;
+    margin-top: -30px;
+    margin-bottom: -30px;
+    float: left;
+    margin-left: 57px; }
+    .theme-default .right-photo-left .nivo-caption {
+      position: absolute;
+      width: 63%;
+      height: auto;
+      padding: 25px;
+      background-color: rgba(0, 0, 0, 0.5);
+      box-sizing: border-box;
+      margin: 0;
+      font-family: 'Open Sans', ​sans-serif; }
+      .theme-default .right-photo-left .nivo-caption h2 {
+        color: #ffffff;
+        font-size: 40px;
+        line-height: 1.4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 2.8em;
+        margin-bottom: 10px; }
+        .theme-default .right-photo-left .nivo-caption h2 a {
+          color: #ffffff; }
+      .theme-default .right-photo-left .nivo-caption .content {
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.4;
+        height: 4.2em;
+        text-overflow: ellipsis;
+        overflow: hidden; }
+    .theme-default .right-photo-left a.nivo-prevNav {
+      left: -57px; }
+    .theme-default .right-photo-left a.nivo-nextNav {
+      right: -375px; }
+    .theme-default .right-photo-left .nivo-caption {
+      background-color: transparent;
+      padding: 0;
+      position: absolute;
+      top: 40px;
+      width: 278px;
+      right: -318px; }
+      .theme-default .right-photo-left .nivo-caption h2 {
+        max-height: 5.6em; }
 
 @media screen and (max-width: 600px) {
-  .owl-wrapper-outer {
-    background-color: #0058AE; }
-
-  .showtime .slide {
+  .slider-box {
+    width: 100%;
     padding: 30px 25px; }
-    .showtime .slide .top-left,
-    .showtime .slide .top-right,
-    .showtime .slide .bottom-left,
-    .showtime .slide .bottom-right,
-    .showtime .slide .left-photo-right,
-    .showtime .slide .right-photo-left {
-      padding: 0; }
-      .showtime .slide .top-left .slide-image,
-      .showtime .slide .top-right .slide-image,
-      .showtime .slide .bottom-left .slide-image,
-      .showtime .slide .bottom-right .slide-image,
-      .showtime .slide .left-photo-right .slide-image,
-      .showtime .slide .right-photo-left .slide-image {
-        float: none;
-        width: 100%;
-        margin: 0; }
-        .showtime .slide .top-left .slide-image a,
-        .showtime .slide .top-right .slide-image a,
-        .showtime .slide .bottom-left .slide-image a,
-        .showtime .slide .bottom-right .slide-image a,
-        .showtime .slide .left-photo-right .slide-image a,
-        .showtime .slide .right-photo-left .slide-image a {
-          height: 160px !important;
-          width: 100%; }
-          .showtime .slide .top-left .slide-image a img,
-          .showtime .slide .top-right .slide-image a img,
-          .showtime .slide .bottom-left .slide-image a img,
-          .showtime .slide .bottom-right .slide-image a img,
-          .showtime .slide .left-photo-right .slide-image a img,
-          .showtime .slide .right-photo-left .slide-image a img {
-            float: none;
-            position: relative; }
-      .showtime .slide .top-left .slide-text,
-      .showtime .slide .top-right .slide-text,
-      .showtime .slide .bottom-left .slide-text,
-      .showtime .slide .bottom-right .slide-text,
-      .showtime .slide .left-photo-right .slide-text,
-      .showtime .slide .right-photo-left .slide-text {
-        margin-top: 20px;
+
+  .theme-default .nivo-directionNav a {
+    width: 8px;
+    height: 17px;
+    background-size: 17px 17px; }
+
+  .theme-default a.nivo-nextNav {
+    background-position: -8px 0;
+    right: -15px; }
+
+  .theme-default a.nivo-prevNav {
+    left: -15px; }
+
+  .theme-default .top-left,
+  .theme-default .top-right,
+  .theme-default .bottom-left,
+  .theme-default .bottom-right,
+  .theme-default .left-photo-right,
+  .theme-default .right-photo-left {
+    padding: 0;
+    width: 100%;
+    height: auto; }
+    .theme-default .top-left .nivo-caption,
+    .theme-default .top-right .nivo-caption,
+    .theme-default .bottom-left .nivo-caption,
+    .theme-default .bottom-right .nivo-caption,
+    .theme-default .left-photo-right .nivo-caption,
+    .theme-default .right-photo-left .nivo-caption {
+      position: relative;
+      left: 0;
+      top: 0;
+      margin-top: 20px;
+      padding: 0;
+      width: 100%;
+      height: auto;
+      background-color: transparent; }
+      .theme-default .top-left .nivo-caption h2,
+      .theme-default .top-right .nivo-caption h2,
+      .theme-default .bottom-left .nivo-caption h2,
+      .theme-default .bottom-right .nivo-caption h2,
+      .theme-default .left-photo-right .nivo-caption h2,
+      .theme-default .right-photo-left .nivo-caption h2 {
+        margin: 0;
         padding: 0;
-        position: relative;
-        width: 100%;
-        height: auto;
-        left: 0;
-        top: 0;
-        background-color: transparent; }
-        .showtime .slide .top-left .slide-text h2,
-        .showtime .slide .top-right .slide-text h2,
-        .showtime .slide .bottom-left .slide-text h2,
-        .showtime .slide .bottom-right .slide-text h2,
-        .showtime .slide .left-photo-right .slide-text h2,
-        .showtime .slide .right-photo-left .slide-text h2 {
-          margin: 0;
-          padding: 0;
-          font-size: 16px;
-          height: 1.4em;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap; }
-        .showtime .slide .top-left .slide-text .slide-content,
-        .showtime .slide .top-right .slide-text .slide-content,
-        .showtime .slide .bottom-left .slide-text .slide-content,
-        .showtime .slide .bottom-right .slide-text .slide-content,
-        .showtime .slide .left-photo-right .slide-text .slide-content,
-        .showtime .slide .right-photo-left .slide-text .slide-content {
-          margin: 1em 0 0 0;
-          padding: 0;
-          font-size: 12px;
-          height: 1.4em;
-          text-overflow: ellipsis;
-          white-space: nowrap; }
-  .showtime .owl-buttons div {
-    width: 25px; }
-  .showtime .owl-buttons .genericon {
-    font-size: 14px;
-    height: 14px;
-    width: 14px; }
-  .showtime .owl-buttons .owl-next span {
-    margin-left: 9px; } }
+        font-size: 16px;
+        height: 1.4em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .theme-default .top-left .nivo-caption .content,
+      .theme-default .top-right .nivo-caption .content,
+      .theme-default .bottom-left .nivo-caption .content,
+      .theme-default .bottom-right .nivo-caption .content,
+      .theme-default .left-photo-right .nivo-caption .content,
+      .theme-default .right-photo-left .nivo-caption .content {
+        margin: 1em 0 0 0;
+        padding: 0;
+        font-size: 12px;
+        height: 1.4em;
+        text-overflow: ellipsis;
+        white-space: nowrap; } }

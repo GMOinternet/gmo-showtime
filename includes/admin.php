@@ -160,13 +160,13 @@ foreach ($this->get_transitions() as $tran) {
 &lt;?php showtime(); ?&gt;
 &lt;?php endif; ?&gt;</pre>
 
-<h4>2. <?php _e('Select `Featured Image` and check `Showtime` in your posts or pages admin.', 'gmoshowtime'); ?></h4>
+<!-- <h4>2. <?php _e('Select `Featured Image` and check `Showtime` in your posts or pages admin.', 'gmoshowtime'); ?></h4>
 
 <p><img src="<?php echo GMOSHOWTIME_URL ?>/img/help1.png" alt=""></p>
-
+-->
 </div><!-- #beta -->
 
 <br clear="all" />
-<p style="text-align: right;">Carousel Powered by <a href="http://owlgraphic.com/owlcarousel/">Owl Carousel</a></p>
+<!-- <p style="text-align: right;">Carousel Powered by <a href="http://owlgraphic.com/owlcarousel/">Owl Carousel</a></p> -->
 
 </div><!-- #gmoshowtime -->
