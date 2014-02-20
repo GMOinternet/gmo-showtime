@@ -89,7 +89,6 @@ private $transitions = array(
 );
 private $default_image_size = 'gmoshowtime-image';
 private $default_transition = 'fade';
-private $slide_pages = 4;
 
 function __construct()
 {
@@ -113,7 +112,8 @@ public function plugins_loaded()
         false,
         dirname(plugin_basename(__FILE__)).$this->langs
     );
-	add_image_size( 'gmoshowtime-image', 1200, 600, true);
+	add_image_size( 'gmoshowtime-image-full',  1200, 580, true );
+	add_image_size( 'gmoshowtime-image-medium', 768, 384, true );
 
     add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
     add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
@@ -154,11 +154,15 @@ public function get_slider_contents($atts = array())
         'images'      => array(),
     ), $atts ) );
 
+	$class = get_option('gmoshowtime-css-class', $this->get_default_css_class());
+	if ( $class == "left-photo-right" || $class == "right-photo-left" ) {
+		$image_size = 'gmoshowtime-image-medium';
+	}
     if (!count($images)) {
         $args = array(
             "post_type"             => "pan-pan-pan",
             "nopaging"              => 0,
-            "posts_per_page"        => $this->slide_pages,
+            "posts_per_page"        => get_option('gmoshowtime-max-pages', 4);,
             "post_status"           => 'publish',
             "orderby"               => 'menu_order',
             "order"                 => 'ASC',
@@ -183,10 +187,9 @@ public function get_slider_contents($atts = array())
     $html = '';
     $html .= "\n<!-- Start GMO Showtime-->\n";
     $html .= "<div class=\"slider-wrapper theme-default\">\n";
-    $html .= "<div class=\"ribbon\"></div>";
     $html .= sprintf(
-        '<div class="showtime nivoSlider %s" data-columns="%d" data-transition="%s" data-show_title="%d">',
-        esc_attr(get_option('gmoshowtime-css-class', $this->get_default_css_class())),
+        '<div class="slider-box"><div class="showtime nivoSlider %s" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        esc_attr( $class ),
         $columns,
         $transition,
         $show_title
@@ -198,6 +201,14 @@ public function get_slider_contents($atts = array())
             continue;
         }
 
+		if ( $class == "left-photo-right" || $class == "right-photo-left" ) {
+			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_lr_length" , 54), "...", "UTF-8");
+			$img['content'] = mb_strimwidth($img['content'], 0, apply_filters("gmoshowtime_content_lr_length", 110), "...", "UTF-8");
+		} else {
+			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_ov_length" , 84), "...", "UTF-8");
+			$img['content'] = mb_strimwidth($img['content'], 0, apply_filters("gmoshowtime_content_ov_length", 300), "...", "UTF-8");
+		}
+
         $slide = $template;
         $slide = str_replace("%title%", $img['title'], $slide);
         $slide = str_replace("%content%", esc_html($img['content']), $slide);
@@ -206,7 +217,7 @@ public function get_slider_contents($atts = array())
         $html .= $slide;
     }
 
-    $html .= '</div>';
+    $html .= '</div></div>';
     $html .= '</div>';
     $html .= "\n<!-- End GMO Showtime-->\n";
 
@@ -277,17 +288,17 @@ public function options_page()
 public function admin_enqueue_scripts()
 {
     if (isset($_GET['page']) && $_GET['page'] === 'gmoshowtime') {
-	    wp_enqueue_style(
-	        'genericons',
-	        plugins_url('genericons/genericons.min.css', __FILE__),
-	        array(),
-	        $this->version,
-	        'all'
-	    );
+
+		wp_enqueue_style(
+			'google-fonts',
+			'http://fonts.googleapis.com/css?family=Open+Sans',
+			array(),
+			$this->version
+		);
         wp_enqueue_style(
             'admin-gmoshowtime-style',
             plugins_url('css/admin-gmo-showtime.min.css', __FILE__),
-            array( 'genericons' ),
+			array( 'google-fonts' ),
             $this->version,
             'all'
         );
@@ -295,7 +306,7 @@ public function admin_enqueue_scripts()
         wp_enqueue_style(
             'gmoshowtime-style',
             plugins_url('css/gmo-showtime.min.css', __FILE__),
-            array( 'genericons' ),
+            array( 'admin-gmoshowtime-style' ),
             $this->version,
             'all'
         );
@@ -317,17 +328,17 @@ public function admin_print_footer_scripts()
 
 public function wp_enqueue_scripts()
 {
-    wp_enqueue_style(
-        'genericons',
-        plugins_url('genericons/genericons.min.css', __FILE__),
-        array(),
-        $this->version,
-        'all'
-    );
+	wp_enqueue_style(
+		'google-fonts',
+		'http://fonts.googleapis.com/css?family=Open+Sans',
+		array(),
+		$this->version
+	);
+
     wp_enqueue_style(
         'gmo-showtime-style',
         plugins_url('css/gmo-showtime.min.css', __FILE__),
-        array('genericons'),
+        array( 'google-fonts' ),
         $this->version,
         'all'
     );
@@ -371,7 +382,7 @@ private function get_default_image_size()
 
 private function get_slide_template()
 {
-    $template = "<a href=\"%link%\"><img src=\"%image%\" title=\"%title%\" data-content=\"%content%\"></a>";
+    $template = "<a href=\"%link%\" class=\"slide\"><img src=\"%image%\" title=\"%title%\" data-content=\"%content%\"></a>";
     return apply_filters("gmoshowtime_slide_template", $template);
 }
 
@@ -408,9 +419,8 @@ private function get_default_columns()
 private function get_preview_contents()
 {
     echo "<div class=\"slider-wrapper theme-default\">\n";
-    echo "<div class=\"ribbon\"></div>";
     printf(
-        '<div class="showtime %s" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        '<div class="slider-box"><div class="showtime %s" data-columns="%d" data-transition="%s" data-show_title="%d">',
         esc_attr(get_option('gmoshowtime-css-class', $this->get_default_css_class())),
         $this->get_default_columns(),
         get_option('gmoshowtime-transition', $this->get_default_transition()),
@@ -438,7 +448,7 @@ private function get_preview_contents()
         echo $html;
     }
 
-    echo '</div>';
+    echo '</div></div>';
     echo '</div>';
 }
 

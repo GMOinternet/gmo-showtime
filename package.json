@@ -9,7 +9,7 @@
     "url": "https://digitalcube.jp/"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "grunt": "~0.4.2",
     "grunt-contrib-uglify": "~0.1.1",
     "grunt-contrib-cssmin": "~0.6.0",
     "grunt-contrib-jshint": "~0.1.1",

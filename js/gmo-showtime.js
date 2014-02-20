@@ -45,6 +45,7 @@ $('.showtime').each(function(){
 
         $('.nivo-caption:first', slide).html('<h2>'+title+'</h2><div class="content">'+content+'</div>');
     }
+});
 
 /*
     var showtime = $(this);
@@ -85,19 +86,6 @@ $('.showtime').each(function(){
 
     showtime.owlCarousel(args);
 */
-});
 
-// load
-$(".slide a img").on("load",function(){
-	var t;
-	var th = $(this).height();
-	var ph = $(this).parent().height();
-	if (th > ph) {
-		t = -((th - ph) / 2);
-	} else {
-		t = (ph - th) / 2;
-	}
-	$(this).css("top", t+"px");
-});
 
 })(jQuery);
