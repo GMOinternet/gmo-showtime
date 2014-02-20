@@ -58,6 +58,20 @@ foreach ($this->get_transitions() as $tran) {
 
 <table class="form-table">
     <tr>
+        <th scope="row">Max Pages</th>
+        <td>
+            <select name="max-pages">
+            <?php for ($i = 1; $i < 5; $i++): ?>
+                <?php if (intval(get_option('gmoshowtime-max-pages', 4)) === $i): ?>
+                <option value="<?php echo $i; ?>" selected><?php echo $i; ?></option>
+                <?php else: ?>
+                <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+                <?php endif; ?>
+            <?php endfor; ?>
+            </select>
+        </td>
+    </tr>
+    <tr>
         <th scope="row">Page types</th>
         <td>
             <ul>
@@ -150,8 +164,9 @@ foreach ($this->get_transitions() as $tran) {
 </form>
 
 </div><!-- #alpha -->
-<div id="beta">
 
+<!--
+<div id="beta">
 <h3 id="setup-help" style="margin-top: 0;"><?php _e('How to Setup', 'gmoshowtime'); ?></h3>
 
 <h4>1. <?php _e('Place the code in your theme like below.', 'gmoshowtime'); ?></h4>
@@ -164,7 +179,8 @@ foreach ($this->get_transitions() as $tran) {
 
 <p><img src="<?php echo GMOSHOWTIME_URL ?>/img/help1.png" alt=""></p>
 
-</div><!-- #beta -->
+</div>--><!-- #beta -->
+
 
 <br clear="all" />
 <p style="text-align: right;">Carousel Powered by <a href="http://owlgraphic.com/owlcarousel/">Owl Carousel</a></p>

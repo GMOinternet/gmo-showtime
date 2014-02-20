@@ -222,6 +222,11 @@ public function admin_init()
             } else {
                 update_option('gmoshowtime-transition', $this->get_default_transition());
             }
+            if (isset($_POST['max-pages']) && intval($_POST['max-pages'])) {
+                update_option('gmoshowtime-max-pages', $_POST['max-pages']);
+            } else {
+                update_option('gmoshowtime-max-pages', 4);
+            }
             if (isset($_POST['page-types']) && is_array($_POST['page-types'])) {
                 update_option('gmoshowtime-page-types', $_POST['page-types']);
             } else {
