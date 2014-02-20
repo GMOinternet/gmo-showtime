@@ -51,7 +51,11 @@
 		display: table;
 	}
 
-	.nivo-caption {
+	.showtime {
+		width: 1200px !important;
+		height: 580px;
+	}
+		.nivo-caption {
 		position: absolute;
 		@if $t > 0 { top: $t; }
 		@if $b > 0 { bottom: $b; }
@@ -200,8 +204,12 @@ $brake-point: 600px !default;
 		.left-photo-right,
 		.right-photo-left {
 			padding: 0;
-			width: 100%;
-			height: auto;
+			//width: 100%;
+			//height: auto;
+			.showtime {
+				width: 100% !important;
+				height: auto;
+			}
 
 			.nivo-caption {
 				position: relative;

@@ -43,6 +43,9 @@
       clear: both;
       content: "";
       display: table; }
+    .theme-default .top-left .showtime {
+      width: 1200px !important;
+      height: 580px; }
     .theme-default .top-left .nivo-caption {
       position: absolute;
       top: 25px;
@@ -79,6 +82,9 @@
       clear: both;
       content: "";
       display: table; }
+    .theme-default .top-right .showtime {
+      width: 1200px !important;
+      height: 580px; }
     .theme-default .top-right .nivo-caption {
       position: absolute;
       top: 25px;
@@ -115,6 +121,9 @@
       clear: both;
       content: "";
       display: table; }
+    .theme-default .bottom-left .showtime {
+      width: 1200px !important;
+      height: 580px; }
     .theme-default .bottom-left .nivo-caption {
       position: absolute;
       bottom: 25px;
@@ -151,6 +160,9 @@
       clear: both;
       content: "";
       display: table; }
+    .theme-default .bottom-right .showtime {
+      width: 1200px !important;
+      height: 580px; }
     .theme-default .bottom-right .nivo-caption {
       position: absolute;
       bottom: 25px;
@@ -191,6 +203,9 @@
       clear: both;
       content: "";
       display: table; }
+    .theme-default .left-photo-right .showtime {
+      width: 1200px !important;
+      height: 580px; }
     .theme-default .left-photo-right .nivo-caption {
       position: absolute;
       width: 63%;
@@ -252,6 +267,9 @@
       clear: both;
       content: "";
       display: table; }
+    .theme-default .right-photo-left .showtime {
+      width: 1200px !important;
+      height: 580px; }
     .theme-default .right-photo-left .nivo-caption {
       position: absolute;
       width: 63%;
@@ -325,9 +343,15 @@
   .theme-default .bottom-right,
   .theme-default .left-photo-right,
   .theme-default .right-photo-left {
-    padding: 0;
-    width: 100%;
-    height: auto; }
+    padding: 0; }
+    .theme-default .top-left .showtime,
+    .theme-default .top-right .showtime,
+    .theme-default .bottom-left .showtime,
+    .theme-default .bottom-right .showtime,
+    .theme-default .left-photo-right .showtime,
+    .theme-default .right-photo-left .showtime {
+      width: 100% !important;
+      height: auto; }
     .theme-default .top-left .nivo-caption,
     .theme-default .top-right .nivo-caption,
     .theme-default .bottom-left .nivo-caption,
