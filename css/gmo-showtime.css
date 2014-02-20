@@ -337,26 +337,190 @@
   .theme-default a.nivo-prevNav {
     left: -15px; }
 
-  .theme-default .top-left,
-  .theme-default .top-right,
-  .theme-default .bottom-left,
-  .theme-default .bottom-right,
-  .theme-default .left-photo-right,
+  .theme-default .top-left {
+    padding: 0;
+    margin: 0; }
+    .theme-default .top-left .showtime {
+      width: 100% !important;
+      height: auto;
+      margin: 0; }
+    .theme-default .top-left .slider-box {
+      margin: 0 !important;
+      top: 0; }
+    .theme-default .top-left .nivo-caption {
+      position: relative;
+      left: 0;
+      top: 0;
+      margin-top: 20px;
+      padding: 0;
+      width: 100%;
+      height: auto;
+      background-color: transparent; }
+      .theme-default .top-left .nivo-caption h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        height: 1.4em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .theme-default .top-left .nivo-caption .content {
+        margin: 1em 0 0 0;
+        padding: 0;
+        font-size: 12px;
+        height: 1.4em;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+  .theme-default .top-right {
+    padding: 0;
+    margin: 0; }
+    .theme-default .top-right .showtime {
+      width: 100% !important;
+      height: auto;
+      margin: 0; }
+    .theme-default .top-right .slider-box {
+      margin: 0 !important;
+      top: 0; }
+    .theme-default .top-right .nivo-caption {
+      position: relative;
+      left: 0;
+      top: 0;
+      margin-top: 20px;
+      padding: 0;
+      width: 100%;
+      height: auto;
+      background-color: transparent; }
+      .theme-default .top-right .nivo-caption h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        height: 1.4em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .theme-default .top-right .nivo-caption .content {
+        margin: 1em 0 0 0;
+        padding: 0;
+        font-size: 12px;
+        height: 1.4em;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+  .theme-default .bottom-left {
+    padding: 0;
+    margin: 0; }
+    .theme-default .bottom-left .showtime {
+      width: 100% !important;
+      height: auto;
+      margin: 0; }
+    .theme-default .bottom-left .slider-box {
+      margin: 0 !important;
+      top: 0; }
+    .theme-default .bottom-left .nivo-caption {
+      position: relative;
+      left: 0;
+      top: 0;
+      margin-top: 20px;
+      padding: 0;
+      width: 100%;
+      height: auto;
+      background-color: transparent; }
+      .theme-default .bottom-left .nivo-caption h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        height: 1.4em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .theme-default .bottom-left .nivo-caption .content {
+        margin: 1em 0 0 0;
+        padding: 0;
+        font-size: 12px;
+        height: 1.4em;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+  .theme-default .bottom-right {
+    padding: 0;
+    margin: 0; }
+    .theme-default .bottom-right .showtime {
+      width: 100% !important;
+      height: auto;
+      margin: 0; }
+    .theme-default .bottom-right .slider-box {
+      margin: 0 !important;
+      top: 0; }
+    .theme-default .bottom-right .nivo-caption {
+      position: relative;
+      left: 0;
+      top: 0;
+      margin-top: 20px;
+      padding: 0;
+      width: 100%;
+      height: auto;
+      background-color: transparent; }
+      .theme-default .bottom-right .nivo-caption h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        height: 1.4em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .theme-default .bottom-right .nivo-caption .content {
+        margin: 1em 0 0 0;
+        padding: 0;
+        font-size: 12px;
+        height: 1.4em;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+  .theme-default .left-photo-right {
+    padding: 0;
+    margin: 0; }
+    .theme-default .left-photo-right .showtime {
+      width: 100% !important;
+      height: auto;
+      margin: 0; }
+    .theme-default .left-photo-right .slider-box {
+      margin: 0 !important;
+      top: 0; }
+    .theme-default .left-photo-right .nivo-caption {
+      position: relative;
+      left: 0;
+      top: 0;
+      margin-top: 20px;
+      padding: 0;
+      width: 100%;
+      height: auto;
+      background-color: transparent; }
+      .theme-default .left-photo-right .nivo-caption h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        height: 1.4em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+      .theme-default .left-photo-right .nivo-caption .content {
+        margin: 1em 0 0 0;
+        padding: 0;
+        font-size: 12px;
+        height: 1.4em;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+    .theme-default .left-photo-right .showtime a.nivo-prevNav {
+      left: -15px; }
+    .theme-default .left-photo-right .showtime a.nivo-nextNav {
+      right: -15px; }
   .theme-default .right-photo-left {
-    padding: 0; }
-    .theme-default .top-left .showtime,
-    .theme-default .top-right .showtime,
-    .theme-default .bottom-left .showtime,
-    .theme-default .bottom-right .showtime,
-    .theme-default .left-photo-right .showtime,
+    padding: 0;
+    margin: 0; }
     .theme-default .right-photo-left .showtime {
       width: 100% !important;
-      height: auto; }
-    .theme-default .top-left .nivo-caption,
-    .theme-default .top-right .nivo-caption,
-    .theme-default .bottom-left .nivo-caption,
-    .theme-default .bottom-right .nivo-caption,
-    .theme-default .left-photo-right .nivo-caption,
+      height: auto;
+      margin: 0; }
+    .theme-default .right-photo-left .slider-box {
+      margin: 0 !important;
+      top: 0; }
     .theme-default .right-photo-left .nivo-caption {
       position: relative;
       left: 0;
@@ -366,11 +530,6 @@
       width: 100%;
       height: auto;
       background-color: transparent; }
-      .theme-default .top-left .nivo-caption h2,
-      .theme-default .top-right .nivo-caption h2,
-      .theme-default .bottom-left .nivo-caption h2,
-      .theme-default .bottom-right .nivo-caption h2,
-      .theme-default .left-photo-right .nivo-caption h2,
       .theme-default .right-photo-left .nivo-caption h2 {
         margin: 0;
         padding: 0;
@@ -379,15 +538,14 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap; }
-      .theme-default .top-left .nivo-caption .content,
-      .theme-default .top-right .nivo-caption .content,
-      .theme-default .bottom-left .nivo-caption .content,
-      .theme-default .bottom-right .nivo-caption .content,
-      .theme-default .left-photo-right .nivo-caption .content,
       .theme-default .right-photo-left .nivo-caption .content {
         margin: 1em 0 0 0;
         padding: 0;
         font-size: 12px;
         height: 1.4em;
         text-overflow: ellipsis;
-        white-space: nowrap; } }
+        white-space: nowrap; }
+    .theme-default .right-photo-left .showtime a.nivo-prevNav {
+      left: -15px; }
+    .theme-default .right-photo-left .showtime a.nivo-nextNav {
+      right: -15px; } }
