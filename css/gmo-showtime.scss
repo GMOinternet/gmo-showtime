@@ -23,23 +23,34 @@
 }
 
 .slider-wrapper {
-	background-color: #0058AE;
-	max-height: 580px;
-}
-.slider-wrapper:after {
-	clear: both;
-	content: "";
-	display: table;
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
 }
 .slider-box {
 	width: 1200px;
 	margin: 0 auto;
 	position: relative;
-	max-height: 371px;
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
 }
 
 
-@mixin slide( $w:63%, $h:auto, $t:0, $b:0, $l:0, $r:0, $m:0) {
+@mixin slide( $w:63%, $h:auto, $t:0, $b:0, $l:0, $r:0) {
+	background-color: #0058AE;
+	max-height: 580px;
+	overflow: hidden;
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+
 	.nivo-caption {
 		position: absolute;
 		@if $t > 0 { top: $t; }
@@ -77,36 +88,48 @@
 	}
 }
 
-@mixin phototext( $m:30px, $p:left ) {
-	width: 768px !important;
-	height: 371px;
-	margin-top: -30px;
-	margin-bottom: -30px;
+@mixin phototext( $p:left ) {
+	max-height: 371px;
+	overflow: visible;
+	margin-top: 30px;
+	margin-bottom: 30px;
 
+	.slider-box {
+		overflow: hidden;
+		position: relative;
+		top:-30px;
+		margin-bottom: -60px;
+	}
+	.showtime {
 
-	@if $p == 'left' {
-		float: right; margin-right: 57px;
-		a.nivo-prevNav{
-			left: -375px;
+		width: 768px !important;
+		height: 371px;
+
+		@if $p == 'left' {
+			float: right; margin-right: 57px;
+			a.nivo-prevNav{
+				left: -375px;
+			}
+			a.nivo-nextNav {
+				right: -57px;
+			}
+		} @else {
+			float: left; margin-left: 57px;
+			a.nivo-prevNav{
+				left: -57px;
+			}
+			a.nivo-nextNav {
+				right: -375px;
+			}
 		}
-		a.nivo-nextNav {
-			right: -57px;
-		}
-	} @else {
-		float: left; margin-left: 57px;
-		a.nivo-prevNav{
-			left: -57px;
-		}
-		a.nivo-nextNav {
-			right: -375px;
-		}
+
 	}
 
 	.nivo-caption {
 		background-color: transparent;
 		padding: 0;
 		position: absolute;
-		top: 40px;
+		top: 35px;
 		width: 375px - 97;
 		@if $p == 'left' {
 			left: -375px + 57px;
@@ -139,12 +162,12 @@
 		@include slide( $w:63%, $h:40%, $b:25px, $r:97px);
 	}
 	.left-photo-right {
-		@include slide( $m: 30px );
-		@include phototext( $m:30px, $p:left );
+		@include slide;
+		@include phototext( $p:left );
 	}
 	.right-photo-left {
-		@include slide( $m:30px );
-		@include phototext( $m:30px, $p:right );
+		@include slide;
+		@include phototext( $p:right );
 	}
 }
 

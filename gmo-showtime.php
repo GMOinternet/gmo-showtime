@@ -190,7 +190,7 @@ public function get_slider_contents($atts = array())
     $html .= "\n<!-- Start GMO Showtime-->\n";
     $html .= "<div class=\"slider-wrapper theme-default\">\n";
     $html .= sprintf(
-        '<div class="slider-box"><div class="showtime nivoSlider %s" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        '<div class="%s"><div class="slider-box"><div class="showtime nivoSlider" data-columns="%d" data-transition="%s" data-show_title="%d">',
         esc_attr( $class ),
         $columns,
         $transition,
@@ -219,7 +219,7 @@ public function get_slider_contents($atts = array())
         $html .= $slide;
     }
 
-    $html .= '</div></div>';
+    $html .= '</div></div></div>';
     $html .= '</div>';
     $html .= "\n<!-- End GMO Showtime-->\n";
 
@@ -422,7 +422,7 @@ private function get_preview_contents()
 {
     echo "<div class=\"slider-wrapper theme-default\">\n";
     printf(
-        '<div class="slider-box"><div class="showtime %s" data-columns="%d" data-transition="%s" data-show_title="%d">',
+        '<div class="%s"><div class="slider-box"><div class="showtime nivoSlider" data-columns="%d" data-transition="%s" data-show_title="%d">',
         esc_attr(get_option('gmoshowtime-css-class', $this->get_default_css_class())),
         $this->get_default_columns(),
         get_option('gmoshowtime-transition', $this->get_default_transition()),
@@ -450,7 +450,7 @@ private function get_preview_contents()
         echo $html;
     }
 
-    echo '</div></div>';
+    echo '</div></div></div>';
     echo '</div>';
 }
 
