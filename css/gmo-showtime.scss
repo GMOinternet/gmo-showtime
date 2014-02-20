@@ -24,16 +24,18 @@
 
 .slider-wrapper {
 	background-color: #0058AE;
+	max-height: 580px;
 }
 .slider-wrapper:after {
-    clear: both;
-    content: "";
-    display: table;
+	clear: both;
+	content: "";
+	display: table;
 }
 .slider-box {
 	width: 1200px;
 	margin: 0 auto;
 	position: relative;
+	max-height: 371px;
 }
 
 
@@ -77,9 +79,10 @@
 
 @mixin phototext( $m:30px, $p:left ) {
 	width: 768px !important;
-	height: 384px;
+	height: 371px;
 	margin-top: -30px;
 	margin-bottom: -30px;
+
 
 	@if $p == 'left' {
 		float: right; margin-right: 57px;

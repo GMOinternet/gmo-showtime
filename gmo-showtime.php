@@ -113,7 +113,7 @@ public function plugins_loaded()
         dirname(plugin_basename(__FILE__)).$this->langs
     );
 	add_image_size( 'gmoshowtime-image-full',  1200, 580, true );
-	add_image_size( 'gmoshowtime-image-medium', 768, 384, true );
+//	add_image_size( 'gmoshowtime-image-medium', 768, 384, true );
 
     add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
     add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
@@ -155,9 +155,11 @@ public function get_slider_contents($atts = array())
     ), $atts ) );
 
 	$class = get_option('gmoshowtime-css-class', $this->get_default_css_class());
+/*
 	if ( $class == "left-photo-right" || $class == "right-photo-left" ) {
 		$image_size = 'gmoshowtime-image-medium';
 	}
+*/
     if (!count($images)) {
         $args = array(
             "post_type"             => "pan-pan-pan",

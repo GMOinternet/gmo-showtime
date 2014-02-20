@@ -20,7 +20,8 @@
   left: 40px; }
 
 .slider-wrapper {
-  background-color: #0058AE; }
+  background-color: #0058AE;
+  max-height: 580px; }
 
 .slider-wrapper:after {
   clear: both;
@@ -30,7 +31,8 @@
 .slider-box {
   width: 1200px;
   margin: 0 auto;
-  position: relative; }
+  position: relative;
+  max-height: 371px; }
 
 .theme-default {
   position: relative; }
@@ -148,7 +150,7 @@
       overflow: hidden; }
   .theme-default .left-photo-right {
     width: 768px !important;
-    height: 384px;
+    height: 371px;
     margin-top: -30px;
     margin-bottom: -30px;
     float: right;
@@ -194,7 +196,7 @@
         max-height: 5.6em; }
   .theme-default .right-photo-left {
     width: 768px !important;
-    height: 384px;
+    height: 371px;
     margin-top: -30px;
     margin-bottom: -30px;
     float: left;
