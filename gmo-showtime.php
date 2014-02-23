@@ -188,7 +188,7 @@ public function get_slider_contents($atts = array())
 
     $html = '';
     $html .= "\n<!-- Start GMO Showtime-->\n";
-    $html .= "<div class=\"slider-wrapper theme-default\">\n";
+    $html .= "<div id=\"gmo-show-time\" class=\"slider-wrapper theme-default\">\n";
     $html .= sprintf(
         '<div class="%s"><div class="slider-box"><div class="showtime nivoSlider" data-columns="%d" data-transition="%s" data-show_title="%d">',
         esc_attr( $class ),

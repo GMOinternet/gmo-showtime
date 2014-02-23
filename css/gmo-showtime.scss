@@ -51,7 +51,11 @@
 		display: table;
 	}
 
-	.nivo-caption {
+	.showtime {
+		width: 1200px !important;
+		height: 580px;
+	}
+		.nivo-caption {
 		position: absolute;
 		@if $t > 0 { top: $t; }
 		@if $b > 0 { bottom: $b; }
@@ -173,6 +177,48 @@
 
 $brake-point: 600px !default;
 
+@mixin mobileslide() {
+	padding: 0;
+	margin: 0;
+	.showtime {
+		width: 100% !important;
+		height: auto;
+		margin: 0;
+	}
+	.slider-box {
+		margin: 0 !important;
+		top: 0;
+	}
+	.nivo-caption {
+		position: relative;
+		left: 0;
+		top: 0;
+		margin-top: 20px;
+		padding: 0;
+		width: 100%;
+		height: auto;
+		background-color: transparent;
+
+		h2 {
+			margin: 0;
+			padding: 0;
+			font-size: 16px;
+			height: 1em *1.4;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+		.content {
+			margin: 1em 0 0 0;
+			padding: 0;
+			font-size: 12px;
+			height: 1.4em;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+}
+
 @media screen and (max-width: $brake-point) {
 	.slider-box {
 		width: 100%;
@@ -193,44 +239,42 @@ $brake-point: 600px !default;
 	}
 
 	.theme-default {
-		.top-left,
-		.top-right,
-		.bottom-left,
-		.bottom-right,
-		.left-photo-right,
-		.right-photo-left {
-			padding: 0;
-			width: 100%;
-			height: auto;
-
-			.nivo-caption {
-				position: relative;
-				left: 0;
-				top: 0;
-				margin-top: 20px;
-				padding: 0;
-				width: 100%;
-				height: auto;
-				background-color: transparent;
-
-				h2 {
-					margin: 0;
-					padding: 0;
-					font-size: 16px;
-					height: 1em *1.4;
-					overflow: hidden;
-					text-overflow: ellipsis;
-					white-space: nowrap;
+		.top-left {
+			@include mobileslide();
+		}
+		.top-right {
+			@include mobileslide();
+		}
+		.bottom-left {
+			@include mobileslide();
+		}
+		.bottom-right {
+			@include mobileslide();
+		}
+		.left-photo-right {
+			@include mobileslide();
+			.showtime {
+				a.nivo-prevNav{
+					left: -15px;
 				}
-				.content {
-					margin: 1em 0 0 0;
-					padding: 0;
-					font-size: 12px;
-					height: 1.4em;
-					text-overflow: ellipsis;
-					white-space: nowrap;
+				a.nivo-nextNav {
+					right: -15px;
 				}
+	
 			}
+		}
+		.right-photo-left {
+			@include mobileslide();
+			.showtime {
+				a.nivo-prevNav{
+					left: -15px;
+				}
+				a.nivo-nextNav {
+					right: -15px;
+				}
+	
+			}
+		
 		}
 	}
 }
