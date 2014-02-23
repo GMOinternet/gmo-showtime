@@ -384,7 +384,7 @@ private function get_default_image_size()
 
 private function get_slide_template()
 {
-    $template = "<a href=\"%link%\" class=\"slide\"><img src=\"%image%\" title=\"%title%\" data-content=\"%content%\"></a>";
+    $template = "<a href=\"%link%\" class=\"slide\"><img src=\"%image%\" title=\"&nbsp;\" data-title=\"%title%\" data-content=\"%content%\"></a>";
     return apply_filters("gmoshowtime_slide_template", $template);
 }
 

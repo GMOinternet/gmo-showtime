@@ -23,8 +23,8 @@ $('.showtime').each(function(){
             $('.nivo-caption').fadeOut(500);
         },                 // Triggers before a slide transition
         afterChange: function() {
-            $('.nivo-caption').fadeIn(500);
             showCaption(slider);
+            $('.nivo-caption').fadeIn(500);
         },
         slideshowEnd: function(){},                 // Triggers after all slides have been shown
         lastSlide: function(){},                    // Triggers when last slide is shown
@@ -40,7 +40,7 @@ $('.showtime').each(function(){
             }
         });
 
-        var title = $('img:first', current).attr('title');
+        var title = $('img:first', current).attr('data-title');
         var content = $('img:first', current).attr('data-content');
 
         $('.nivo-caption:first', slide).html('<h2>'+title+'</h2><div class="content">'+content+'</div>');
