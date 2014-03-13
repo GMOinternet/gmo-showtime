@@ -22,12 +22,12 @@ function gmoshowtime_create_initial_post_types() {
 		'supports' => array( 'title', 'excerpt', 'thumbnail', 'page-attributes' ),
 		'rewrite' => false,
 	);
-	register_post_type( 'pan-pan-pan', $args );
+	register_post_type( 'gmo-showtime', $args );
 }
 
 add_action( 'admin_menu', 'gmoshowtime_add_meta_boxes' );
 function gmoshowtime_add_meta_boxes() {
-	add_meta_box( 'add-pan-pan-pan-link', __( 'Slide Links', 'pan-pan-pan' ), 'gmoshowtime_add_link_box', 'pan-pan-pan', 'normal', 'high' );
+	add_meta_box( 'add-gmo-showtime-link', __( 'Slide Links', 'gmo-showtime' ), 'gmoshowtime_add_link_box', 'gmo-showtime', 'normal', 'high' );
 }
 
 function gmoshowtime_add_link_box() {
@@ -36,7 +36,7 @@ function gmoshowtime_add_link_box() {
 	$url = esc_url( get_post_meta( $post_id, '_slide_link', true ) );
 	$blank = (int) get_post_meta( $post_id, '_slide_blank', true );
 	echo '<input type="hidden" name="' . $get_noncename . '" id="' . $get_noncename . '" value="' . wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
-	echo '<p><label for="slide_link">' . __( 'Link : ', 'pan-pan-pan' );
+	echo '<p><label for="slide_link">' . __( 'Link : ', 'gmo-showtime' );
 	echo '<input type="text" name="slide_link" id="slide_link" value="' . $url . '" size="30"></label></p>';
 	echo '<p><label for="slide_blank"><input type="checkbox" name="slide_blank" id="slide_blank" value="1"' . checked( 1, $blank, false ) . '> ' . __( 'Open link in a new window/tab' ) . '</label></p>';
 }
@@ -102,7 +102,7 @@ function gmoshowtime_add_column($column_name, $post_id) {
 }
 
 function gmoshowtime_add_menu_order_column_styles() {
-	if ('pan-pan-pan' == get_post_type()) {
+	if ('gmo-showtime' == get_post_type()) {
 		
 ?>
 <style type="text/css" charset="utf-8">
@@ -130,13 +130,13 @@ function add_menu_order_sortable_column( $sortable_column ) {
 	return $sortable_column;
 }
 
-add_filter( 'manage_pan-pan-pan_posts_columns', 'gmoshowtime_manage_posts_columns' );
+add_filter( 'manage_gmo-showtime_posts_columns', 'gmoshowtime_manage_posts_columns' );
 add_action( 'admin_print_styles-edit.php', 'gmoshowtime_add_menu_order_column_styles' );
-add_filter( 'manage_edit-pan-pan-pan_sortable_columns', 'add_menu_order_sortable_column' );
+add_filter( 'manage_edit-gmo-showtime_sortable_columns', 'add_menu_order_sortable_column' );
 
 
 function cpt_public_false() {
-	if ( get_post_type() == 'pan-pan-pan' ) {
+	if ( get_post_type() == 'gmo-showtime' ) {
 		?>
 		<style type="text/css">
 		.post-php #message a {

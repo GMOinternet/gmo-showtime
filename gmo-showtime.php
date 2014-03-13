@@ -122,6 +122,33 @@ public function plugins_loaded()
     add_action('admin_print_footer_scripts', array($this, 'admin_print_footer_scripts'), 9999);
 
     add_shortcode('showtime', array($this, 'showtime'));
+
+    // add copy to new carousel interface
+    add_action(
+        'wp_before_admin_bar_render',
+        array($this, 'wp_before_admin_bar_render')
+    );
+}
+
+public function wp_before_admin_bar_render() {
+    global $wp_admin_bar;
+    global $pagenow;
+
+    if (is_single() || is_page()) {
+        $wp_admin_bar->add_menu(array(
+            'id' => 'new_carousel',
+            'title' => __('Copy to a new carousel', 'gmoshowtime'),
+            'href' => admin_url('post-new.php?post_type=gmo-showtime&slide_id='.get_the_ID())
+        ));
+    } elseif ($pagenow === 'post.php' && isset($_GET['action']) && $_GET['action'] === 'edit') {
+        if (get_post_type() !== 'gmo-showtime') {
+            $wp_admin_bar->add_menu(array(
+                'id' => 'new_carousel',
+                'title' => __('Copy to a new carousel', 'gmoshowtime'),
+                'href' => admin_url('post-new.php?post_type=gmo-showtime&slide_id='.get_the_ID())
+            ));
+        }
+    }
 }
 
 public function showtime($atts)
@@ -267,6 +294,27 @@ public function admin_init()
                 update_option('gmoshowtime-maintenance', 0);
             }
             wp_redirect('options-general.php?page=gmoshowtime');
+        }
+    }
+
+    global $pagenow;
+
+    if ($pagenow === 'post-new.php' && isset($_GET['post_type']) && $_GET['post_type'] === 'gmo-showtime') {
+        if (isset($_GET['slide_id']) && intval($_GET['slide_id'])) {
+            $post = get_post(intval($_GET['slide_id']));
+            $post_id = wp_insert_post(array(
+                'post_type'  => 'gmo-showtime',
+                'post_title' => $post->post_title,
+                'post_excerpt' => $post->post_excerpt,
+            ));
+            update_post_meta($post_id, '_slide_link', get_permalink($post->ID));
+            $post_thumbnail = get_post_meta($post->ID, '_thumbnail_id', true);
+            if (!wp_is_post_revision($post_id)) {
+                if ($post_thumbnail) {
+                    update_post_meta($post_id, '_thumbnail_id', $post_thumbnail);
+                }
+            }
+            wp_redirect(admin_url(sprintf('post.php?post=%d&action=edit', $post_id)));
         }
     }
 }
