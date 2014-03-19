@@ -112,8 +112,7 @@ public function plugins_loaded()
         false,
         dirname(plugin_basename(__FILE__)).$this->langs
     );
-	add_image_size( 'gmoshowtime-image-full',  1200, 580, true );
-//	add_image_size( 'gmoshowtime-image-medium', 768, 384, true );
+	add_image_size( 'gmoshowtime-image-full',  1200, 666, true );
 
     add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
     add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
@@ -172,7 +171,6 @@ public function showtime($atts)
 public function get_slider_contents($atts = array())
 {
     global $post;
-
     extract( shortcode_atts( array(
         'columns'     => $this->get_default_columns(),
         'transition' => get_option('gmoshowtime-transition', $this->get_default_transition()),
@@ -189,13 +187,13 @@ public function get_slider_contents($atts = array())
 */
     if (!count($images)) {
         $args = array(
-            "post_type"             => "pan-pan-pan",
+            "post_type"             => "gmo-showtime",
             "nopaging"              => 0,
             "posts_per_page"        => get_option('gmoshowtime-max-pages', 4),
             "post_status"           => 'publish',
             "orderby"               => 'menu_order',
             "order"                 => 'ASC',
-            "ignore_sticky_posts"    => 1,
+            "ignore_sticky_posts"   => 1,
         );
         $posts = get_posts($args);
 
@@ -229,7 +227,7 @@ public function get_slider_contents($atts = array())
         if (!$img['image']) {
             continue;
         }
-
+		
 		if ( $class == "left-photo-right" || $class == "right-photo-left" ) {
 			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_lr_length" , 54), "...", "UTF-8");
 			$img['content'] = mb_strimwidth($img['content'], 0, apply_filters("gmoshowtime_content_lr_length", 110), "...", "UTF-8");

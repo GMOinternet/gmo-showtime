@@ -45,47 +45,44 @@ $('.showtime').each(function(){
 
         $('.nivo-caption:first', slide).html('<h2>'+title+'</h2><div class="content">'+content+'</div>');
     }
+    
+	//mql
+	function arrowposi() {
+		var mql = window.matchMedia("only screen and (max-width: 600px)");
+		if ( mql.matches ) {
+			 $('.left-photo-right .nivo-prevNav').css({'left': -15});
+			 $('.right-photo-left .nivo-nextNav').css({'right': -15});
+			 $('.left-photo-right .nivo-caption').css({'left': 0, 'width': '100%'});
+			 $('.right-photo-left .nivo-caption').css({'left': 0,'right': 0, 'width': '100%'});
+		} else {
+			 var slidearaW = $('.slider-box').width();
+			 var slideW = $('.showtime').width();
+			 var l = slidearaW-slideW-30;
+			 var cl = slidearaW-slideW-70;
+			 var cw = slidearaW-slideW-100;
+			 $('.left-photo-right .nivo-prevNav').css({'left': -l});
+			 $('.right-photo-left .nivo-nextNav').css({'right': -l});
+			 $('.left-photo-right .nivo-caption').css({'left': -cl, 'width': cw});
+			 $('.right-photo-left .nivo-caption').css({'right': -cl, 'width': cw});
+		}
+     }
+     
+
+ 	$(window).load(function() {
+	 	arrowposi();
+	});
+
+	var timer = false;
+	$(window).resize(function() {
+	    if (timer !== false) {
+	        clearTimeout(timer);
+	    }
+	    timer = setTimeout(function() {
+			arrowposi();
+	    }, 200);
+	});
+
 });
-
-/*
-    var showtime = $(this);
-
-    var pages = 1
-    if (parseInt($(this).attr('data-columns')) > 0) {
-        pages = parseInt($(this).attr('data-columns'));
-    }
-
-    var transition = 'fade';
-    if ($(this).attr('data-transition')) {
-        var transition = $(this).attr('data-transition');
-    }
-
-    if (!parseInt($(this).attr('data-show_title'))) {
-        $('h2', this).hide();
-    }
-
-    var args = {};
-    if (pages == 1) {
-        args = {
-            transitionStyle : transition,
-            singleItem : true,
-            autoPlay: 10000,
-            navigation : true,
-            navigationText : ['<span class="genericon genericon-leftarrow"></span>','<span class="genericon genericon-rightarrow"></span>']
-        };
-    } else {
-        args = {
-            items : pages,
-            itemsTablet: [768, 2],
-            itemsMobile : [479, 1],
-            autoPlay: 10000,
-            navigation : true,
-            navigationText : ['<span class="genericon genericon-leftarrow"></span>','<span class="genericon genericon-rightarrow"></span>']
-        };
-    }
-
-    showtime.owlCarousel(args);
-*/
 
 
 })(jQuery);
