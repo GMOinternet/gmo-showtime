@@ -102,6 +102,7 @@ foreach ($this->get_transitions() as $tran) {
             </select>
         </td>
     </tr>
+<!--
     <tr>
         <th scope="row">Image Size</th>
         <td>
@@ -130,7 +131,6 @@ foreach ($this->get_transitions() as $tran) {
             </select>
         </td>
     </tr>
-<!--
     <tr>
         <th scope="row">Gallery</th>
         <td>
