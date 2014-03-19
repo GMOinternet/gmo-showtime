@@ -229,8 +229,8 @@ public function get_slider_contents($atts = array())
         }
 		
 		if ( $class == "left-photo-right" || $class == "right-photo-left" ) {
-			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_lr_length" , 54), "...", "UTF-8");
-			$img['content'] = mb_strimwidth($img['content'], 0, apply_filters("gmoshowtime_content_lr_length", 110), "...", "UTF-8");
+			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_lr_length" , 100), "...", "UTF-8");
+			$img['content'] = mb_strimwidth($img['content'], 0, apply_filters("gmoshowtime_content_lr_length", 148), "...", "UTF-8");
 		} else {
 			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_ov_length" , 84), "...", "UTF-8");
 			$img['content'] = mb_strimwidth($img['content'], 0, apply_filters("gmoshowtime_content_ov_length", 300), "...", "UTF-8");

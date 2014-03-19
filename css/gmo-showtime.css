@@ -234,10 +234,11 @@
       background-color: transparent;
       padding: 0;
       position: absolute;
-      top: 55px;
+      top: 60px;
       width: 50%; }
       .theme-default .left-photo-right .nivo-caption h2 {
-        max-height: 6.8em; }
+        max-height: 6em;
+        margin-bottom: 30px; }
   .theme-default .right-photo-left {
     background-color: #0058AE;
     max-height: 666px;
@@ -293,10 +294,11 @@
       background-color: transparent;
       padding: 0;
       position: absolute;
-      top: 55px;
+      top: 60px;
       width: 50%; }
       .theme-default .right-photo-left .nivo-caption h2 {
-        max-height: 6.8em; }
+        max-height: 6em;
+        margin-bottom: 30px; }
 
 @media screen and (max-width: 600px) {
   .slider-box {
