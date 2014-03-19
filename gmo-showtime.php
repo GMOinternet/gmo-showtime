@@ -210,8 +210,9 @@ public function get_slider_contents($atts = array())
         }
         wp_reset_postdata();
     }
-
     $html = '';
+    if ( !empty($images)) {
+	    
     $html .= "\n<!-- Start GMO Showtime-->\n";
     $html .= "<div id=\"gmo-show-time\" class=\"slider-wrapper theme-default\">\n";
     $html .= sprintf(
@@ -247,6 +248,7 @@ public function get_slider_contents($atts = array())
     $html .= '</div></div></div>';
     $html .= '</div>';
     $html .= "\n<!-- End GMO Showtime-->\n";
+    }
 
     return $html;
 }
