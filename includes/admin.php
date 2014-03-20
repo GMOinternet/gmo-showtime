@@ -57,6 +57,7 @@ foreach ($this->get_transitions() as $tran) {
 <h3><?php _e('Gneral Settings', 'gmoshowtime'); ?></h3>
 
 <table class="form-table">
+<!--
     <tr>
         <th scope="row">Max Pages</th>
         <td>
@@ -71,6 +72,7 @@ foreach ($this->get_transitions() as $tran) {
             </select>
         </td>
     </tr>
+-->
     <tr>
         <th scope="row">Page types</th>
         <td>

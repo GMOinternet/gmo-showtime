@@ -16,10 +16,10 @@
 }
 .theme-default a.nivo-nextNav {
 	background-position:-17px 0;
-	right:-40px;
+//	right:-40px;
 }
 .theme-default a.nivo-prevNav {
-	left:-40px;
+//	left:-40px;
 }
 
 .slider-wrapper {
@@ -43,7 +43,7 @@
 
 @mixin slide( $w:63%, $h:auto, $t:0, $b:0, $l:0, $r:0) {
 	background-color: #0058AE;
-	max-height: 666px;
+	max-height: 353px;
 	overflow: hidden;
 	&:after {
 		clear: both;
@@ -53,6 +53,7 @@
 
 	.showtime {
 		max-width: 1200px;
+		max-height: 353px;
 	}
 	.nivo-caption {
 		position: absolute;
@@ -61,7 +62,7 @@
 		@if $l > 0 { left: $l; }
 		@if $r > 0 { right: $r; }
 		width: $w;
-		height: $h;
+		//height: $h;
 		padding: 25px 30px;
 		background-color: rgba(0,0,0,0.5);
 		box-sizing: border-box;
@@ -74,12 +75,13 @@
 			line-height: 1.4;
 			overflow: hidden;
 			max-height: 2.8em;
-			margin-bottom: 10px;
+			margin-bottom: 0;
 			a {
 				color: #ffffff;
 			}
 		}
 		.content {
+			margin-top: 10px;
 			font-size: 14px;
 			font-weight: normal;
 			line-height: 1.4;
@@ -92,6 +94,7 @@
 @mixin phototext( $p:left ) {
 	overflow: visible;
 	margin-top: 30px;
+	max-height: 487px;
 //	margin-bottom: 30px;
 
 	.slider-box {
@@ -129,11 +132,13 @@
 		background-color: transparent;
 		padding: 0;
 		position: absolute;
-		top: 60px;
+		top: 80px;
 		width: 50%;
 		h2 {
-			max-height: 1.5em *4;
-			margin-bottom: 30px;
+			max-height: 1.4em *4;
+		}
+		.content {
+			margin-top: 30px;
 		}
 		.slide-content {
 		}

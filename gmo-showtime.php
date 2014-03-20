@@ -112,7 +112,7 @@ public function plugins_loaded()
         false,
         dirname(plugin_basename(__FILE__)).$this->langs
     );
-	add_image_size( 'gmoshowtime-image-full',  1200, 666, true );
+	add_image_size( 'gmoshowtime-image-full',  1200, 353, true );
 	add_image_size( 'gmoshowtime-image-medium',  730, 487, true );
 
     add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
@@ -188,8 +188,9 @@ public function get_slider_contents($atts = array())
     if (!count($images)) {
         $args = array(
             "post_type"             => "gmo-showtime",
-            "nopaging"              => 0,
-            "posts_per_page"        => get_option('gmoshowtime-max-pages', 4),
+//            "nopaging"              => 0,
+//            "posts_per_page"        => get_option('gmoshowtime-max-pages', 4),
+            "posts_per_page"        => -1,
             "post_status"           => 'publish',
             "orderby"               => 'menu_order',
             "order"                 => 'ASC',

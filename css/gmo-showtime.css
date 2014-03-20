@@ -13,11 +13,7 @@
   opacity: 1; }
 
 .theme-default a.nivo-nextNav {
-  background-position: -17px 0;
-  right: -40px; }
-
-.theme-default a.nivo-prevNav {
-  left: -40px; }
+  background-position: -17px 0; }
 
 .slider-wrapper:after {
   clear: both;
@@ -37,20 +33,20 @@
   position: relative; }
   .theme-default .top-left {
     background-color: #0058AE;
-    max-height: 666px;
+    max-height: 353px;
     overflow: hidden; }
     .theme-default .top-left:after {
       clear: both;
       content: "";
       display: table; }
     .theme-default .top-left .showtime {
-      max-width: 1200px; }
+      max-width: 1200px;
+      max-height: 353px; }
     .theme-default .top-left .nivo-caption {
       position: absolute;
       top: 30px;
       left: 80px;
       width: 60%;
-      height: 40%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -62,10 +58,11 @@
         line-height: 1.4;
         overflow: hidden;
         max-height: 2.8em;
-        margin-bottom: 10px; }
+        margin-bottom: 0; }
         .theme-default .top-left .nivo-caption h2 a {
           color: #ffffff; }
       .theme-default .top-left .nivo-caption .content {
+        margin-top: 10px;
         font-size: 14px;
         font-weight: normal;
         line-height: 1.4;
@@ -73,20 +70,20 @@
         overflow: hidden; }
   .theme-default .top-right {
     background-color: #0058AE;
-    max-height: 666px;
+    max-height: 353px;
     overflow: hidden; }
     .theme-default .top-right:after {
       clear: both;
       content: "";
       display: table; }
     .theme-default .top-right .showtime {
-      max-width: 1200px; }
+      max-width: 1200px;
+      max-height: 353px; }
     .theme-default .top-right .nivo-caption {
       position: absolute;
       top: 30px;
       right: 80px;
       width: 60%;
-      height: 40%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -98,10 +95,11 @@
         line-height: 1.4;
         overflow: hidden;
         max-height: 2.8em;
-        margin-bottom: 10px; }
+        margin-bottom: 0; }
         .theme-default .top-right .nivo-caption h2 a {
           color: #ffffff; }
       .theme-default .top-right .nivo-caption .content {
+        margin-top: 10px;
         font-size: 14px;
         font-weight: normal;
         line-height: 1.4;
@@ -109,20 +107,20 @@
         overflow: hidden; }
   .theme-default .bottom-left {
     background-color: #0058AE;
-    max-height: 666px;
+    max-height: 353px;
     overflow: hidden; }
     .theme-default .bottom-left:after {
       clear: both;
       content: "";
       display: table; }
     .theme-default .bottom-left .showtime {
-      max-width: 1200px; }
+      max-width: 1200px;
+      max-height: 353px; }
     .theme-default .bottom-left .nivo-caption {
       position: absolute;
       bottom: 30px;
       left: 80px;
       width: 60%;
-      height: 40%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -134,10 +132,11 @@
         line-height: 1.4;
         overflow: hidden;
         max-height: 2.8em;
-        margin-bottom: 10px; }
+        margin-bottom: 0; }
         .theme-default .bottom-left .nivo-caption h2 a {
           color: #ffffff; }
       .theme-default .bottom-left .nivo-caption .content {
+        margin-top: 10px;
         font-size: 14px;
         font-weight: normal;
         line-height: 1.4;
@@ -145,20 +144,20 @@
         overflow: hidden; }
   .theme-default .bottom-right {
     background-color: #0058AE;
-    max-height: 666px;
+    max-height: 353px;
     overflow: hidden; }
     .theme-default .bottom-right:after {
       clear: both;
       content: "";
       display: table; }
     .theme-default .bottom-right .showtime {
-      max-width: 1200px; }
+      max-width: 1200px;
+      max-height: 353px; }
     .theme-default .bottom-right .nivo-caption {
       position: absolute;
       bottom: 30px;
       right: 80px;
       width: 60%;
-      height: 40%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -170,10 +169,11 @@
         line-height: 1.4;
         overflow: hidden;
         max-height: 2.8em;
-        margin-bottom: 10px; }
+        margin-bottom: 0; }
         .theme-default .bottom-right .nivo-caption h2 a {
           color: #ffffff; }
       .theme-default .bottom-right .nivo-caption .content {
+        margin-top: 10px;
         font-size: 14px;
         font-weight: normal;
         line-height: 1.4;
@@ -181,20 +181,21 @@
         overflow: hidden; }
   .theme-default .left-photo-right {
     background-color: #0058AE;
-    max-height: 666px;
+    max-height: 353px;
     overflow: hidden;
     overflow: visible;
-    margin-top: 30px; }
+    margin-top: 30px;
+    max-height: 487px; }
     .theme-default .left-photo-right:after {
       clear: both;
       content: "";
       display: table; }
     .theme-default .left-photo-right .showtime {
-      max-width: 1200px; }
+      max-width: 1200px;
+      max-height: 353px; }
     .theme-default .left-photo-right .nivo-caption {
       position: absolute;
       width: 63%;
-      height: auto;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -206,10 +207,11 @@
         line-height: 1.4;
         overflow: hidden;
         max-height: 2.8em;
-        margin-bottom: 10px; }
+        margin-bottom: 0; }
         .theme-default .left-photo-right .nivo-caption h2 a {
           color: #ffffff; }
       .theme-default .left-photo-right .nivo-caption .content {
+        margin-top: 10px;
         font-size: 14px;
         font-weight: normal;
         line-height: 1.4;
@@ -234,27 +236,29 @@
       background-color: transparent;
       padding: 0;
       position: absolute;
-      top: 60px;
+      top: 80px;
       width: 50%; }
       .theme-default .left-photo-right .nivo-caption h2 {
-        max-height: 6em;
-        margin-bottom: 30px; }
+        max-height: 5.6em; }
+      .theme-default .left-photo-right .nivo-caption .content {
+        margin-top: 30px; }
   .theme-default .right-photo-left {
     background-color: #0058AE;
-    max-height: 666px;
+    max-height: 353px;
     overflow: hidden;
     overflow: visible;
-    margin-top: 30px; }
+    margin-top: 30px;
+    max-height: 487px; }
     .theme-default .right-photo-left:after {
       clear: both;
       content: "";
       display: table; }
     .theme-default .right-photo-left .showtime {
-      max-width: 1200px; }
+      max-width: 1200px;
+      max-height: 353px; }
     .theme-default .right-photo-left .nivo-caption {
       position: absolute;
       width: 63%;
-      height: auto;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -266,10 +270,11 @@
         line-height: 1.4;
         overflow: hidden;
         max-height: 2.8em;
-        margin-bottom: 10px; }
+        margin-bottom: 0; }
         .theme-default .right-photo-left .nivo-caption h2 a {
           color: #ffffff; }
       .theme-default .right-photo-left .nivo-caption .content {
+        margin-top: 10px;
         font-size: 14px;
         font-weight: normal;
         line-height: 1.4;
@@ -294,11 +299,12 @@
       background-color: transparent;
       padding: 0;
       position: absolute;
-      top: 60px;
+      top: 80px;
       width: 50%; }
       .theme-default .right-photo-left .nivo-caption h2 {
-        max-height: 6em;
-        margin-bottom: 30px; }
+        max-height: 5.6em; }
+      .theme-default .right-photo-left .nivo-caption .content {
+        margin-top: 30px; }
 
 @media screen and (max-width: 600px) {
   .slider-box {

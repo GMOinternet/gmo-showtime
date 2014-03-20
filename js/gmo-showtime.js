@@ -8,7 +8,7 @@ $('.showtime').each(function(){
         slices: 15,                                 // For slice animations
         boxCols: 8,                                 // For box animations
         boxRows: 4,                                 // For box animations
-        animSpeed: 300,                             // Slide transition speed
+        animSpeed: 1300,                             // Slide transition speed
         pauseTime: 5000,                            // How long each slide will show
         startSlide: 0,                              // Set starting Slide (0 index)
         directionNav: true,                         // Next & Prev navigation
