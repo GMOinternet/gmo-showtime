@@ -112,7 +112,7 @@ public function plugins_loaded()
         false,
         dirname(plugin_basename(__FILE__)).$this->langs
     );
-	add_image_size( 'gmoshowtime-image-full',  1200, 353, true );
+	add_image_size( 'gmoshowtime-image-full',  1200, 487, true );
 	add_image_size( 'gmoshowtime-image-medium',  730, 487, true );
 
     add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));

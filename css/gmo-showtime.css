@@ -33,7 +33,7 @@
   position: relative; }
   .theme-default .top-left {
     background-color: #0058AE;
-    max-height: 353px;
+    max-height: 487px;
     overflow: hidden; }
     .theme-default .top-left:after {
       clear: both;
@@ -41,7 +41,7 @@
       display: table; }
     .theme-default .top-left .showtime {
       max-width: 1200px;
-      max-height: 353px; }
+      max-height: 487px; }
     .theme-default .top-left .nivo-caption {
       position: absolute;
       top: 30px;
@@ -70,7 +70,7 @@
         overflow: hidden; }
   .theme-default .top-right {
     background-color: #0058AE;
-    max-height: 353px;
+    max-height: 487px;
     overflow: hidden; }
     .theme-default .top-right:after {
       clear: both;
@@ -78,7 +78,7 @@
       display: table; }
     .theme-default .top-right .showtime {
       max-width: 1200px;
-      max-height: 353px; }
+      max-height: 487px; }
     .theme-default .top-right .nivo-caption {
       position: absolute;
       top: 30px;
@@ -107,7 +107,7 @@
         overflow: hidden; }
   .theme-default .bottom-left {
     background-color: #0058AE;
-    max-height: 353px;
+    max-height: 487px;
     overflow: hidden; }
     .theme-default .bottom-left:after {
       clear: both;
@@ -115,7 +115,7 @@
       display: table; }
     .theme-default .bottom-left .showtime {
       max-width: 1200px;
-      max-height: 353px; }
+      max-height: 487px; }
     .theme-default .bottom-left .nivo-caption {
       position: absolute;
       bottom: 30px;
@@ -144,7 +144,7 @@
         overflow: hidden; }
   .theme-default .bottom-right {
     background-color: #0058AE;
-    max-height: 353px;
+    max-height: 487px;
     overflow: hidden; }
     .theme-default .bottom-right:after {
       clear: both;
@@ -152,7 +152,7 @@
       display: table; }
     .theme-default .bottom-right .showtime {
       max-width: 1200px;
-      max-height: 353px; }
+      max-height: 487px; }
     .theme-default .bottom-right .nivo-caption {
       position: absolute;
       bottom: 30px;
@@ -181,7 +181,7 @@
         overflow: hidden; }
   .theme-default .left-photo-right {
     background-color: #0058AE;
-    max-height: 353px;
+    max-height: 487px;
     overflow: hidden;
     overflow: visible;
     margin-top: 30px;
@@ -192,7 +192,7 @@
       display: table; }
     .theme-default .left-photo-right .showtime {
       max-width: 1200px;
-      max-height: 353px; }
+      max-height: 487px; }
     .theme-default .left-photo-right .nivo-caption {
       position: absolute;
       width: 63%;
@@ -244,7 +244,7 @@
         margin-top: 30px; }
   .theme-default .right-photo-left {
     background-color: #0058AE;
-    max-height: 353px;
+    max-height: 487px;
     overflow: hidden;
     overflow: visible;
     margin-top: 30px;
@@ -255,7 +255,7 @@
       display: table; }
     .theme-default .right-photo-left .showtime {
       max-width: 1200px;
-      max-height: 353px; }
+      max-height: 487px; }
     .theme-default .right-photo-left .nivo-caption {
       position: absolute;
       width: 63%;

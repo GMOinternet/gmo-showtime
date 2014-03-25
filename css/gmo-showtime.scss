@@ -43,7 +43,7 @@
 
 @mixin slide( $w:63%, $h:auto, $t:0, $b:0, $l:0, $r:0) {
 	background-color: #0058AE;
-	max-height: 353px;
+	max-height: 487px;
 	overflow: hidden;
 	&:after {
 		clear: both;
@@ -53,7 +53,7 @@
 
 	.showtime {
 		max-width: 1200px;
-		max-height: 353px;
+		max-height: 487px;
 	}
 	.nivo-caption {
 		position: absolute;
