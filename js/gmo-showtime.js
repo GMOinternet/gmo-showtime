@@ -48,13 +48,7 @@ $('.showtime').each(function(){
     
 	//mql
 	function arrowposi() {
-		var mql = window.matchMedia("only screen and (max-width: 600px)");
-		if ( mql.matches ) {
-			 $('.left-photo-right .nivo-prevNav').css({'left': -15});
-			 $('.right-photo-left .nivo-nextNav').css({'right': -15});
-			 $('.left-photo-right .nivo-caption').css({'left': 0, 'width': '100%'});
-			 $('.right-photo-left .nivo-caption').css({'left': 0,'right': 0, 'width': '100%'});
-		} else {
+		if ($(window).width() > 600) {
 			 var slidearaW = $('.slider-box').width();
 			 var slideW = $('.showtime').width();
 			 var l = slidearaW-slideW-30;
@@ -64,6 +58,11 @@ $('.showtime').each(function(){
 			 $('.right-photo-left .nivo-nextNav').css({'right': -l});
 			 $('.left-photo-right .nivo-caption').css({'left': -cl, 'width': cw});
 			 $('.right-photo-left .nivo-caption').css({'right': -cl, 'width': cw});
+		} else {
+			 $('.left-photo-right .nivo-prevNav').css({'left': -15});
+			 $('.right-photo-left .nivo-nextNav').css({'right': -15});
+			 $('.left-photo-right .nivo-caption').css({'left': 0, 'width': '100%'});
+			 $('.right-photo-left .nivo-caption').css({'left': 0,'right': 0, 'width': '100%'});
 		}
      }
      
