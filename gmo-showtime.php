@@ -176,7 +176,6 @@ public function get_slider_contents($atts = array())
         'columns'     => $this->get_default_columns(),
         'transition' => get_option('gmoshowtime-transition', $this->get_default_transition()),
         'show_title' => $this->get_default_show_title(),
-//        'image_size' => get_option('gmoshowtime-image-size', $this->get_default_image_size()),
         'image_size' => 'gmoshowtime-image-full',
         'images'      => array(),
     ), $atts ) );
@@ -188,8 +187,6 @@ public function get_slider_contents($atts = array())
     if (!count($images)) {
         $args = array(
             "post_type"             => "gmo-showtime",
-//            "nopaging"              => 0,
-//            "posts_per_page"        => get_option('gmoshowtime-max-pages', 4),
             "posts_per_page"        => -1,
             "post_status"           => 'publish',
             "orderby"               => 'menu_order',
@@ -231,11 +228,11 @@ public function get_slider_contents($atts = array())
         }
 		
 		if ( $class == "left-photo-right" || $class == "right-photo-left" ) {
-			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_lr_length" , 100), "...", "UTF-8");
+			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_lr_length" , 60), "...", "UTF-8");
 			$img['content'] = mb_strimwidth($img['content'], 0, apply_filters("gmoshowtime_content_lr_length", 148), "...", "UTF-8");
 		} else {
-			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_ov_length" , 84), "...", "UTF-8");
-			$img['content'] = mb_strimwidth($img['content'], 0, apply_filters("gmoshowtime_content_ov_length", 300), "...", "UTF-8");
+			$img['title'] = mb_strimwidth($img['title'], 0, apply_filters( "gmoshowtime_title_ov_length" , 60), "...", "UTF-8");
+			$img['content'] = mb_strimwidth($img['content'], 0, apply_filters("gmoshowtime_content_ov_length", 280), "...", "UTF-8");
 		}
 
         $slide = $template;
