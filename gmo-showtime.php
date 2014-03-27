@@ -536,10 +536,10 @@ private function list_image_sizes()
 // EOF
 
 // add filter for GMOFontAgent
-if ( class_exists('GMOFontAgent')) {
+if ( class_exists('GMOFontAgent') ) {
 	add_filter("gmofontagent_default_tags", "my_gmofontagent_default_tags");
 	function my_gmofontagent_default_tags($element){
-		$element[] = '.nivo-caption';
+		$tags['.nivo-caption'] = 'GMO Showtime-caption';
 		return $element;
 	}
 }
