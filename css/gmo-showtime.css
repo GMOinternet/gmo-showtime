@@ -8,12 +8,12 @@
   box-shadow: none; }
 
 .theme-default .nivo-directionNav a {
-  width: 17px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   opacity: 1; }
 
 .theme-default a.nivo-nextNav {
-  background-position: -17px 0; }
+  background-position: -40px 0; }
 
 .slider-wrapper:after {
   clear: both;
@@ -312,16 +312,14 @@
     padding: 30px; }
 
   .theme-default .nivo-directionNav a {
-    /*
-    		width:8px;
-    		height:17px;
-    		background-size: 17px 17px;
-    */ }
+    width: 17px; }
 
   .theme-default a.nivo-nextNav {
+    background-position: -63px 0;
     right: -30px; }
 
   .theme-default a.nivo-prevNav {
+    background-position: 0 0;
     left: -30px; }
 
   .theme-default .top-left {
