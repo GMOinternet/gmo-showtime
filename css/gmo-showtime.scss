@@ -218,20 +218,22 @@ $brake-point: 600px !default;
 @media screen and (max-width: $brake-point) {
 	.slider-box {
 		width: 100%;
-		padding: 30px 25px;
+		padding: 30px;
 	}
 
 	.theme-default .nivo-directionNav a {
+/*
 		width:8px;
 		height:17px;
 		background-size: 17px 17px;
+*/
 	}
 	.theme-default a.nivo-nextNav {
-		background-position: -8px 0;
-		right:-15px;
+//		background-position: -8px 0;
+		right: -30px;
 	}
 	.theme-default a.nivo-prevNav {
-		left:-15px;
+		left:-30px;
 	}
 
 	.theme-default {
@@ -251,10 +253,10 @@ $brake-point: 600px !default;
 			@include mobileslide();
 			.showtime {
 				a.nivo-prevNav{
-					left: -15px;
+					left: -30px;
 				}
 				a.nivo-nextNav {
-					right: -15px;
+					right: -30px;
 				}
 	
 			}
@@ -263,10 +265,10 @@ $brake-point: 600px !default;
 			@include mobileslide();
 			.showtime {
 				a.nivo-prevNav{
-					left: -15px;
+					left: -30px;
 				}
 				a.nivo-nextNav {
-					right: -15px;
+					right: -30px;
 				}
 	
 			}

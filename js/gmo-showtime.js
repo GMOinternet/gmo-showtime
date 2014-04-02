@@ -59,8 +59,8 @@ $('.showtime').each(function(){
 			 $('.left-photo-right .nivo-caption').css({'left': -cl, 'width': cw});
 			 $('.right-photo-left .nivo-caption').css({'right': -cl, 'width': cw});
 		} else {
-			 $('.left-photo-right .nivo-prevNav').css({'left': -15});
-			 $('.right-photo-left .nivo-nextNav').css({'right': -15});
+			 $('.left-photo-right .nivo-prevNav').css({'left': -30});
+			 $('.right-photo-left .nivo-nextNav').css({'right': -30});
 			 $('.left-photo-right .nivo-caption').css({'left': 0, 'width': '100%'});
 			 $('.right-photo-left .nivo-caption').css({'left': 0,'right': 0, 'width': '100%'});
 		}

@@ -309,19 +309,20 @@
 @media screen and (max-width: 600px) {
   .slider-box {
     width: 100%;
-    padding: 30px 25px; }
+    padding: 30px; }
 
   .theme-default .nivo-directionNav a {
-    width: 8px;
-    height: 17px;
-    background-size: 17px 17px; }
+    /*
+    		width:8px;
+    		height:17px;
+    		background-size: 17px 17px;
+    */ }
 
   .theme-default a.nivo-nextNav {
-    background-position: -8px 0;
-    right: -15px; }
+    right: -30px; }
 
   .theme-default a.nivo-prevNav {
-    left: -15px; }
+    left: -30px; }
 
   .theme-default .top-left {
     padding: 0;
@@ -494,9 +495,9 @@
         text-overflow: ellipsis;
         white-space: nowrap; }
     .theme-default .left-photo-right .showtime a.nivo-prevNav {
-      left: -15px; }
+      left: -30px; }
     .theme-default .left-photo-right .showtime a.nivo-nextNav {
-      right: -15px; }
+      right: -30px; }
   .theme-default .right-photo-left {
     padding: 0;
     margin: 0; }
@@ -532,6 +533,6 @@
         text-overflow: ellipsis;
         white-space: nowrap; }
     .theme-default .right-photo-left .showtime a.nivo-prevNav {
-      left: -15px; }
+      left: -30px; }
     .theme-default .right-photo-left .showtime a.nivo-nextNav {
-      right: -15px; } }
+      right: -30px; } }
