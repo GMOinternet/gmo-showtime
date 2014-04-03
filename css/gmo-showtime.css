@@ -46,7 +46,7 @@
       position: absolute;
       top: 30px;
       left: 80px;
-      width: 60%;
+      width: 60.8%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -83,7 +83,7 @@
       position: absolute;
       top: 30px;
       right: 80px;
-      width: 60%;
+      width: 60.8%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -120,7 +120,7 @@
       position: absolute;
       bottom: 30px;
       left: 80px;
-      width: 60%;
+      width: 60.8%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -157,7 +157,7 @@
       position: absolute;
       bottom: 30px;
       right: 80px;
-      width: 60%;
+      width: 60.8%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -195,7 +195,7 @@
       max-height: 487px; }
     .theme-default .left-photo-right .nivo-caption {
       position: absolute;
-      width: 63%;
+      width: 60.8%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -223,7 +223,7 @@
       top: -30px;
       margin-bottom: -60px; }
     .theme-default .left-photo-right .showtime {
-      width: 63%;
+      width: 60.8%;
       max-width: 730px;
       max-height: 487px;
       float: right;
@@ -258,7 +258,7 @@
       max-height: 487px; }
     .theme-default .right-photo-left .nivo-caption {
       position: absolute;
-      width: 63%;
+      width: 60.8%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -286,7 +286,7 @@
       top: -30px;
       margin-bottom: -60px; }
     .theme-default .right-photo-left .showtime {
-      width: 63%;
+      width: 60.8%;
       max-width: 730px;
       max-height: 487px;
       float: left;
