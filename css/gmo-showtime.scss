@@ -41,7 +41,7 @@
 }
 
 
-@mixin slide( $w:60.8%, $h:auto, $t:0, $b:0, $l:0, $r:0) {
+@mixin slide( $w:60%, $t:0, $b:0, $l:0, $r:0) {
 	background-color: #0058AE;
 	max-height: 487px;
 	overflow: hidden;
@@ -62,7 +62,6 @@
 		@if $l > 0 { left: $l; }
 		@if $r > 0 { right: $r; }
 		width: $w;
-		//height: $h;
 		padding: 25px 30px;
 		background-color: rgba(0,0,0,0.5);
 		box-sizing: border-box;
@@ -102,14 +101,19 @@
 		position: relative;
 		top: -30px;
 		margin-bottom: -60px;
+		@if $p == 'left' {
+			padding: 0 30px 0 40px
+		} @else {
+			padding: 0 40px 0 30px
+		}
 	}
 	.showtime {
-		width: 60.8%;
+		width: 64.6%;
 		max-width: 730px;
 		max-height: 487px;
 
 		@if $p == 'left' {
-			float: right; margin-right: 30px;
+			float: right;
 			a.nivo-prevNav{
 				left: 0;
 			}
@@ -117,7 +121,7 @@
 				right: -30px;
 			}
 		} @else {
-			float: left; margin-left: 30px;
+			float: left;
 			a.nivo-prevNav{
 				left: -30px;
 			}
@@ -150,16 +154,16 @@
 	position: relative;
 
 	.top-left {
-		@include slide( $w:60.8%, $h:40%, $t:30px, $l:80px);
+		@include slide( $w:60%, $t:30px, $l:80px);
 	}
 	.top-right {
-		@include slide( $w:60.8%, $h:40%, $t:30px, $r:80px);
+		@include slide( $w:60%, $t:30px, $r:80px);
 	}
 	.bottom-left {
-		@include slide( $w:60.8%, $h:40%, $b:30px, $l:80px);
+		@include slide( $w:60%, $b:30px, $l:80px);
 	}
 	.bottom-right {
-		@include slide( $w:60.8%, $h:40%, $b:30px, $r:80px);
+		@include slide( $w:60%, $b:30px, $r:80px);
 	}
 	.left-photo-right {
 		@include slide;
@@ -184,6 +188,7 @@ $brake-point: 600px !default;
 	.slider-box {
 		margin: 0 !important;
 		top: 0;
+		padding: 0 !important;
 	}
 	.nivo-caption {
 		position: relative;

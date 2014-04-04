@@ -46,7 +46,7 @@
       position: absolute;
       top: 30px;
       left: 80px;
-      width: 60.8%;
+      width: 60%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -83,7 +83,7 @@
       position: absolute;
       top: 30px;
       right: 80px;
-      width: 60.8%;
+      width: 60%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -120,7 +120,7 @@
       position: absolute;
       bottom: 30px;
       left: 80px;
-      width: 60.8%;
+      width: 60%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -157,7 +157,7 @@
       position: absolute;
       bottom: 30px;
       right: 80px;
-      width: 60.8%;
+      width: 60%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -195,7 +195,7 @@
       max-height: 487px; }
     .theme-default .left-photo-right .nivo-caption {
       position: absolute;
-      width: 60.8%;
+      width: 60%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -221,13 +221,13 @@
       overflow: hidden;
       position: relative;
       top: -30px;
-      margin-bottom: -60px; }
+      margin-bottom: -60px;
+      padding: 0 30px 0 40px; }
     .theme-default .left-photo-right .showtime {
-      width: 60.8%;
+      width: 64.6%;
       max-width: 730px;
       max-height: 487px;
-      float: right;
-      margin-right: 30px; }
+      float: right; }
       .theme-default .left-photo-right .showtime a.nivo-prevNav {
         left: 0; }
       .theme-default .left-photo-right .showtime a.nivo-nextNav {
@@ -258,7 +258,7 @@
       max-height: 487px; }
     .theme-default .right-photo-left .nivo-caption {
       position: absolute;
-      width: 60.8%;
+      width: 60%;
       padding: 25px 30px;
       background-color: rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
@@ -284,13 +284,13 @@
       overflow: hidden;
       position: relative;
       top: -30px;
-      margin-bottom: -60px; }
+      margin-bottom: -60px;
+      padding: 0 40px 0 30px; }
     .theme-default .right-photo-left .showtime {
-      width: 60.8%;
+      width: 64.6%;
       max-width: 730px;
       max-height: 487px;
-      float: left;
-      margin-left: 30px; }
+      float: left; }
       .theme-default .right-photo-left .showtime a.nivo-prevNav {
         left: -30px; }
       .theme-default .right-photo-left .showtime a.nivo-nextNav {
@@ -331,7 +331,8 @@
       margin: 0; }
     .theme-default .top-left .slider-box {
       margin: 0 !important;
-      top: 0; }
+      top: 0;
+      padding: 0 !important; }
     .theme-default .top-left .nivo-caption {
       position: relative;
       left: 0;
@@ -365,7 +366,8 @@
       margin: 0; }
     .theme-default .top-right .slider-box {
       margin: 0 !important;
-      top: 0; }
+      top: 0;
+      padding: 0 !important; }
     .theme-default .top-right .nivo-caption {
       position: relative;
       left: 0;
@@ -399,7 +401,8 @@
       margin: 0; }
     .theme-default .bottom-left .slider-box {
       margin: 0 !important;
-      top: 0; }
+      top: 0;
+      padding: 0 !important; }
     .theme-default .bottom-left .nivo-caption {
       position: relative;
       left: 0;
@@ -433,7 +436,8 @@
       margin: 0; }
     .theme-default .bottom-right .slider-box {
       margin: 0 !important;
-      top: 0; }
+      top: 0;
+      padding: 0 !important; }
     .theme-default .bottom-right .nivo-caption {
       position: relative;
       left: 0;
@@ -467,7 +471,8 @@
       margin: 0; }
     .theme-default .left-photo-right .slider-box {
       margin: 0 !important;
-      top: 0; }
+      top: 0;
+      padding: 0 !important; }
     .theme-default .left-photo-right .nivo-caption {
       position: relative;
       left: 0;
@@ -505,7 +510,8 @@
       margin: 0; }
     .theme-default .right-photo-left .slider-box {
       margin: 0 !important;
-      top: 0; }
+      top: 0;
+      padding: 0 !important; }
     .theme-default .right-photo-left .nivo-caption {
       position: relative;
       left: 0;

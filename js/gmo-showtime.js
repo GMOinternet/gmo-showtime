@@ -49,7 +49,7 @@ $('.showtime').each(function(){
 	//mql
 	function arrowposi() {
 		if ($(window).width() > 600) {
-			 var slidearaW = $('.slider-box').width();
+			 var slidearaW = $('.slider-box').width()+70;
 			 var slideW = $('.showtime').width();
 			 var l = slidearaW-slideW-30;
 			 var cl = slidearaW-slideW-70;
