@@ -308,8 +308,9 @@
 
 @media screen and (max-width: 600px) {
   .slider-box {
-    width: 100%;
-    padding: 30px; }
+    width: 100% !important;
+    padding: 30px !important;
+    margin: 0 !important; }
 
   .theme-default .nivo-directionNav a {
     width: 17px; }
@@ -327,12 +328,12 @@
     margin: 0; }
     .theme-default .top-left .showtime {
       width: 100% !important;
+      max-width: 100% !important;
+      max-height: auto !important;
       height: auto;
       margin: 0; }
     .theme-default .top-left .slider-box {
-      margin: 0 !important;
-      top: 0;
-      padding: 0 !important; }
+      top: 0; }
     .theme-default .top-left .nivo-caption {
       position: relative;
       left: 0;
@@ -362,12 +363,12 @@
     margin: 0; }
     .theme-default .top-right .showtime {
       width: 100% !important;
+      max-width: 100% !important;
+      max-height: auto !important;
       height: auto;
       margin: 0; }
     .theme-default .top-right .slider-box {
-      margin: 0 !important;
-      top: 0;
-      padding: 0 !important; }
+      top: 0; }
     .theme-default .top-right .nivo-caption {
       position: relative;
       left: 0;
@@ -397,12 +398,12 @@
     margin: 0; }
     .theme-default .bottom-left .showtime {
       width: 100% !important;
+      max-width: 100% !important;
+      max-height: auto !important;
       height: auto;
       margin: 0; }
     .theme-default .bottom-left .slider-box {
-      margin: 0 !important;
-      top: 0;
-      padding: 0 !important; }
+      top: 0; }
     .theme-default .bottom-left .nivo-caption {
       position: relative;
       left: 0;
@@ -432,12 +433,12 @@
     margin: 0; }
     .theme-default .bottom-right .showtime {
       width: 100% !important;
+      max-width: 100% !important;
+      max-height: auto !important;
       height: auto;
       margin: 0; }
     .theme-default .bottom-right .slider-box {
-      margin: 0 !important;
-      top: 0;
-      padding: 0 !important; }
+      top: 0; }
     .theme-default .bottom-right .nivo-caption {
       position: relative;
       left: 0;
@@ -467,12 +468,12 @@
     margin: 0; }
     .theme-default .left-photo-right .showtime {
       width: 100% !important;
+      max-width: 100% !important;
+      max-height: auto !important;
       height: auto;
       margin: 0; }
     .theme-default .left-photo-right .slider-box {
-      margin: 0 !important;
-      top: 0;
-      padding: 0 !important; }
+      top: 0; }
     .theme-default .left-photo-right .nivo-caption {
       position: relative;
       left: 0;
@@ -506,12 +507,12 @@
     margin: 0; }
     .theme-default .right-photo-left .showtime {
       width: 100% !important;
+      max-width: 100% !important;
+      max-height: auto !important;
       height: auto;
       margin: 0; }
     .theme-default .right-photo-left .slider-box {
-      margin: 0 !important;
-      top: 0;
-      padding: 0 !important; }
+      top: 0; }
     .theme-default .right-photo-left .nivo-caption {
       position: relative;
       left: 0;
