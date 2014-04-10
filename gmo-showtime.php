@@ -1,11 +1,11 @@
 <?php
 /**
  * Plugin Name: GMO Showtime
- * Plugin URI:  https://digitalcube.jp/
- * Description: This is a awesome cool plugin.
+ * Plugin URI:  
+ * Description: GMO Showtime slider plugin gives cool effects to the slider in a snap. The control screen is simple, for anyone to easily use.  Express user's originality with fully customizable link and color as well as 16 slider effects in 6 different layouts,
  * Version:     0.1.0
- * Author:      Digitalcube Co,.Ltd
- * Author URI:  https://digitalcube.jp/
+ * Author:      WP Shop byGMO
+ * Author URI:  http://www.wpshop.com
  * License:     GPLv2
  * Text Domain: gmoshowtime
  * Domain Path: /languages
