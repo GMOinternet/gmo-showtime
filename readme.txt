@@ -1,18 +1,18 @@
 === GMO Showtime ===
-Contributors:      megumithemes
-Donate link:       https://digitalcube.jp/
+Contributors:      takeaki-nagashima
+Donate link:       
 Tags:
 Requires at least: 3.8
 Tested up to:      3.8
-Stable tag:        0.1.0
+Stable tag:        1.0
 License:           GPLv2
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
 
-This is a awesome cool plugin.
+GMO Showtime slider plugin gives cool effects to the slider in a snap.
 
 == Description ==
 
-
+GMO Showtime slider plugin gives cool effects to the slider in a snap. The control screen is simple, for anyone to easily use. Express user's originality with fully customizable link and color as well as 16 slider effects in 6 different layouts, 
 
 == Installation ==
 
@@ -29,10 +29,10 @@ This is a awesome cool plugin.
 
 == Changelog ==
 
-= 0.1.0 =
+= 1.0 =
 * First release
 
 == Upgrade Notice ==
 
-= 0.1.0 =
+= 1.0 =
 First Release

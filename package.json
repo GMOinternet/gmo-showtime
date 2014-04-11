@@ -1,12 +1,12 @@
 {
   "name": "gmo-showtime",
   "title": "GMO Showtime",
-  "description": "This is a awesome cool plugin.",
-  "version": "0.1.0",
-  "homepage": "https://digitalcube.jp/",
+  "description": "GMO Showtime slider plugin gives cool effects to the slider in a snap. The control screen is simple, for anyone to easily use. Express user's originality with fully customizable link and color as well as 16 slider effects in 6 different layouts,",
+  "version": "1.0",
+  "homepage": "https://github.com/GMOinternet/gmo-showtime",
   "author": {
-    "name": "Digitalcube Co,.Ltd",
-    "url": "https://digitalcube.jp/"
+    "name": "WP Shop byGMO",
+    "url": "http://www.wpshop.com"
   },
   "devDependencies": {
     "grunt": "~0.4.2",

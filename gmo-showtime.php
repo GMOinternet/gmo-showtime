@@ -2,8 +2,8 @@
 /**
  * Plugin Name: GMO Showtime
  * Plugin URI:  
- * Description: GMO Showtime slider plugin gives cool effects to the slider in a snap. The control screen is simple, for anyone to easily use.  Express user's originality with fully customizable link and color as well as 16 slider effects in 6 different layouts,
- * Version:     0.1.0
+ * Description: GMO Showtime slider plugin gives cool effects to the slider in a snap. The control screen is simple, for anyone to easily use. Express user's originality with fully customizable link and color as well as 16 slider effects in 6 different layouts,
+ * Version:     1.0
  * Author:      WP Shop byGMO
  * Author URI:  http://www.wpshop.com
  * License:     GPLv2
@@ -12,7 +12,7 @@
  */
 
 /**
- * Copyright (c) 2013 Digitalcube Co,.Ltd (https://digitalcube.jp/)
+ * Copyright (c) 2014 WP Shop byGMO (http://www.wpshop.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License, version 2 or, at
